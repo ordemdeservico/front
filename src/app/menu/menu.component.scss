@@ -1,0 +1,53 @@
+.menu {
+    width: 280px; height: 100vh;
+    background-color: #F1F0F5;
+    opacity: 88%;
+}
+
+.logo {
+    img {
+        margin: 64px 20px 120px 20px;
+    }
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 240px; height: 56px;
+    background-color: transparent;
+    text-align: center;
+    margin: 20px;
+    border-radius: 16px;
+}
+
+.btn-home,
+.btn-user,
+.btn-logout {
+    color: #000000;
+    font-size: 1.5em;
+    font-weight: 500;
+    letter-spacing: 1px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 32px;
+    transition: .5s;
+    cursor: pointer;
+}
+
+.btn-home:hover,
+.btn-user:hover,
+.btn-logout:hover {
+    color: #4EA926;
+}
+
+.btn-logout {
+    position: absolute;
+    top: 720px;
+}
+
+.icon {
+    width: 24px; height: 24px;
+    padding: 16px;
+}
