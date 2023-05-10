@@ -2,13 +2,12 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
-import { MenuComponent } from './menu/menu.component';
-import { FormUserComponent } from './pages/form-user/form-user.component';
+import { MenuComponent } from './shared/menu/menu.component';
+import { AppComponent } from './app.component';
 
 const routes: Routes = [
   // -----ROTAS DO RORTAL --------
-  { path: '', component: MenuComponent },
-  { path: 'form-user', component: FormUserComponent },
+  { path: '', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
 
 
 
