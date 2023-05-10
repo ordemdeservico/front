@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 import { MenuComponent } from './menu/menu.component';
-import { FormUserComponent } from './form-user/form-user.component';
+import { FormUserComponent } from './pages/form-user/form-user.component';
 
 const routes: Routes = [
   // -----ROTAS DO RORTAL --------
