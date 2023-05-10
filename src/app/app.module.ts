@@ -8,13 +8,16 @@ import { MenuComponent } from './menu/menu.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome'
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { FormUserComponent } from './form-user/form-user.component'
+import { ButtonMenuComponent } from './menu/button-menu/button-menu.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
-    FormUserComponent
+    FormUserComponent,
+    ButtonMenuComponent
   ],
   imports: [
     BrowserModule,
