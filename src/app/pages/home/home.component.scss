@@ -1,0 +1,90 @@
+.container {
+    height: 100vh;
+    display: flex;
+    overflow-y: hidden;
+}
+
+.content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0 auto;
+    text-align: center;
+
+    img {
+        width: 64px; height: 64px;
+        margin: auto auto 25px auto;
+
+    }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 600;
+        color: var(--color-1);
+        margin: 25px 32px;
+        text-align: center;
+    }
+
+    h5 {
+        font-size: 1.5rem;
+        color: var(--color-8);
+    }
+
+    .btn-os {
+        width: 410px; height: 80px;
+        background-color: var(--color-2);
+        color: var(--color-5);
+        font-size: 1.5rem;
+        border: none;
+        border-radius: 16px;
+        padding: 8px 0px 8px 64px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        margin: 60px auto;
+        transition: 1s;
+    }
+
+    .btn-os:hover {
+        background-color: var(--color-3);
+    }
+
+    label {
+        font-size: 1rem;
+        color: var(--color-8);
+        margin: 80px auto 10px 10px;
+    }
+
+    .btn-login {
+        width: 410px; height: 56px;
+        background-color: transparent;
+        border: 1px solid var(--color-2);
+        color: var(--color-2);
+        border-radius: 16px;
+        transition: 1s;
+    }
+    
+    .btn-login:hover {
+        background-color: var(--color-3);
+        color: var(--color-5);
+    }
+
+    button {
+        cursor: pointer;
+    }
+}
+
+.contact {
+    margin: 40px auto;
+    cursor: pointer;
+    h5 {
+        font-size: 1rem;
+        color: var(--color-2);
+    }
+
+    p {
+        font-size: 1rem;
+        color: #2F3033;
+    };
+}
