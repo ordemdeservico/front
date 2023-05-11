@@ -22,26 +22,19 @@
     padding: 24px;
 }   
 
-.btn-home {
-    
-}
-
-.btn-user {
-    margin-bottom: 80%;
-}
 
 .btn-logout {
-    margin-top: 50%;
+  position: absolute;
+  bottom: 20px;
 }
 
 .btn {
-    margin: 5%;
     width: 240px; height: 56px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 8px;
-    // margin: 20px;
+    margin: 16px;
     font-size: 1.5rem;
     font-weight: 500;
     letter-spacing: 1px;
