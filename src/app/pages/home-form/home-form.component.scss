@@ -1,0 +1,60 @@
+.form-nav{
+    height: 12vh;
+    background-color: var(--color-3);
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-between;
+    padding: 0px 10vh;
+}
+
+.form-nav a{
+    text-decoration: none;
+    //border: 1px solid black;
+    color: white;
+}
+
+.form-nav .arrow{
+    width: 29px;
+    padding-right: 10px;
+}
+
+.form-body {
+ padding: 15vh 50vh;
+}
+
+.form-body h2{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    width: 50%;
+    line-height: 110%;
+    letter-spacing: 1px;
+    font-style: normal;
+    font-size: 32px;
+}
+
+.personal-input{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.personal-input .inp{
+    width: 48%;
+}
+
+.personal-input .inp input{
+    border: none;
+    background-color: var(--color-12);
+}
+
+.personal-input .inp span{
+    border: none;
+    background-color: var(--color-12);
+}
+
+.personal-input img{
+    width: 15px;
+    color: var(--color-8);
+}
