@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { HomeFormRoutingModule } from './home-form-routing.module';
 import { HomeFormComponent } from './home-form.component';
+import { MenuModule } from 'src/app/shared/menu/menu.module';
 
 
 @NgModule({
@@ -11,7 +12,9 @@ import { HomeFormComponent } from './home-form.component';
   ],
   imports: [
     CommonModule,
-    HomeFormRoutingModule
+    HomeFormRoutingModule,
+    MenuModule
+
   ]
 })
 export class HomeFormModule { }
