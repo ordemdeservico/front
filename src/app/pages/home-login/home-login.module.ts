@@ -11,7 +11,7 @@ import { HomeLoginComponent } from './home-login.component';
   ],
   imports: [
     CommonModule,
-    HomeLoginRoutingModule
+    HomeLoginRoutingModule,
   ]
 })
 export class HomeLoginModule { }

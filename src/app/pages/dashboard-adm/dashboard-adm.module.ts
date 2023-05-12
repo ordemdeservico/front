@@ -11,7 +11,7 @@ import { DashboardAdmComponent } from './dashboard-adm.component';
   ],
   imports: [
     CommonModule,
-    DashboardAdmRoutingModule
+    DashboardAdmRoutingModule,
   ]
 })
 export class DashboardAdmModule { }
