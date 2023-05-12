@@ -1,0 +1,52 @@
+.container {
+    margin: 0;
+    max-width: 100%;
+    display: flex;
+    padding: 0;
+}
+
+app-menu {
+    margin: 0;
+    padding: 0;
+    display: block;
+    position: fixed;
+    height: 100%;
+    width: 200px;
+}
+
+.cards {
+    max-width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    overflow-y: auto;
+    padding-left: 200px;
+    margin-bottom: 32px;
+}
+
+app-card {
+    width: 326px;
+    max-width: 326px;
+    margin: 16px;
+}
+
+/* Estilos para dispositivos móveis */
+@media only screen and (max-width: 768px) {
+    .container {
+      flex-direction: column;
+    }
+    app-menu {
+      position: static;
+      width: auto;
+    }
+    .cards {
+      width: auto;
+      margin: 0;
+      padding: 16px;
+    }
+    app-card {
+      width: auto;
+    //   display: block !important;
+      
+    }
+  }

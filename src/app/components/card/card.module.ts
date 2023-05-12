@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { CardComponent } from './card.component';
 
 
-
 @NgModule({
   declarations: [
     CardComponent
