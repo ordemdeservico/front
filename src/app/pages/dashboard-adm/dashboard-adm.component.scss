@@ -1,52 +1,179 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .container {
-    margin: 0;
-    max-width: 100%;
+  width: calc(100vw - 275px);
+  height: 100%;
+  height: 100vh;
+  position: absolute;
+  right: 0;
+  padding-right: 64px;
+  padding-left: 64px;
+
+  .btns {
+    width: auto;
+    margin-top: 150px;
     display: flex;
-    padding: 0;
-}
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 42px;
+    margin: 150px 42px 0 42px;
 
-app-menu {
-    margin: 0;
-    padding: 0;
-    display: block;
-    position: fixed;
-    height: 100%;
-    width: 200px;
-}
-
-.cards {
-    max-width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    overflow-y: auto;
-    padding-left: 200px;
-    margin-bottom: 32px;
-}
-
-app-card {
-    width: 326px;
-    max-width: 326px;
-    margin: 16px;
-}
-
-/* Estilos para dispositivos móveis */
-@media only screen and (max-width: 768px) {
-    .container {
-      flex-direction: column;
-    }
-    app-menu {
-      position: static;
-      width: auto;
-    }
-    .cards {
-      width: auto;
-      margin: 0;
+    .btn {
+      width: 272px;
+      height: 56px;
+      border-radius: 16px;
       padding: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border: none;
+
+      i {
+        text-align: center;
+        font-size: 24px;
+      }
     }
-    app-card {
-      width: auto;
-    //   display: block !important;
-      
+
+    .btn-os {
+      background-color: var(--color-3);
+      color: var(--color-5);
+    }
+
+    .btn-filter {
+      background-color: #D9D9D9;
+      color: var(--color-6);
     }
   }
+
+  .cards {
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    white-space: wrap;
+  }
+
+  app-card {
+    margin: 16px;
+  }
+}
+
+
+@media only screen and (max-width: 768px) {
+  .container {
+    width: calc(100% - 78px);
+    
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .container {
+//     margin: 0;
+//     max-width: 100%;
+//     padding: 0;
+// }
+
+// .buttons {
+//   width: 100%;
+//   padding: 150px 120px 0px 350px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+//   flex-wrap: wrap;
+//   gap: 1rem;
+//   flex: 1;
+// }
+
+// .btn {
+//   font-size: 24px;
+//   text-align: center;
+//   width: 272px;
+//   min-width: 208px;
+//   height: 56px;
+//   border-radius: 16px;
+//   display: flex;
+//   justify-content: space-between;
+//   align-items: center;
+// }
+
+// .btn i {
+//   font-size: 24px;
+//   text-align: center;
+//   padding-right: 8sx;
+// }
+
+// .btn-os {
+//   background-color: var(--color-2);
+//   color: var(--color-5);
+// }
+
+// .btn-filter {
+//   background-color: #D9D9D9;
+//   color: var(--color-6);
+// }
+
+// .cards {
+//     max-width: 100%;
+//     display: flex;
+//     flex-wrap: wrap;
+//     justify-content: center;
+//     overflow-y: auto;
+//     padding-left: 200px;
+//     margin-bottom: 32px;
+//     margin-top: 2%;
+//     overflow: hidden;
+// }
+
+// app-card {
+//     width: 326px;
+//     max-width: 326px;
+//     margin: 16px;
+    
+// }
+
