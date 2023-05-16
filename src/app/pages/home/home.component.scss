@@ -65,6 +65,8 @@
             letter-spacing: 1px;
             display: flex;
             align-items: center;
+            transition: all 0.5s ease;
+            cursor: pointer;
 
             i {
                 font-size: 1.5rem;
@@ -83,11 +85,20 @@
             margin-top: 10%;
         }
 
+        .btn-os:hover {
+            background-color: var(--color-3);
+        }
+
         .btn-login {
             height: 56px;
             background-color: transparent;
             border: 1px solid var(--color-2);
             color: var(--color-2);
+        }
+
+        .btn-login:hover {
+            background-color: var(--color-3);
+            color: var(--color-5);
         }
 
         .restrict-area {
@@ -110,6 +121,7 @@
             justify-content: center;
             align-items: center;
             letter-spacing: 1px;
+            cursor: pointer;
 
             h6 {
                 font-size: 1.1rem;
