@@ -13,6 +13,7 @@
     text-decoration: none;
     //border: 1px solid black;
     color: white;
+    display: flex;
 }
 
 .form-nav .arrow{
@@ -21,17 +22,18 @@
 }
 
 .form-body {
- padding: 15vh 50vh;
+ padding: 15vh 20%;
 }
 
 .form-body h2{
     font-family: 'Montserrat', sans-serif;
     font-weight: 700;
-    width: 50%;
+    width: 55%;
     line-height: 110%;
     letter-spacing: 1px;
     font-style: normal;
-    font-size: 32px;
+    font-size: 30px;
+    margin-bottom: 10px;
 }
 
 .personal-input{
@@ -42,19 +44,122 @@
 
 .personal-input .inp{
     width: 48%;
+    background-color: var(--color-12);
+    height: 38px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 6px;
+    justify-content: space-between;
+    padding: 0px 9px;
 }
 
 .personal-input .inp input{
     border: none;
-    background-color: var(--color-12);
+    background-color: transparent;
+    width: 100%;
+    outline: none;
 }
 
-.personal-input .inp span{
-    border: none;
-    background-color: var(--color-12);
+.personal-input .inp i{
+   color: var(--color-8);
 }
 
 .personal-input img{
     width: 15px;
     color: var(--color-8);
 }
+
+.os-box p{
+    margin: 10px 0;
+}
+
+.os-imput{
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.os-imput select{
+    border: none;
+    border-right: 8 px solid transparent;
+    width: 60vh;
+    background-color: var(--color-12);
+    color: var(--color-8);
+    height: 38px;
+    margin-bottom: 22px;
+    border-radius: 5px;
+    padding: 5px;
+    outline: none;
+}
+
+.os-imput .time{
+    background-color: var(--color-12);
+    height: 38px;
+    border-radius: 5px;
+    padding: 1%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 60vh;
+    margin-bottom: 22px;
+    color: var(--color-8);
+}
+
+.os-imput .time input{
+    background-color: transparent;
+    border: none;
+    color: var(--color-8);
+    outline: none;
+
+}
+
+::-webkit-calendar-picker-indicator {
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="15" viewBox="0 0 24 24"><path fill="%235F5C6B" d="M20 3h-1V1h-2v2H7V1H5v2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 18H4V8h16v13z"/></svg>');
+  }
+
+  
+.title-input{
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-12);
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
+    width: 127vh;
+    padding: 10px 10px 0 10px;
+    color: var(--color-8);
+}
+
+.os-imput textarea{
+    background-color: var(--color-12);
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    padding: 10px;
+    outline: none;
+    width: 100%;
+    border: none;
+}
+
+.os-imput button{
+    height: 40px;
+    width: 120px;
+    background: var(--color-2);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-top: 3%;
+}
+
+.os-imput button:hover{
+    background-color: var(--color-1);
+}
+
+
+.img-pencil{
+    width: 12px;
+}
+
+
+
