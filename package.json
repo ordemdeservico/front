@@ -18,10 +18,6 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
-<<<<<<< HEAD
-    "boxicons": "^2.1.4",
-=======
->>>>>>> ea003f02e4e2a9714397e02df1b867fb5c30a4a2
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
