@@ -17,4 +17,7 @@ export class HomeComponent {
     this.router.navigate(['/home-form'])
   }
 
+  onLoginEmit () {
+    this.router.navigate(['/home-login'])
+  }
 }

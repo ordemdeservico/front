@@ -11,7 +11,7 @@
         <p>Emissão de Ordens de Serviço</p>
     </div>
     <div class="box-text">
-        <button class="btn btn-os">
+        <button class="btn btn-os" (click)="onOsEmit()">
             <i class='bx bx-cog' ></i>
             Emitir OS
             <i class='bx bx-right-arrow-alt'></i>
@@ -19,7 +19,7 @@
 
         <div class="restrict-area">
             <p>Área restrita</p>
-            <button class="btn btn-login">
+            <button class="btn btn-login" (click)="onLoginEmit()">
                 <i class='bx bx-user-check'></i>
                 Login
                 <i class='bx bx-right-arrow-alt'></i>
