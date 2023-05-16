@@ -1,24 +1,29 @@
 <div class="card">
-    <div class="institute">
-        <img src="../../../assets/Institute.svg">
-        <p>Fatec</p>
-    </div>
-    <div class="sector">
-        <img src="../../../assets/map-pin.svg">
-        <p>C-01 Synapse</p>
-    </div>
-    <div class="date">
-        <img src="../../../assets/clipboard_green.svg">
-        <p>11/05/2023</p>
-    </div>
-    <div class="area">
-        <img src="../../../assets/tool.svg">
-        <p>Civil</p>
+    <div class="itens">
+        <div class="item institute">
+            <i class='bx bx-briefcase-alt'></i>
+            <p>{{ os.institute }}</p>
+        </div>
+        <div class="item sector">
+            <i class='bx bx-map'></i>
+            <p>{{ os.sector }}</p>
+        </div>
+        <div class="item date">
+            <i class='bx bx-calendar-week'></i>
+            <p>{{ os.date }}</p>
+        </div>
+        <div class="item area">
+            <i class='bx bx-wrench'></i>
+            <p>{{ os.area }}</p>
+        </div>
     </div>
     <div class="id">
+        <!-- <p>ID: {{os.id | number: '1.0-0'}}</p> -->
+        <p>ID: {{ os.id.toString().padStart(4, '0') }}</p>
         <span></span>
-        <p>ID: 0001</p>
     </div>
 
-    <p>Detalhes</p>
+    <div class="details">
+        <p>Detalhes</p>
+    </div>
 </div>

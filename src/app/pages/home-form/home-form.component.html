@@ -1,67 +1,72 @@
 <div>
     <div class="form-nav">
-      <a class="" aria-current="page" href="#"> <img src="../../../assets/flechaEsquerda.png" class="arrow"> Voltar</a>
+      <a class="" aria-current="page" href="#"><img src="../../../assets/flechaEsquerda.png" class="arrow"> Voltar</a>
       <a class="">comunicacao@fsnt.com.br  |  (14) 3405-2033</a>
     </div>
     
     <div class="form-body">
-        <div class="">
+        <div>
             <h2>Insira os dados para efetivar a solicitação</h2>
             <div class="personal-input">
-                <div class="inp input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Nome" aria-label="Nome" aria-describedby="basic-addon2">
-                    <span class="input-group-text" id="basic-addon2"><img src="../../../assets/userIcon.png" alt=""></span>
+                <div class="inp">
+                    <input type="text" class="" placeholder="Nome">
+                    <i class='bx bx-user'></i> 
                 </div>
-                <div class="inp input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon2">
-                    <span class="input-group-text" id="basic-addon2"><img src="../../../assets/emailIcon.png" alt=""></span>
+                <div class="inp">
+                    <input type="email" class="" placeholder="Email">
+                    <i class='bx bx-envelope'></i>
                 </div>
+
             </div>
         </div>
-            <div>
-                <p>Identifique a area da ordem de servico</p>
-                <div>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Dropdown button
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+            <div class="os-box">
+                <p>Identifique a area da ordem de servico:</p>
+                <div class="os-imput">
+                 
+                    <select>
+                      <option value="">Instituição</option>
+                      <option value="opcao1">Opção 1</option>
+                      <option value="opcao2">Opção 2</option>
+                      <option value="opcao3">Opção 3</option>
+                    </select>
+
+                    <select>
+                      <option value="">Setor</option>
+                      <option value="opcao1">Opção 1</option>
+                      <option value="opcao2">Opção 2</option> 
+                      <option value="opcao3">Opção 3</option>
+                    </select>
+
+
+                    <select>
+                      <option value="">Categoria</option>
+                      <option value="opcao1">Opção 1</option>
+                      <option value="opcao2">Opção 2</option>
+                      <option value="opcao3">Opção 3</option>
+                    </select>
+
+                    <div class="time">
+                      <label for="datetime">Data e hora:</label>
+                      <div class="datetime-container">
+                        <input type="datetime-local" id="datetime" name="datetime">
                       </div>
+                    </div>
 
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Dropdown button
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
+                    <div class="input-description">
+                      <div class="title-input">
+                        <label>Descrição do Problema</label>
+                        <i class='bx bx-text'></i>  
                       </div>
+                      <textarea></textarea>
+                    </div>
 
-                      <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                          Dropdown button
-                        </button>
-                        <ul class="dropdown-menu">
-                          <li><a class="dropdown-item" href="#">Action</a></li>
-                          <li><a class="dropdown-item" href="#">Another action</a></li>
-                          <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                      </div>
+                    <button>Enviar</button>
+                  </div>
 
-                     <input type="datetime" name="" id="">
-
+                  
                 </div>
-            </div>
-            <div class="form-floating">
-                <textarea class="form-control" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
-                <label for="floatingTextarea2">Descrição</label>
-            </div>
-    </div>
+              </div>
+
+              
 </div>
 

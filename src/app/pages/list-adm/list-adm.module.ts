@@ -5,6 +5,7 @@ import { ListAdmRoutingModule } from './list-adm-routing.module';
 import { ListAdmComponent } from './list-adm.component';
 
 
+
 @NgModule({
   declarations: [
     ListAdmComponent
