@@ -14,7 +14,10 @@
         </button>
     </div>
     <div class="cards">
-        <app-card *ngFor="let item of items"></app-card>
+        <ng-container *ngFor="let item of items">
+            <app-card [os]="item" ></app-card>
+        </ng-container>
+        
     </div>
 </div>
 

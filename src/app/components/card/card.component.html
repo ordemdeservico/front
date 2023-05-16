@@ -2,23 +2,24 @@
     <div class="itens">
         <div class="item institute">
             <i class='bx bx-briefcase-alt'></i>
-            <p>Fatec</p>
+            <p>{{ os.institute }}</p>
         </div>
         <div class="item sector">
             <i class='bx bx-map'></i>
-            <p>C-01 Synapse</p>
+            <p>{{ os.sector }}</p>
         </div>
         <div class="item date">
             <i class='bx bx-calendar-week'></i>
-            <p>11/05/2023</p>
+            <p>{{ os.date }}</p>
         </div>
         <div class="item area">
             <i class='bx bx-wrench'></i>
-            <p>Civil</p>
+            <p>{{ os.area }}</p>
         </div>
     </div>
     <div class="id">
-        <p>ID: 0001</p>
+        <!-- <p>ID: {{os.id | number: '1.0-0'}}</p> -->
+        <p>ID: {{ os.id.toString().padStart(4, '0') }}</p>
         <span></span>
     </div>
 

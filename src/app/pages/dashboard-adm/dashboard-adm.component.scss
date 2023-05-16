@@ -31,6 +31,8 @@
       justify-content: space-between;
       align-items: center;
       border: none;
+      transition: all 0.5s ease;
+      white-space: nowrap;
 
       i {
         text-align: center;
@@ -39,13 +41,25 @@
     }
 
     .btn-os {
-      background-color: var(--color-3);
+      background-color: var(--color-2);
       color: var(--color-5);
+    }
+
+    .btn-os:hover {
+      background-color: var(--color-3);
+      font-weight: 700;
+
     }
 
     .btn-filter {
       background-color: #D9D9D9;
       color: var(--color-6);
+    }
+
+    .btn-filter:hover {
+      background-color: var(--color-3);
+      color: var(--color-5);
+      font-weight: 700;
     }
   }
 
@@ -62,6 +76,7 @@
     margin: 16px;
   }
 }
+
 
 
 @media only screen and (max-width: 768px) {
