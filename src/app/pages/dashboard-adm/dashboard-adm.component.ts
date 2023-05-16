@@ -7,4 +7,5 @@ import { Component } from '@angular/core';
 })
 export class DashboardAdmComponent {
 
+  items: any[] = new Array(12);
 }
