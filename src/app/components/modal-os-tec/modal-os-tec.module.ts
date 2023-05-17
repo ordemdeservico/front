@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalOsAdmComponent } from '../modal-os-adm/modal-os-adm.component';
-
+import { ModalOsTecComponent } from '../modal-os-tec/modal-os-tec.component';
 
 
 @NgModule({
   declarations: [
-    ModalOsAdmComponent
+    ModalOsTecComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    ModalOsAdmComponent
+    ModalOsTecComponent
   ]
 })
 export class ModalOsTecModule { }

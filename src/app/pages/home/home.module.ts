@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import { CardModule } from 'src/app/components/card/card.module';
 import { MenuModule } from 'src/app/shared/menu/menu.module';
+import { ModalOsAdmModule } from 'src/app/components/modal-os-adm/modal-os-adm.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { MenuModule } from 'src/app/shared/menu/menu.module';
     CommonModule,
     HomeRoutingModule,
     CardModule,
-    MenuModule
+    MenuModule,
+    ModalOsAdmModule
   ]
 })
 export class HomeModule { }
