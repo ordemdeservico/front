@@ -89,9 +89,16 @@
                 <textarea name="relatory" id="relatory">Filtro Novo</textarea>
             </div>
 
-            <div class="btn-feedback">
-                <button class="btn">Feedback<i class='bx bx-chevron-down'></i>
-                </button>
+            <div class="feedback-area">
+                <div class="feedback-box">
+                    <i class="bx bx-chevron-down" [class.rotate]="menuOpen"></i>
+                    <select class="feedback-select" (focus)="menuOpen = true" (blur)="menuOpen = false">
+                        <option value="">Feedback</option>
+                        <option value="opcao1">Ruim</option>
+                        <option value="opcao2">Regular</option>
+                        <option value="opcao3">Bom</option>
+                    </select>
+                </div>
             </div>
 
         </div>

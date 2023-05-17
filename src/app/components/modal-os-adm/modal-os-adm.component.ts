@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class ModalOsAdmComponent {
 
+  menuOpen = false;
+
+  rotateIcon() {
+    this.menuOpen = !this.menuOpen;
+  }
+
 }
