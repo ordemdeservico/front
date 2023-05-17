@@ -12,7 +12,6 @@
 }
 
 .container-content{
-    //background-color: red;
     height: 100vh;
     width: 50%;
     position: absolute;
@@ -22,7 +21,6 @@
     flex-direction: column;
 
     .box-logo{
-        //background-color: blue;
         height: 35%;
         width: 100%;
         min-width: 100%;
@@ -48,16 +46,63 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
+        position: relative;
 
         .input{
             width: 360px;
-            height: 56px;
-            border-radius: 16px;
-            border: none;
-            padding: 32px;
-            background: var(--color-12);
-            margin-bottom: 32px;
-            font-size: 24px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+
+            label{
+                position: absolute;
+                top: 30%;
+                left: 5px;
+                padding-left: 32px;
+                transform: translateY(-50%);
+                font-size: 16px;
+                color: var(--color-8);
+                font-weight: 500;
+                pointer-events: none;
+                transition: .5s;
+            }
+
+            input{
+                
+                width: 100%;
+                height: 56px;
+                border: none;
+                outline: none;
+                border-radius: 16px;
+                background: var(--color-12);
+                font-size: 16px;
+                padding-left: 32px;
+                margin-bottom: 32px;
+            }
+
+            i{  
+                pointer-events: none;
+                color: var(--color-6);
+                font-size: 16px;
+                position: absolute;
+                height: 100%;
+                right: 28px;
+                top: 23%;
+                transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+            }
+        }
+
+        .input input:focus~label,
+        .input input:valid~label{
+            top: 9px;
+        }
+       
+        #voltar{
+            color: var(--color-8);
+            text-decoration: underline;
+            cursor: pointer;
+            font-style: italic;
         }
 
         .btn-entrar{
@@ -78,7 +123,8 @@
             cursor: pointer;
         }
 
-        .a href{
+        a{
+            text-align: center;
             width: 231px;
             height: 20px;
             font-size: 20;
