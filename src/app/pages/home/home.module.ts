@@ -8,7 +8,6 @@ import { MenuModule } from 'src/app/shared/menu/menu.module';
 import { ModalOsAdmModule } from 'src/app/components/modal-os-adm/modal-os-adm.module';
 
 
-
 @NgModule({
   declarations: [
     HomeComponent

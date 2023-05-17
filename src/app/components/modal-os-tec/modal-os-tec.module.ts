@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { ModalOsTecComponent } from '../modal-os-tec/modal-os-tec.component';
 
 
-
 @NgModule({
   declarations: [
     ModalOsTecComponent
