@@ -1,0 +1,142 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  
+    .modal {
+        width: auto;
+        height: auto;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--color-12);
+        position: relative;
+
+        #close {
+            position: absolute;
+            margin: 8px;
+            width: auto;
+            border: none;
+            top: 0;
+            right: 0;
+            font-size: 1.5rem;
+            color: var(--color-2);
+        }
+    
+        h3 {
+            margin: 8px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-7);
+        }
+  
+        .itens {
+            width: 100%;
+            padding: 16px;
+            display: flex;
+  
+            .column {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+  
+                .item {
+                    margin-bottom: 16px;
+  
+                    .item-title {
+                        display: flex;
+                        align-items: center;
+  
+                        i {
+                            padding-right: 8px;
+                            font-size: 1rem;
+                            color: var(--color-2);
+                        }
+  
+                        label {
+                            margin: 0;
+                            font-size: 0.8rem;
+                            color: var(--color-8);
+                        }
+                    }
+                }
+            }
+        }
+  
+        .fields {
+            width: 100%;
+            padding: 16px;
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+            justify-content: flex-start;
+
+            .field {
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                margin-bottom: 16px;
+
+                i {
+                    padding-right: 8px;
+                    font-size: 1rem;
+                    color: var(--color-2);
+                }
+
+                label {
+                    margin: 0;
+                    font-size: 1rem;
+                    font-size: 0.8rem;
+                    color: var(--color-8);
+                }
+
+                textarea {
+                    min-height: 56px;
+                    max-width: 100%;
+                    height: auto;
+                    background-color: var(--color-12);
+                    border-radius: 8px;
+                    font-size: 1rem;
+                    border: none;
+                    margin-top: 8px;
+                    text-align: start;
+                    outline: none;
+                    padding: 8px;
+                }
+            }
+        }
+
+
+
+
+
+        .submit {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+
+            .btn-submit {
+                width: 147px;
+                height: 56px;
+                background-color: var(--color-2);
+                color: var(--color-5);
+                font-weight: 500;
+                border: none;
+                outline: none;
+                border-radius: 16px;
+                margin-bottom: 16px;
+                transition: all 0.5s ease;
+            }
+
+            .btn-submit:hover {
+                background-color: var(--color-3);
+                font-weight: 700;
+            }
+        }
+    }
+}
