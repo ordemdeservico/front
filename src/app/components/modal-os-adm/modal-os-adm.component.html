@@ -1,115 +1,113 @@
-<div class="container">
-    <div class="modal">
-        <h3>Ordem de Serviço</h3>
-        <i  id="close" class='bx bx-x-circle'></i>
-        <div class="itens">
-            <div class="column">
-                <div class="item">
-                    <div class="item-title">
-                        <i class='bx bx-user'></i>
-                        <label>Nome</label>
-                    </div>
-                    <p>José Felipe</p>
-                </div>
-
-                <div class="item">
-                    <div class="item-title">
-                        <i class='bx bx-envelope'></i>
-                        <label>E-mail</label>
-                    </div>
-                    <p>josefelipe@gmail.com</p>
-                </div>
-
-                <div class="item">
-                    <div class="item-title">
-                        <i class='bx bx-briefcase-alt'></i>
-                        <label>Instituição</label>
-                    </div>
-                    <p>Fatec</p>
-                </div>
-            </div>
-
-            <div class="column">
-                <div class="item">
-                    <div class="item-title">
-                        <i class='bx bx-map'></i>
-                        <label>Setor</label>
-                    </div>
-                    <p>C-01 Synapse</p>
-                </div>
-
-                <div class="item">
-                    <div class="item-title">
-                        <i class='bx bx-wrench'></i>
-                        <label>Categoria</label>
-                    </div>
-                    <p>Civil</p>
-                </div>
-
-                <div class="item">
-                    <div class="item-title">
-                        <i class='bx bx-calendar-week'></i>
-                        <label>Data</label>
-                    </div>
-                    <p>27/07/2023</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="fields">
-            <div class="field">
-                <div class="item-title">
-                    <i class='bx bx-file'></i>
-                    <label>Descrição</label>
-                </div>
-                <p>Ar-condicionado está fazendo barulho e não está gelando....</p>
-            </div>
-
-            <div class="field">
+<div class="title-box">
+    <h2 class="title" align="center" mat-dialog-title>Ordem de Serviço</h2>
+    <i id="close" class='bx bx-x-circle' [mat-dialog-close]="true"></i>
+</div>
+<mat-dialog-content class="mat-typography">
+    <div class="itens">
+        <div class="column">
+            <div class="item">
                 <div class="item-title">
                     <i class='bx bx-user'></i>
-                    <label>Técnico Responsável</label>
+                    <label>Nome</label>
                 </div>
-                <p>Jair de Oliveira</p>
+                <p>José Felipe</p>
             </div>
 
-            <div class="field">
+            <div class="item">
                 <div class="item-title">
-                    <i class='bx bx-cart'></i>
-                    <label>Relatório</label>
+                    <i class='bx bx-envelope'></i>
+                    <label>E-mail</label>
                 </div>
-                <textarea name="relatory" id="relatory">Foi necessário fazer uma limpeza no ar e trocar o filtro</textarea>
+                <p>josefelipe@gmail.com</p>
             </div>
 
-            <div class="field">
+            <div class="item">
                 <div class="item-title">
-                    <i class='bx bx-clipboard' ></i>
-                    <label>Materiais</label>
+                    <i class='bx bx-briefcase-alt'></i>
+                    <label>Instituição</label>
                 </div>
-                <textarea name="relatory" id="relatory">Filtro Novo</textarea>
+                <p>Fatec</p>
             </div>
-
-            <div class="feedback-area">
-                <div class="feedback-box">
-                    <i class="bx bx-chevron-down" [class.rotate]="menuOpen"></i>
-                    <select class="feedback-select" (focus)="menuOpen = true" (blur)="menuOpen = false">
-                        <option value="">Feedback</option>
-                        <option value="opcao1">Ruim</option>
-                        <option value="opcao2">Regular</option>
-                        <option value="opcao3">Bom</option>
-                    </select>
-                </div>
-            </div>
-
         </div>
 
-        <div class="submit">
-            <button class="btn-submit">
-                Finalizar
-            </button>
+        <div class="column">
+            <div class="item">
+                <div class="item-title">
+                    <i class='bx bx-map'></i>
+                    <label>Setor</label>
+                </div>
+                <p>C-01 Synapse</p>
+            </div>
+
+            <div class="item">
+                <div class="item-title">
+                    <i class='bx bx-wrench'></i>
+                    <label>Categoria</label>
+                </div>
+                <p>Civil</p>
+            </div>
+
+            <div class="item">
+                <div class="item-title">
+                    <i class='bx bx-calendar-week'></i>
+                    <label>Data</label>
+                </div>
+                <p>27/07/2023</p>
+            </div>
         </div>
     </div>
-</div>
+
+    <div class="fields">
+        <div class="field">
+            <div class="item-title">
+                <i class='bx bx-file'></i>
+                <label>Descrição</label>
+            </div>
+            <p>Ar-condicionado está fazendo barulho e não está gelando....</p>
+        </div>
+
+        <div class="field">
+            <div class="item-title">
+                <i class='bx bx-user'></i>
+                <label>Técnico Responsável</label>
+            </div>
+            <p>Jair de Oliveira</p>
+        </div>
+
+        <div class="field">
+            <div class="item-title">
+                <i class='bx bx-cart'></i>
+                <label>Relatório</label>
+            </div>
+            <textarea name="relatory" id="relatory">Foi necessário fazer uma limpeza no ar e trocar o filtro</textarea>
+        </div>
+
+        <div class="field">
+            <div class="item-title">
+                <i class='bx bx-clipboard' ></i>
+                <label>Materiais</label>
+            </div>
+            <textarea name="relatory" id="relatory">Filtro Novo</textarea>
+        </div>
+
+        <div class="feedback-area">
+            <div class="feedback-box">
+                <i class="bx bx-chevron-down" [class.rotate]="menuOpen"></i>
+                <select class="feedback-select" (focus)="menuOpen = true" (blur)="menuOpen = false">
+                    <option value="">Feedback</option>
+                    <option value="opcao1">Ruim</option>
+                    <option value="opcao2">Regular</option>
+                    <option value="opcao3">Bom</option>
+                </select>
+            </div>
+        </div>
+
+    </div>
+    <mat-dialog-actions align="center">
+        <button class="btn-submit" mat-button [mat-dialog-close]="true">Finalizar</button>
+    </mat-dialog-actions>
+</mat-dialog-content>
+
 
 
 
@@ -168,64 +166,64 @@
 
 
 <!-- <div class="container">
-    <div class="modal">
-        <h3>Ordem de Serviço</h3>
-        <div class="itens">
-            <div class="item name">
-                <div class="item-title">
-                    <i class='bx bx-user'></i>
-                    <p>Nome</p>
-                </div>
-                <p>José Felipe</p>
+<div class="modal">
+    <h3>Ordem de Serviço</h3>
+    <div class="itens">
+        <div class="item name">
+            <div class="item-title">
+                <i class='bx bx-user'></i>
+                <p>Nome</p>
             </div>
+            <p>José Felipe</p>
+        </div>
 
-            <div class="item email">
-                <div class="item-title">
-                    <i class='bx bx-envelope'></i>
-                    <p>E-mail</p>
-                </div>
-                <p>josefelipe@gmail.com</p>
+        <div class="item email">
+            <div class="item-title">
+                <i class='bx bx-envelope'></i>
+                <p>E-mail</p>
             </div>
+            <p>josefelipe@gmail.com</p>
+        </div>
 
-            <div class="item institute">
-                <div class="item-title">
-                    <i class='bx bx-briefcase-alt'></i>
-                    <p>Instituição</p>
-                </div>
-                <p>Fatec</p>
+        <div class="item institute">
+            <div class="item-title">
+                <i class='bx bx-briefcase-alt'></i>
+                <p>Instituição</p>
             </div>
+            <p>Fatec</p>
+        </div>
 
-            <div class="item sector">
-                <div class="item-title">
-                    <i class='bx bx-map'></i>
-                    <p>Setor</p>
-                </div>
-                <p>C-01 Synapse</p>
+        <div class="item sector">
+            <div class="item-title">
+                <i class='bx bx-map'></i>
+                <p>Setor</p>
             </div>
+            <p>C-01 Synapse</p>
+        </div>
 
-            <div class="item category">
-                <div class="item-title">
-                    <i class='bx bx-wrench'></i>
-                    <p>Categoria</p>
-                </div>
-                <p>Civil</p>
+        <div class="item category">
+            <div class="item-title">
+                <i class='bx bx-wrench'></i>
+                <p>Categoria</p>
             </div>
+            <p>Civil</p>
+        </div>
 
-            <div class="item date">
-                <div class="item-title">
-                    <i class='bx bx-calendar-week'></i>
-                    <p>Data</p>
-                </div>
-                <p>27/07/2023</p>
+        <div class="item date">
+            <div class="item-title">
+                <i class='bx bx-calendar-week'></i>
+                <p>Data</p>
             </div>
+            <p>27/07/2023</p>
+        </div>
 
-            <div class="item description">
-                <div class="item-title">
-                    <i class='bx bx-file'></i>
-                    <p>Descrição</p>
-                </div>
-                <p>Descrição teste</p>
+        <div class="item description">
+            <div class="item-title">
+                <i class='bx bx-file'></i>
+                <p>Descrição</p>
             </div>
+            <p>Descrição teste</p>
         </div>
     </div>
+</div>
 </div> -->

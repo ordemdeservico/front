@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-modal-os-adm',
@@ -12,5 +13,7 @@ export class ModalOsAdmComponent {
   rotateIcon() {
     this.menuOpen = !this.menuOpen;
   }
+
+  constructor(public dialog: MatDialog) {}
 
 }
