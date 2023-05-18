@@ -1,0 +1,166 @@
+.container {
+    //background-color: red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: red;
+
+    .modal{
+        //background-color: blue !important;
+        padding-top: 16px;        
+        width: auto;
+        height: auto;
+        border-radius: 16px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--color-5);
+        position: relative;
+
+        h3 {
+            margin: 32px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-7);
+        }
+
+        #close{
+            position: absolute;
+            margin: 8px 8px 8px 100px;
+            width: auto;
+            border: none;
+            top: 0;
+            right: 0;
+            font-size: 1.5rem;
+            color: var(--color-2);
+        }
+
+        .box-text{
+            //background-color: chartreuse;
+            padding: 32px;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+            .input {
+                width: 100%;
+                display: flex;
+                position: relative;
+                justify-content: center;
+                align-items: center;
+
+                i{  
+                    pointer-events: none;
+                    color: var(--color-6);
+                    font-size: 16px;
+                    position: absolute;
+                    height: 100%;
+                    right: 28px;
+                    top: 23%;
+                    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+                }
+
+                input {
+                    overflow: hidden;
+                    width: 100%;
+                    height: 56px;
+                    border: none;
+                    outline: none;
+                    border-radius: 16px;
+                    background: var(--color-12);
+                    font-size: 16px;
+                    padding-left: 32px;
+                    margin-bottom: 32px;
+                    padding-right: 64px;
+                }
+
+                label {
+                    position: absolute;
+                    top: 30%;
+                    left: 5px;
+                    padding-left: 32px;
+                    transform: translateY(-50%);
+                    font-size: 16px;
+                    color: var(--color-8);
+                    font-weight: 500;
+                    pointer-events: none;
+                    transition: .5s;
+                }
+            }
+
+            .terceiro{
+                width: 100%;
+                .terceiro-box{
+                    width: 360px;
+                    display: flex;
+                    position: relative;
+
+                    i{
+                        font-size: 1.5rem;
+                        color: var(--color-6);
+                        position: absolute;
+                        padding-right: 8px;
+                        top: 30%;
+                        right: 16px;
+                        pointer-events: none;
+                    }
+
+                    .terceiro-select{
+                        padding: 0px 16px 0px 16px;
+                        appearance: none;
+                        outline: none;
+                        width: 100%;
+                        height: 56px;
+                        border-radius: 16px;
+                        background-color: var(--color-12);
+                        border: none;
+                        font-size: 1rem;
+                        color: var(--color-8);
+                        font-weight: 500;
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+
+                        i{
+                            font-size: 1rem;
+                            padding: 0px 16px 0px 16px;
+                            color: var(--color-2);
+                        }
+                    }
+                }
+            }
+            
+            .btn-area{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                padding: 32px;
+                gap: 32px;
+
+                .btn{
+                    width: 147px;
+                    height: 56px;
+                    border-radius: 16px;
+                    font-weight: 500;
+                    border: none;
+                    outline: none;
+                    color: var(--color-5);
+                    cursor: pointer;
+
+                    btn-voltar{
+                        color: var(--color-13);
+                    }
+                }
+            }
+
+            .input input:focus~label,
+            .input input:valid~label{
+                top: 9px;
+            }
+        }
+    }
+}
