@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./modal-os-tec.component.scss']
 })
 export class ModalOsTecComponent {
+  
+  menuOpen = false;
+
+  rotateIcon() {
+    this.menuOpen = !this.menuOpen;
+  }
 
 }
