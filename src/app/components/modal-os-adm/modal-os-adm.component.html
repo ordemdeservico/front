@@ -1,9 +1,9 @@
-<div class="title-box">
+<div class="title-box" cdkFocusInitial>
     <h2 class="title" align="center" mat-dialog-title>Ordem de Serviço</h2>
     <i id="close" class='bx bx-x-circle' [mat-dialog-close]="true"></i>
 </div>
 <mat-dialog-content class="mat-typography">
-    <div class="itens">
+    <div class="itens" >
         <div class="column">
             <div class="item">
                 <div class="item-title">
@@ -79,7 +79,9 @@
                 <i class='bx bx-cart'></i>
                 <label>Relatório</label>
             </div>
-            <textarea name="relatory" id="relatory">Foi necessário fazer uma limpeza no ar e trocar o filtro</textarea>
+            <mat-form-field class="example-full-width" [autofocus]="false">
+                <textarea [autofocus]="false" matInput placeholder="Relatório do serviço realizado" [autofocus]="false">Foi necessário fazer uma limpeza no ar e trocar o filtro</textarea>
+            </mat-form-field>
         </div>
 
         <div class="field">
@@ -87,18 +89,19 @@
                 <i class='bx bx-clipboard' ></i>
                 <label>Materiais</label>
             </div>
-            <textarea name="relatory" id="relatory">Filtro Novo</textarea>
+            <mat-form-field class="example-full-width">
+                <textarea [autofocus]="false" matInput placeholder="Material utilizado na OS">Filtro Novo</textarea>
+            </mat-form-field>
         </div>
 
         <div class="feedback-area">
             <div class="feedback-box">
-                <i class="bx bx-chevron-down" [class.rotate]="menuOpen"></i>
-                <select class="feedback-select" (focus)="menuOpen = true" (blur)="menuOpen = false">
-                    <option value="">Feedback</option>
-                    <option value="opcao1">Ruim</option>
-                    <option value="opcao2">Regular</option>
-                    <option value="opcao3">Bom</option>
-                </select>
+                <mat-form-field>
+                    <mat-label>Feedback</mat-label>
+                    <mat-select [autofocus]="false" [formControl]="toppings">
+                        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
             </div>
         </div>
 

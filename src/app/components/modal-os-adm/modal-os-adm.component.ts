@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog'; 
+import { FormControl } from '@angular/forms';
+
 
 @Component({
   selector: 'app-modal-os-adm',
   templateUrl: './modal-os-adm.component.html',
-  styleUrls: ['./modal-os-adm.component.scss']
+  styleUrls: ['./modal-os-adm.component.scss'],
 })
 export class ModalOsAdmComponent {
+  
+  toppings = new FormControl('');
 
-  menuOpen = false;
-
-  rotateIcon() {
-    this.menuOpen = !this.menuOpen;
-  }
+  toppingList: string[] = ['Ruim', 'Regular', 'Bom', 'Ótimo', 'Excelente']; 
 
   constructor(public dialog: MatDialog) {}
 
