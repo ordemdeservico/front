@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CardComponent } from './card.component';
+import { ModalOsAdmModule } from '../modal-os-adm/modal-os-adm.module';
+import { DialogModule } from '@angular/cdk/dialog';
 
 
 @NgModule({
@@ -8,7 +10,9 @@ import { CardComponent } from './card.component';
     CardComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ModalOsAdmModule,
+    DialogModule
   ],
   exports: [
     CardComponent
