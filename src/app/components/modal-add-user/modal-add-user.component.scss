@@ -4,10 +4,9 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: red;
+    background-color: var(--color-9);
 
     .modal{
-        //background-color: blue !important;
         padding-top: 16px;        
         width: auto;
         height: auto;
@@ -38,7 +37,6 @@
         }
 
         .box-text{
-            //background-color: chartreuse;
             padding: 32px;
             width: 100%;
             display: flex;
@@ -140,20 +138,34 @@
                 justify-content: center;
                 padding: 32px;
                 gap: 32px;
+                font-weight: 200;
+
 
                 .btn{
                     width: 147px;
                     height: 56px;
                     border-radius: 16px;
-                    font-weight: 500;
                     border: none;
                     outline: none;
-                    color: var(--color-5);
                     cursor: pointer;
+                    color: white;
+                
+                }
 
-                    btn-voltar{
-                        color: var(--color-13);
-                    }
+                .btn-voltar{
+                    background-color: red;
+                }
+
+                .btn-voltar:hover{
+                    background-color: var(--color-13);
+                }
+
+                .btn-finalizar{
+                    background-color: var(--color-1);
+                }
+
+                .btn-finalizar:hover{
+                    background-color: var(--color-4);
                 }
             }
 
