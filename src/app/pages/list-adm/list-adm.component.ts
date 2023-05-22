@@ -49,6 +49,13 @@ export class ListAdmComponent {
       role: 'Técnico',
       outsourced: 'Não',
       date: '02/05/2023'
+    },
+    {
+      name: 'João Eduardo',
+      mail: 'joaoeduardo@gmail.com',	
+      role: 'Técnico',
+      outsourced: 'Não',
+      date: '02/05/2023'
     }
   ] 
   

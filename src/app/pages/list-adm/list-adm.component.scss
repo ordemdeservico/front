@@ -1,10 +1,11 @@
 .container {
   width: calc(100vw - 275px);
-  height: 100vh;
+  height: auto;
   position: absolute;
   right: 0;
   padding-right: 64px;
   padding-left: 64px;
+  overflow: auto;
 
   .btns {
     width: auto;
@@ -59,7 +60,7 @@
 
   .table-box {
     width: auto;
-    margin: 42px 42px 0 42px;
+    margin: 42px !important;
     border-radius: 16px;
     border: 1px solid var(--color-12);
 
