@@ -1,1 +1,32 @@
-<app-modal-add-user></app-modal-add-user>
+<div class="menu">
+    <app-menu></app-menu>
+</div>
+
+<div class="container">
+    <div class="btns">
+        <button class="btn btn-new">
+            Novo
+            <i class='bx bx-user-plus'></i>
+        </button>
+
+        <button class="btn btn-filter">
+            Filtro
+            <i class='bx bxs-chevron-down'></i>
+        </button>
+    </div>
+
+    <div class="table-box">
+        <div class="table-header">
+            <p class="nameDescription">Nome</p>
+            <p class="roleDescription">Cargo</p>
+            <p class="outsourcedDescription">Terceiro</p>
+            <p class="dateDescription">Data de Inserção</p>
+        </div>
+        
+        <div class="talbe-users">
+            <ng-container *ngFor="let user of usersInfo">
+                <app-table-user [users]="user" ></app-table-user>
+            </ng-container>
+        </div>
+    </div>
+</div>

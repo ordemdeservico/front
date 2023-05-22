@@ -1,8 +1,3 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
 
 .container {
   width: calc(100vw - 275px);
@@ -15,12 +10,11 @@
 
   .btns {
     width: auto;
-    margin-top: 150px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 42px;
     margin: 150px 42px 0 42px;
+    gap: 32px;
 
     .btn {
       width: 272px;
@@ -82,7 +76,12 @@
 @media only screen and (max-width: 768px) {
   .container {
     width: calc(100% - 78px);
-    
+    padding: 8px;
+  }
+
+  .btns {
+    margin: 150px 0 0 0!important;
+    gap: 32px;
   }
 }
 
