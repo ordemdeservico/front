@@ -3,7 +3,6 @@
     <i  id="close" class='bx bx-x-circle' [mat-dialog-close]="true"></i>
 </div>
 <mat-dialog-content class="mat-typography">
-
     <div class="container">
         <mat-form-field class="example-full-width">
             <mat-label>Nome</mat-label>
@@ -56,27 +55,9 @@
             </mat-error>
         </mat-form-field>
             
-        <mat-dialog-actions align="center">
+        <div class="submit-area">
             <button class="btn-submit" mat-button [mat-dialog-close]="true" type="submit">Finalizar</button>
-        </mat-dialog-actions>
-
-    
-            
-                
-                <!-- <div class="input">
-                    <i class='bx bx-edit-alt'></i>
-                    <input type="text" required>
-                    <label for="">Empresa</label>
-                </div> -->
-                
-                <!-- <div class="btn-area">
-                    <button type="submit" class="btn-voltar btn">
-                        <h5>Voltar</h5>
-                    </button>
-    
-                    <button type="submit" class="btn-finalizar btn">
-                        <h5>Finalizar</h5>
-                    </button> 
-                </div>            -->
+        </div>
+        
     </div>
 </mat-dialog-content>
