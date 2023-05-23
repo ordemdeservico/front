@@ -9,7 +9,7 @@
             <i class='bx bx-user-plus'></i>
         </button>
 
-        <mat-form-field>
+        <mat-form-field class="meu-form-field">
             <mat-label>Filtro</mat-label>
             <mat-select [autofocus]="false" [formControl]="toppings">
                 <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>

@@ -40,20 +40,19 @@ $my-app-theme: mat.define-light-theme((
   --mdc-dialog-container-shape: 16px;
 }
 
-// .mdc-text-field .mdc-text-field__input {
-//   caret-color: transparent !important;
-//   outline: none !important;
-//   --mdc-theme-primary: transparent !important;
-// }
+.mdc-text-field--filled:not(.mdc-text-field--disabled) {
+  background-color: #D9D9D9;
+}
 
-// textarea:focus {
-//   outline: none !important;
-//   box-shadow: none !important;
-// }
 
-// textarea::-moz-focus-inner {
-//   border: 0;
-// }
+
+.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+  border: none !important;
+}
+
+.mdc-text-field--filled .mdc-line-ripple::after {
+  border: none !important;
+}
 
 * { 
     margin: 0;
