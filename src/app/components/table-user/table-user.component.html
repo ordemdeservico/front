@@ -17,6 +17,19 @@
     </div>
 
     <div class="menuIcon">
-        <i class='bx bx-dots-vertical-rounded'></i>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <i class='bx bx-dots-vertical-rounded'></i>
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <i class='bx bx-edit'></i>
+              <span>Editar</span>
+            </button>
+            <button mat-menu-item>
+                <i class='bx bx-trash'></i>
+              <span>Excluir</span>
+            </button>
+          </mat-menu>
+        
     </div>
 </div>

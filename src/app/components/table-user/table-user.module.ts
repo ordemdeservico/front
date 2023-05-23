@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TableUserComponent } from './table-user.component';
+import { MatMenuModule } from '@angular/material/menu';
 
 
 
@@ -9,7 +10,8 @@ import { TableUserComponent } from './table-user.component';
     TableUserComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatMenuModule
   ],
   exports: [
     TableUserComponent
