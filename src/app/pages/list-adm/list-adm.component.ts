@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalAddUserComponent } from 'src/app/components/modal-add-user/modal-add-user.component';
 
 @Component({
   selector: 'app-list-adm',
@@ -6,6 +9,21 @@ import { Component } from '@angular/core';
   styleUrls: ['./list-adm.component.scss']
 })
 export class ListAdmComponent {
+
+
+  constructor(public dialog: MatDialog) {}
+
+
+  openDialog() {
+    const dialogRef = this.dialog.open(ModalAddUserComponent, {panelClass: 'modal-border'});
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
+
+  toppings = new FormControl('');
+  toppingList: string[] = ['Nome', 'E-mail', 'Cargo', 'Terceiro'];
 
   usersInfo = [
     {

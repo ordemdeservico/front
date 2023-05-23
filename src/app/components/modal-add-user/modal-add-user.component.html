@@ -1,49 +1,52 @@
-<div class="container">
+<mat-dialog-content class="mat-typography">
+
+    <div class="container">
+        
+        <div class="modal">
+            <h3>Adicione um novo cadastro</h3>
+            <i  id="close" class='bx bx-x-circle'></i>
     
-    <div class="modal">
-        <h3>Adicione um novo cadastro</h3>
-        <i  id="close" class='bx bx-x-circle'></i>
-
-        <div class="box-text">
-            
-            <div class="input">
-                <i class='bx bx-user'></i>
-                <input type="text" required>
-                <label for="">Nome</label>
-            </div>
-
-            <div class="input">
-                <i class='bx bx-envelope' ></i>               
-                <input type="text" required>
-                <label for="">E-mail</label>
-            </div>
-
-            <div class="input">
-                <i class='icon bx bx-lock'></i>
-                <input type="password" required>
-                <label for="">Senha</label>
-            </div>
-
-            <div class="terceiro">
-                <div class="terceiro-box">
-                    <i class="bx bx-chevron-down"></i>
-                    <select class="terceiro-select">
-                        <option value="">Terceiro</option>
-                        <option value="opcao1">Sim</option>
-                        <option value="opcao2">Não</option>
-                    </select>
+            <div class="box-text">
+                
+                <div class="input">
+                    <i class='bx bx-user'></i>
+                    <input type="text" required>
+                    <label for="">Nome</label>
                 </div>
+    
+                <div class="input">
+                    <i class='bx bx-envelope' ></i>               
+                    <input type="text" required>
+                    <label for="">E-mail</label>
+                </div>
+    
+                <div class="input">
+                    <i class='icon bx bx-lock'></i>
+                    <input type="password" required>
+                    <label for="">Senha</label>
+                </div>
+    
+                <div class="terceiro">
+                    <div class="terceiro-box">
+                        <i class="bx bx-chevron-down"></i>
+                        <select class="terceiro-select">
+                            <option value="">Terceiro</option>
+                            <option value="opcao1">Sim</option>
+                            <option value="opcao2">Não</option>
+                        </select>
+                    </div>
+                </div>
+    
+                <div class="btn-area">
+                    <button type="submit" class="btn-voltar btn">
+                        <h5>Voltar</h5>
+                    </button>
+    
+                    <button type="submit" class="btn-finalizar btn">
+                        <h5>Finalizar</h5>
+                    </button> 
+                </div>           
             </div>
-
-            <div class="btn-area">
-                <button type="submit" class="btn-voltar btn">
-                    <h5>Voltar</h5>
-                </button>
-
-                <button type="submit" class="btn-finalizar btn">
-                    <h5>Finalizar</h5>
-                </button> 
-            </div>           
         </div>
     </div>
-</div>
+</mat-dialog-content>
