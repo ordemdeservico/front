@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard-adm',
@@ -7,7 +8,9 @@ import { Component } from '@angular/core';
 })
 export class DashboardAdmComponent {
 
-  // items: any[] = new Array(12);
+  toppings = new FormControl('');
+  toppingList: string[] = ['Nome', 'E-mail', 'Cargo', 'Terceiro'];
+  
   items = [
     {
       id: 1,

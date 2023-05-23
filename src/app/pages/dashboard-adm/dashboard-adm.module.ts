@@ -5,6 +5,8 @@ import { DashboardAdmRoutingModule } from './dashboard-adm-routing.module';
 import { DashboardAdmComponent } from './dashboard-adm.component';
 import { MenuModule } from 'src/app/shared/menu/menu.module';
 import { CardModule } from 'src/app/components/card/card.module';
+import { MatSelectModule } from '@angular/material/select';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +17,9 @@ import { CardModule } from 'src/app/components/card/card.module';
     CommonModule,
     DashboardAdmRoutingModule,
     MenuModule,
-    CardModule
+    CardModule,
+    MatSelectModule,
+    ReactiveFormsModule
   ]
 })
 export class DashboardAdmModule { }

@@ -8,10 +8,12 @@
             <i class='bx bx-cog'></i>
         </button>
 
-        <button class="btn btn-filter">
-            Filtro
-            <i class='bx bxs-chevron-down'></i>
-        </button>
+        <mat-form-field class="meu-form-field">
+            <mat-label>Filtro</mat-label>
+            <mat-select [autofocus]="false" [formControl]="toppings">
+                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+            </mat-select>
+        </mat-form-field>
     </div>
     <div class="cards">
         <ng-container *ngFor="let item of items">
