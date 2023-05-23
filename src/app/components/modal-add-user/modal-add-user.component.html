@@ -1,43 +1,75 @@
+<div class="title-box" cdkFocusInitial>
+    <h3 class="title" align="center" mat-dialog-tittle>Adicione um novo cadastro</h3>
+    <i  id="close" class='bx bx-x-circle' [mat-dialog-close]="true"></i>
+</div>
 <mat-dialog-content class="mat-typography">
 
     <div class="container">
+        <mat-form-field class="example-full-width">
+            <mat-label>Nome</mat-label>
+            <input type="text" matInput [formControl]="emailFormControl">
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+            O nome é <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Email</mat-label>
+            <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
+            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+            Por favor utilize um e-mail válido.
+            </mat-error>
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+            O e-mail é <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Senha</mat-label>
+            <input type="password" matInput [formControl]="emailFormControl">
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+            A senha é <strong>obrigatório</strong>
+            </mat-error>
+        </mat-form-field>
         
-        <div class="modal">
-            <h3>Adicione um novo cadastro</h3>
-            <i  id="close" class='bx bx-x-circle'></i>
+        
+        <mat-form-field>
+            <mat-label>Categoria</mat-label>
+            <mat-select [autofocus]="false" [formControl]="toppings">
+                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Terceiro</mat-label>
+            <mat-select [autofocus]="false" [formControl]="toppings">
+                <mat-option *ngFor="let topping of terceiro" [value]="topping">{{topping}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+        <mat-form-field class="example-full-width">
+            <mat-label>Empresa</mat-label>
+            <input type="password" matInput [formControl]="emailFormControl">
+            <mat-error *ngIf="emailFormControl.hasError('required')">
+            A empresa é <strong>obrigatória</strong>
+            </mat-error>
+        </mat-form-field>
+            
+        <mat-dialog-actions align="center">
+            <button class="btn-submit" mat-button [mat-dialog-close]="true" type="submit">Finalizar</button>
+        </mat-dialog-actions>
+
     
-            <div class="box-text">
+            
                 
-                <div class="input">
-                    <i class='bx bx-user'></i>
+                <!-- <div class="input">
+                    <i class='bx bx-edit-alt'></i>
                     <input type="text" required>
-                    <label for="">Nome</label>
-                </div>
-    
-                <div class="input">
-                    <i class='bx bx-envelope' ></i>               
-                    <input type="text" required>
-                    <label for="">E-mail</label>
-                </div>
-    
-                <div class="input">
-                    <i class='icon bx bx-lock'></i>
-                    <input type="password" required>
-                    <label for="">Senha</label>
-                </div>
-    
-                <div class="terceiro">
-                    <div class="terceiro-box">
-                        <i class="bx bx-chevron-down"></i>
-                        <select class="terceiro-select">
-                            <option value="">Terceiro</option>
-                            <option value="opcao1">Sim</option>
-                            <option value="opcao2">Não</option>
-                        </select>
-                    </div>
-                </div>
-    
-                <div class="btn-area">
+                    <label for="">Empresa</label>
+                </div> -->
+                
+                <!-- <div class="btn-area">
                     <button type="submit" class="btn-voltar btn">
                         <h5>Voltar</h5>
                     </button>
@@ -45,8 +77,6 @@
                     <button type="submit" class="btn-finalizar btn">
                         <h5>Finalizar</h5>
                     </button> 
-                </div>           
-            </div>
-        </div>
+                </div>            -->
     </div>
 </mat-dialog-content>
