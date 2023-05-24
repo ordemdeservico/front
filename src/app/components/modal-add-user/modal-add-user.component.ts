@@ -36,15 +36,6 @@ export class ModalAddUserComponent implements OnInit {
     }
   }
   
-  
-  
-  
-  
-  
-  
-  
-  
-
   submitForm() {
     if (this.checkFormValidity()) {
       this.dialogRef.close(true);
@@ -61,7 +52,6 @@ export class ModalAddUserComponent implements OnInit {
         
       } else {
         this.outsourcedStatus = false;
-        
       }
     });
   }
