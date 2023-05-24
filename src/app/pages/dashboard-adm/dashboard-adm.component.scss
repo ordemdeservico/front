@@ -63,11 +63,12 @@
     justify-content: center;
     flex-wrap: wrap;
     white-space: wrap;
+
+    app-card {
+      margin: 16px;
+    }
   }
 
-  app-card {
-    margin: 16px;
-  }
 }
 
 ::ng-deep .meu-form-field .mat-mdc-text-field-wrapper {
