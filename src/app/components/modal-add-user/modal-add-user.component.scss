@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 100% !important;
+    width: 500px;
     padding-top: 16px;
     
     .title {
@@ -28,24 +28,28 @@
     background-color: var(--color-12);
     margin: 0;
     padding: 0;
-    width: auto;
+    width: 500px;
     
     .container {
         height: 100%;
-        padding: 0 100px 0 100px;
+        padding: 32px;
 
         form {
             height: 100%;
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
 
             .example-full-width {
                 display: flex;
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                padding: 24px;
-                gap: 24px;
-
+                padding: 16px;
+                gap: 8px;
+                white-space: nowrap;
             }
         }
 
@@ -67,7 +71,6 @@
                 border-radius: 16px;
                 transition: all 0.5s ease;
                 cursor: pointer;
-                
             }
 
             .btn-submit:hover {
@@ -81,7 +84,7 @@
 @media only screen and (max-width: 768px) {
     .title-box {
         height: auto;
-        width: auto;
+        width: 500px;
         padding: 16px;
     }
     
