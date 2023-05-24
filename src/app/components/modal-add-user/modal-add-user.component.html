@@ -4,61 +4,60 @@
 </div>
 <mat-dialog-content class="mat-typography">
     <div class="container">
-        <mat-form-field class="example-full-width">
-            <mat-label>Nome</mat-label>
-            <input type="text" matInput [formControl]="emailFormControl">
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-            O nome é <strong>obrigatório</strong>
-            </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-            <mat-label>Email</mat-label>
-            <input type="email" matInput [formControl]="emailFormControl" placeholder="Ex. pat@example.com">
-            <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
-            Por favor utilize um e-mail válido.
-            </mat-error>
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-            O e-mail é <strong>obrigatório</strong>
-            </mat-error>
-        </mat-form-field>
-
-        <mat-form-field class="example-full-width">
-            <mat-label>Senha</mat-label>
-            <input type="password" matInput [formControl]="emailFormControl">
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-            A senha é <strong>obrigatório</strong>
-            </mat-error>
-        </mat-form-field>
-        
-        
-        <mat-form-field>
-            <mat-label>Categoria</mat-label>
-            <mat-select [autofocus]="false" [formControl]="toppings">
-                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field>
-            <mat-label>Terceiro</mat-label>
-            <mat-select [autofocus]="false" [formControl]="toppings">
-                <mat-option *ngFor="let topping of terceiro" [value]="topping">{{topping}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-
-
-        <mat-form-field class="example-full-width">
-            <mat-label>Empresa</mat-label>
-            <input type="password" matInput [formControl]="emailFormControl">
-            <mat-error *ngIf="emailFormControl.hasError('required')">
-            A empresa é <strong>obrigatória</strong>
-            </mat-error>
-        </mat-form-field>
+        <form [formGroup]="formGroup">
+            <mat-form-field class="example-full-width">
+                <mat-label>Nome</mat-label>
+                <input [autofocus]="false" type="text" matInput formControlName="nome">
+                <mat-error *ngIf="formGroup.get('nome')?.hasError('required')">
+                O nome é <strong>obrigatório</strong>
+                </mat-error>
+            </mat-form-field>
+    
+            <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="email" placeholder="Ex: seuemail@gmail.com">
+                <mat-error *ngIf="formGroup.get('email')?.hasError('email') && !formGroup.get('email')?.hasError('required')">
+                Por favor utilize um e-mail válido.
+                </mat-error>
+                <mat-error *ngIf="formGroup.get('email')?.hasError('required')">
+                O e-mail é <strong>obrigatório</strong>
+                </mat-error>
+            </mat-form-field>
+    
+            <mat-form-field class="example-full-width">
+                <mat-label>Senha</mat-label>
+                <input type="password" matInput formControlName="senha">
+                <mat-error *ngIf="formGroup.get('senha')?.hasError('required')">
+                A senha é <strong>obrigatório</strong>
+                </mat-error>
+            </mat-form-field>
             
-        <div class="submit-area">
-            <button class="btn-submit" mat-button [mat-dialog-close]="true" type="submit">Finalizar</button>
-        </div>
-        
+            <mat-form-field>
+                <mat-label>Categoria</mat-label>
+                <mat-select  [formControl]="categorys">
+                    <mat-option *ngFor="let category of categoryList" [value]="category">{{ category }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field>
+                <mat-label>Terceiro</mat-label>
+                <mat-select  [formControl]="outsourcedForm">
+                    <mat-option *ngFor="let outsourced of outsourcedList" [value]="outsourced">{{ outsourced }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+    
+            <mat-form-field *ngIf="outsourcedStatus" class="example-full-width">
+                <mat-label>Empresa</mat-label>
+                <input type="text" matInput formControlName="empresa">
+                <mat-error *ngIf="formGroup.get('empresa')?.hasError('required')">
+                A empresa é <strong>obrigatória</strong>
+                </mat-error>
+            </mat-form-field>
+                
+            <mat-dialog-actions class="submit-area" align="center">
+                <button class="btn-submit" mat-button  type="submit" (click)="submitForm()">Finalizar</button>
+            </mat-dialog-actions>
+        </form>
     </div>
 </mat-dialog-content>
 

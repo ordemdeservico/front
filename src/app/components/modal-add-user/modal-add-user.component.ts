@@ -1,9 +1,6 @@
-import { Component } from '@angular/core';
-import { FormControl, Validators } from '@angular/forms';
-// import { Validators } from '@angular/forms';
-
-
-
+import { Component, OnInit, Inject } from '@angular/core';
+import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 
 @Component({
@@ -12,14 +9,58 @@ import { FormControl, Validators } from '@angular/forms';
   styleUrls: ['./modal-add-user.component.scss'],
   
 })
-export class ModalAddUserComponent {
+export class ModalAddUserComponent implements OnInit {
 
-  toppings = new FormControl('');
+  outsourcedStatus: boolean = false;
+  formGroup: FormGroup;
+  
+  constructor(
+    public dialogRef: MatDialogRef<ModalAddUserComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any,
+    private formBuilder: FormBuilder
 
-  toppingList: string[] = ['Civil', 'Hidraulico', 'Eletrico', 'Pintura', 'Mecanica', 'Mobiliaria', 'Ar-Condicionado', 'Eletronica', 'Outros']; 
+    ) {
+    this.formGroup = this.formBuilder.group({
+      nome: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      senha: ['', Validators.required]
+    });
+  }
 
-  terceiro: string[] = ['Sim', 'Não']; 
+  checkFormValidity(): boolean {
+    if (this.formGroup.valid) {
+      return true;
+    } else {
+      this.formGroup.markAllAsTouched();
+      return false;
+    }
+  }
+  
+  submitForm() {
+    if (this.checkFormValidity()) {
+      this.dialogRef.close(true);
+      console.log("Modal fechado");
+    } else {
+      console.log("Não fechar o modal");
+    }
+  }
 
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  ngOnInit() {
+    this.outsourcedForm.valueChanges.subscribe((selectedValue: string | null) => {
+      if (selectedValue === 'Sim') {
+        this.outsourcedStatus = true;
+        
+      } else {
+        this.outsourcedStatus = false;
+      }
+    });
+  }
 
+  outsourcedForm = new FormControl('');
+
+  categorys = new FormControl('');
+
+  categoryList: string[] = ['Civil', 'Hidraulico', 'Eletrico', 'Pintura', 'Mecanica', 'Mobiliaria', 'Ar-Condicionado', 'Eletronica', 'Outros']; 
+
+  outsourcedList: string[] = ['Sim', 'Não']; 
 }
