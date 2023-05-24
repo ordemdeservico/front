@@ -1,22 +1,24 @@
 
 .container {
-  width: calc(100vw - 275px);
+  width: calc(100vw - 260px);
   height: auto;
   position: absolute;
   right: 0;
   padding-right: 64px;
   padding-left: 64px;
 
-  .btns {
-    width: auto;
+  .buttons {
+    padding: 16px;
+    width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    margin: 150px 42px 0 42px;
+    margin-top: calc(20vh);
     gap: 32px;
 
     .btn {
-      width: 272px;
+      width: 100%;
+      max-width: 168px;
       height: 56px;
       border-radius: 16px;
       padding: 16px;
@@ -41,18 +43,6 @@
     .btn-os:hover {
       background-color: var(--color-3);
       font-weight: 700;
-
-    }
-
-    .btn-filter {
-      background-color: #D9D9D9;
-      color: var(--color-6);
-    }
-
-    .btn-filter:hover {
-      background-color: var(--color-3);
-      color: var(--color-5);
-      font-weight: 700;
     }
   }
 
@@ -68,17 +58,20 @@
       margin: 16px;
     }
   }
-
 }
 
 ::ng-deep .meu-form-field .mat-mdc-text-field-wrapper {
-  width: 272px !important;
-  height: 56px !important;
-  border-radius: 16px !important;
+  width: 100%;
+  border-radius: 16px;
+  max-width: 168px;
 }
 
 ::ng-deep .mdc-text-field--filled .mdc-line-ripple::after {
-  border: none !important;
+  border: none;
+}
+
+::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  display: none;
 }
 
 
@@ -88,9 +81,9 @@
     padding: 8px;
   }
 
-  .btns {
-    margin: 150px 0 0 0!important;
-    gap: 32px;
+  .buttons {
+    gap: 0 !important;
   }
+
 }
 
