@@ -39,19 +39,17 @@
                 </mat-select>
             </mat-form-field>
     
-            <mat-form-field  class="example-full-width">
+            <mat-form-field class="example-full-width">
                 <mat-label>Terceiro</mat-label>
-                <mat-select  [formControl]="outsourcedForm">
-                    <mat-option *ngFor="let outsourced of outsourcedList" [value]="outsourced">{{ outsourced }}</mat-option>
+                <mat-select [formControl]="outsourcedForm">
+                  <mat-option *ngFor="let outsourced of outsourcedList" [value]="outsourced">{{ outsourced }}</mat-option>
                 </mat-select>
             </mat-form-field>
-    
+              
             <mat-form-field *ngIf="outsourcedStatus" class="example-full-width">
                 <mat-label>Empresa</mat-label>
                 <input type="text" matInput formControlName="empresa">
-                <mat-error *ngIf="formGroup.get('empresa')?.hasError('required')">
-                A empresa é <strong>obrigatória</strong>
-                </mat-error>
+                <mat-error *ngIf="formGroup.get('empresa')?.hasError('required')">A empresa é <strong>obrigatória</strong></mat-error>
             </mat-form-field>
                 
             <mat-dialog-actions class="submit-area" align="center">
