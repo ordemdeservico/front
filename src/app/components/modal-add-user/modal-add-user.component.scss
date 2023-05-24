@@ -4,7 +4,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
-    width: 500px;
+    width: 100% !important;
     padding-top: 16px;
     
     
@@ -26,37 +26,44 @@
 }
 
 .mat-typography{
-    width: 500px;
     background-color: var(--color-12);
     margin: 0;
     padding: 0;
-
+    width: auto;
+    
     .container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 24px;
-        padding: 32px;
+        height: 100%;
+        padding: 0 100px 0 100px;
+        form {
+            height: 100%;
+            width: 100%;
 
-
-        .example-full-width{
             display: flex;
-            justify-content: center;
-            align-items: center;
             flex-direction: column;
-            width: auto;
+            align-items: center;
+            justify-content: center;
+
+            padding: 24px;
+            gap: 24px;
+
+            .example-full-width{
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+                width: auto;
+            }
         }
+
 
     }
 
     .submit-area {
         width: 100%;
-        height: auto;
+        height: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        margin-top: 28px;
         
         .btn-submit {
             width: 147px;
@@ -69,6 +76,7 @@
             border-radius: 16px;
             transition: all 0.5s ease;
             cursor: pointer;
+            
         }
 
         .btn-submit:hover {

@@ -10,17 +10,21 @@ import { ModalAddUserComponent } from 'src/app/components/modal-add-user/modal-a
 })
 export class ListAdmComponent {
 
-
   constructor(public dialog: MatDialog) {}
 
-
   openDialog() {
-    const dialogRef = this.dialog.open(ModalAddUserComponent, {panelClass: 'modal-border'});
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+    const dialogRef = this.dialog.open(ModalAddUserComponent, {
+      panelClass: 'modal-border',
+      data: { dialogRef: null } // Inicializa a propriedade dialogRef como null
     });
-  }
+
+    dialogRef.afterClosed().subscribe((result: any) => {
+      if (result) {
+        console.log(`Dialog result: ${result}`);
+      }
+    });
+}
+  
 
   toppings = new FormControl('');
   toppingList: string[] = ['Nome', 'E-mail', 'Cargo', 'Terceiro'];
