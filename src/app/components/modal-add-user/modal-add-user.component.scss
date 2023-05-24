@@ -33,61 +33,47 @@
     .container {
         height: 100%;
         padding: 0 100px 0 100px;
+
         form {
             height: 100%;
             width: 100%;
 
-<<<<<<< HEAD
-        .example-full-width{
-=======
->>>>>>> 54c5978eff0207f579f4ee49d2850061326f5d04
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-            padding: 24px;
-            gap: 24px;
-
-            .example-full-width{
+            .example-full-width {
                 display: flex;
-                justify-content: center;
-                align-items: center;
                 flex-direction: column;
-                width: auto;
+                align-items: center;
+                justify-content: center;
+                padding: 24px;
+                gap: 24px;
+
             }
         }
-<<<<<<< HEAD
-=======
 
-
->>>>>>> 54c5978eff0207f579f4ee49d2850061326f5d04
-    }
-
-    .submit-area {
-        width: 100%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        
-        .btn-submit {
-            width: 147px;
-            height: 56px;
-            background-color: var(--color-2);
-            color: var(--color-5);
-            font-weight: 500;
-            border: none;
-            outline: none;
-            border-radius: 16px;
-            transition: all 0.5s ease;
-            cursor: pointer;
+        .submit-area {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             
-        }
+            .btn-submit {
+                width: 147px;
+                height: 56px;
+                background-color: var(--color-2);
+                color: var(--color-5);
+                font-weight: 500;
+                border: none;
+                outline: none;
+                border-radius: 16px;
+                transition: all 0.5s ease;
+                cursor: pointer;
+                
+            }
 
-        .btn-submit:hover {
-            background-color: var(--color-3);
-            font-weight: 700;
+            .btn-submit:hover {
+                background-color: var(--color-3);
+                font-weight: 700;
+            }
         }
     }
 }
@@ -108,5 +94,4 @@
         font-size: 1rem;
         margin-left: 20px;
     }
-
-  }
+}
