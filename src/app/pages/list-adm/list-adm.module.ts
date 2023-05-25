@@ -9,6 +9,8 @@ import { TableUserModule } from 'src/app/components/table-user/table-user.module
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+
 
 
 
@@ -25,7 +27,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatDialogModule,
     MatSelectModule,
     ReactiveFormsModule,
-    ModalAddUserModule
+    ModalAddUserModule,
+    HttpClientModule
   ]
 })
 export class ListAdmModule { }

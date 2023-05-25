@@ -25,10 +25,13 @@
             <p class="dateDescription">Data de Inserção</p>
         </div>
         
-        <div class="talbe-users">
-            <ng-container *ngFor="let user of usersInfo">
-                <app-table-user [users]="user" ></app-table-user>
-            </ng-container>
+        <div class="table-users">
+            <app-table-user></app-table-user>
         </div>
+        <!-- <div class="table-users" *ngIf="usersInfo.length > 0">
+            <ng-container *ngFor="let user of usersInfo" [user]="user">
+                <app-table-user [user]="user" ></app-table-user>
+            </ng-container>
+        </div> -->
     </div>
 </div>

@@ -71,6 +71,19 @@ export class ModalAddUserComponent implements OnInit {
     }
   
     if (this.checkFormValidity()) {
+    //   const formValues = this.formGroup.value; // Obter os valores do formulário
+    // // Enviar os valores para o backend (exemplo fictício)
+    // this.backendService.salvarDados(formValues).subscribe(
+    //   response => {
+    //     // Lógica após o sucesso do envio para o backend
+    //     console.log("Dados enviados com sucesso!");
+    //   },
+    //   error => {
+    //     // Lógica em caso de erro no envio para o backend
+    //     console.error("Erro ao enviar os dados:", error);
+    //   }
+    // );
+
       this.dialogRef.close(true);
       console.log("Modal fechado");
     } else {
@@ -81,7 +94,6 @@ export class ModalAddUserComponent implements OnInit {
   ngOnInit() {
   }
 
-  // Custom Validator: requiredIf
   requiredIf(condition: () => boolean) {
     return (control: FormControl) => {
       if (condition()) {

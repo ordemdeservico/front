@@ -1,19 +1,19 @@
-<div class="table-row">
+<div class="table-row" *ngFor="let user of table">
     <div class="user-info">
-        <p class="name">{{ users.name }}</p>
-        <p class="mail">{{ users.mail }}</p>
+        <p class="name">{{ user.nome }}</p>
+        <p class="mail">{{ user.email }}</p>
     </div>
 
     <div class="role">
-        <p class="roleName">{{ users.role }}</p>
+        <p class="roleName">{{ user.tipo_servico_id }}</p>
     </div>
 
     <div class="outsourced">
-        <p class="outsourcedStatus">{{ users.outsourced }}</p>
+        <p class="outsourcedStatus">{{ user.terceirizado }}</p>
     </div>
 
     <div class="dateInsert">
-        <p class="date">{{ users.date }}</p>
+        <p class="date">{{ user.senha }}</p>
     </div>
 
     <div class="menuIcon">
