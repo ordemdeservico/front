@@ -8,22 +8,22 @@
         <h1>Login</h1>
     </div>
     
-    <div class="box-text">
+    <form class="box-text" [formGroup]="formGroup">
         <div class="input">
             <i class='icon bx bx-envelope'></i>
-            <input type="text" required>
-            <label for="">E-mail</label>
+            <input type="text" formControlName="email" placeholder="E-mail">
+            <!-- <label for="">E-mail</label> -->
         </div>
         <div class="input">
             <i class='icon bx bx-lock'></i>
-            <input type="password" required>
-            <label for="">Senha</label>
+            <input type="password" formControlName="senha" placeholder="Senha">
+            <!-- <label for="">Senha</label> -->
         </div>
-        <button type="submit" class="btn-entrar">
+        <button class="btn-entrar" (click)="submitLogin()">
             <h5> Entrar </h5>
         </button>
         <a id="voltar" href="">Voltar e emitir uma OS</a>
-    </div>
+    </form>
 
     <div class="contact-area">
         <h6>Dúvida? Entre em contato</h6>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ModalAddUserComponent } from './modal-add-user.component';
+import { ModalAddUserComponent } from "src/app/components/modal-add-user/modal-add-user.component";
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -12,7 +12,7 @@ import { MatInputModule } from '@angular/material/input';
     ModalAddUserComponent
   ],
   imports: [
-    CommonModule,
+  CommonModule,
     MatDialogModule,
     MatSelectModule,
     ReactiveFormsModule,

@@ -17,7 +17,6 @@ export class ListAdmComponent implements OnInit {
     public dialog: MatDialog
     ) {}
 
-
   // getDataFromAPI() {
   //   // const apiUrl = 'http://localhost:3000/user';
 

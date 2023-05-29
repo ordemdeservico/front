@@ -11,12 +11,15 @@
             <span class="link-name">Home</span> 
             <i class='bx bx-right-arrow-alt'></i>
         </a>
-    
-        <a class="btn" href="#">
-            <i class='bx bx-user'></i>
-            <span class="link-name">Usuários</span> 
-            <i class='bx bx-right-arrow-alt'></i>
-        </a>
+        
+        <ng-container *ngIf="isOnRouteAdm">
+            <a class="btn" href="#">
+                <i class='bx bx-user'></i>
+                <span class="link-name">Usuários</span> 
+                <i class='bx bx-right-arrow-alt'></i>
+            </a>
+        </ng-container>
+        
     </div>
         
     <div class="profile">

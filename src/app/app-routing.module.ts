@@ -2,12 +2,11 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 
-import { MenuComponent } from './shared/menu/menu.component';
-import { AppComponent } from './app.component';
+import { HomeLoginRoutingModule } from '../app/pages/home-login/home-login-routing.module'
 
 const routes: Routes = [
   // -----ROTAS DO RORTAL --------
-  { path: '', loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
+  { path: '', loadChildren: () => import('./pages/home-login/home-login.module').then(m => m.HomeLoginModule) },
 
 
 
@@ -15,8 +14,13 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  imports: [
+    RouterModule.forRoot(routes),
+    HomeLoginRoutingModule
+  ],
+  exports: [
+    RouterModule
+  ]
 })
 export class AppRoutingModule { 
 

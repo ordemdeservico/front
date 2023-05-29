@@ -1,6 +1,10 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { ModalAddUserService } from './modal-add-user.service';
+import { ModalAddUser } from './modal-add-user';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-modal-add-user',
@@ -19,7 +23,9 @@ export class ModalAddUserComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<ModalAddUserComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private service: ModalAddUserService,
+    private router: Router
   ) {
     this.formGroup = this.formBuilder.group({
       nome: ['', Validators.required],
@@ -29,7 +35,7 @@ export class ModalAddUserComponent implements OnInit {
     });
 
     this.categorys = new FormControl('', Validators.required);
-    this.outsourcedForm = new FormControl('', Validators.required); // Adicionado Validators.required
+    this.outsourcedForm = new FormControl('', Validators.required);
 
     this.outsourcedForm.valueChanges.subscribe((selectedValue: string | null) => {
       if (selectedValue === 'Sim') {
@@ -71,18 +77,18 @@ export class ModalAddUserComponent implements OnInit {
     }
   
     if (this.checkFormValidity()) {
-    //   const formValues = this.formGroup.value; // Obter os valores do formulário
+      const formValues = this.formGroup.value; // Obter os valores do formulário
     // // Enviar os valores para o backend (exemplo fictício)
-    // this.backendService.salvarDados(formValues).subscribe(
-    //   response => {
-    //     // Lógica após o sucesso do envio para o backend
-    //     console.log("Dados enviados com sucesso!");
-    //   },
-    //   error => {
-    //     // Lógica em caso de erro no envio para o backend
-    //     console.error("Erro ao enviar os dados:", error);
-    //   }
-    // );
+      this.service.addUser(formValues).subscribe(
+      response => {
+        // Lógica após o sucesso do envio para o backend
+        console.log("Dados enviados com sucesso!");
+      },
+      error => {
+        // Lógica em caso de erro no envio para o backend
+        console.error("Erro ao enviar os dados:", error);
+      }
+    );
 
       this.dialogRef.close(true);
       console.log("Modal fechado");
@@ -92,6 +98,7 @@ export class ModalAddUserComponent implements OnInit {
   }
 
   ngOnInit() {
+    
   }
 
   requiredIf(condition: () => boolean) {
