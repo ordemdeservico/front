@@ -27,24 +27,26 @@ export class HomeLoginComponent implements OnInit {
   submitLogin() {
     if (this.formGroup.valid) {
 
-      const formValues = this.formGroup.value; // Obter os valores do formulário
-      // // // Enviar os valores para o backend (exemplo fictício)
+      const formValues = this.formGroup.value;
       console.log(formValues)
       this.service.validateLogin(formValues).subscribe(
       (res: LoginResponse) => {
-        // Lógica após o sucesso do envio para o backend
         console.log("Dados enviados com sucesso!");
         if (res.token) {
           localStorage.setItem('token', res.token);
-          if (res.cargo === 'Admin') {
-            this.router.navigate(['/dashboard-adm']);	
+          if (res.id_usuario) {
+            localStorage.setItem('id_usuario', res.id_usuario);
+            console.log(res.id_usuario);
+            if (res.cargo === 'Admin') {
+              this.router.navigate(['/dashboard-adm']);	
+            }
+            else if (res.cargo === 'Tecnico') {
+              this.router.navigate(['/dashboard-tec']);	
+            }
+            else if (res.cargo === 'Solicitante') {
+              this.router.navigate(['/dashboard-user']);	
+            }
           }
-          else if (res.cargo === 'Tecnico') {
-            this.router.navigate(['/dashboard-tec']);	
-          }
-          // else if (res.cargo === 'Solicitante') {
-          //   this.router.navigate(['/dashboard-user']);	
-          // }
           
         }
       },

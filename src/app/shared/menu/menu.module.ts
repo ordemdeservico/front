@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MenuComponent } from './menu.component';
 import { RouterModule } from '@angular/router';
+import { MenuService } from '../menu.service';
+
 
 
 
@@ -12,6 +14,7 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule
+    
   ],
   exports: [
     MenuComponent

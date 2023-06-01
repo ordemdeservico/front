@@ -12,8 +12,9 @@
             <i class='bx bx-right-arrow-alt'></i>
         </a>
         
+        <!-- [routerLink]="['/dashboard-adm/list-adm']" -->
         <ng-container *ngIf="isOnRouteAdm">
-            <a class="btn" href="#">
+            <a class="btn" (click)="navigateToListAdm()"> 
                 <i class='bx bx-user'></i>
                 <span class="link-name">Usuários</span> 
                 <i class='bx bx-right-arrow-alt'></i>

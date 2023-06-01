@@ -6,19 +6,18 @@ import { TableUserService } from './table-user.service';
   templateUrl: './table-user.component.html',
   styleUrls: ['./table-user.component.scss']
 })
-export class TableUserComponent implements OnInit
- {
+export class TableUserComponent implements OnInit {
 
-  @Input() user: any;
+  @Input() table: TableUser[] = [];
 
-  table:TableUser[] = [];
+  // table:TableUser[] = [];
 
-  constructor(private service: TableUserService) {}
+  // constructor(private service: TableUserService) {}
 
   ngOnInit() {
-      this.service.listUsers().subscribe((event) => {
-        this.table = event.result as TableUser[]
-        console.log(this.table);
-      })
+      // this.service.listUsers().subscribe((event) => {
+      //   this.table = event.result as TableUser[]
+      //   console.log(this.table);
+      // })
   }
 }

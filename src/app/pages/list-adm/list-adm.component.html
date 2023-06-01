@@ -26,7 +26,8 @@
         </div>
         
         <div class="table-users">
-            <app-table-user></app-table-user>
+            <!-- <app-table-user></app-table-user> -->
+            <app-table-user [table]="userList"></app-table-user>
         </div>
         <!-- <div class="table-users" *ngIf="usersInfo.length > 0">
             <ng-container *ngFor="let user of usersInfo" [user]="user">

@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalAddUserComponent } from 'src/app/components/modal-add-user/modal-add-user.component';
+import { TableUser } from 'src/app/components/table-user/table-user';
+import { TableUserService } from 'src/app/components/table-user/table-user.service';
+
 
 @Component({
   selector: 'app-list-adm',
@@ -10,29 +13,15 @@ import { ModalAddUserComponent } from 'src/app/components/modal-add-user/modal-a
 })
 export class ListAdmComponent implements OnInit {
 
-  usersInfo: any[] = [];
+  // usersInfo: any[] = [];
+  userList: TableUser[] = [];
 
   constructor(
     // private http: HttpClient,
-    public dialog: MatDialog
+    public dialog: MatDialog,
+    private tableUserService: TableUserService
     ) {}
 
-  // getDataFromAPI() {
-  //   // const apiUrl = 'http://localhost:3000/user';
-
-  //   this.http.get(apiUrl).subscribe(
-  //     (data) => {
-  //       this.usersInfo = data as any[];
-  //       console.log(this.usersInfo);
-  //       console.log(data);
-  //       console.warn(data);
-  //     },
-  //     (error) => {
-  //       console.error(error);
-  //     }
-      
-  //   )
-  // }
 
   openDialog() {
     const dialogRef = this.dialog.open(ModalAddUserComponent, {
@@ -47,12 +36,24 @@ export class ListAdmComponent implements OnInit {
     });
 }
   
-ngOnInit() {
-  // this.getDataFromAPI();
-}
+  ngOnInit() {
+    this.loadUserList();
+  }
   toppings = new FormControl('');
   toppingList: string[] = ['Nome', 'E-mail', 'Cargo', 'Terceiro'];
 
+  loadUserList(): void {
+    this.tableUserService.listUsers().subscribe(
+      (response) => {
+        console.log(response);
+        this.userList = response.result as TableUser[];
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
+  }
+}
   // usersInfo = [
   //   {
   //     name: 'Aldo',
@@ -105,4 +106,4 @@ ngOnInit() {
   //   }
   // ] 
   
-}
+
