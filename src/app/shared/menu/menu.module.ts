@@ -4,6 +4,8 @@ import { MenuComponent } from './menu.component';
 import { RouterModule } from '@angular/router';
 import { MenuService } from '../menu.service';
 
+import { ButtonModule } from 'primeng/button';
+
 
 
 
@@ -13,7 +15,8 @@ import { MenuService } from '../menu.service';
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    ButtonModule
     
   ],
   exports: [

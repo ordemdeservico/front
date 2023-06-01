@@ -1,4 +1,100 @@
-<div class="title-box" cdkFocusInitial>
+<div class="card flex justify-content-center">
+    <div class="flex justify-content-center" [style]="{ width: '30vw' }">
+  
+        <form class="forms" [formGroup]="formGroup">
+            <div class="card flex flex-wrap justify-content-center gap-3">
+                <span class="p-input-icon-right p-float-label">
+                    <i class="pi pi-user"></i>
+                    <input id="nome" type="text" pInputText formControlName="nome" [ngClass]="{'invalid-field': formGroup.controls['nome'].invalid && formGroup.controls['nome'].touched}"/>
+                    <label htmlFor="nome">Nome</label>
+                </span>
+                <div *ngIf="formGroup.controls['nome'].invalid && formGroup.controls['nome'].touched" class="validation-message">
+                    É necessário preencher o nome.
+                </div>
+            </div>
+
+            <div class="card flex flex-wrap justify-content-center gap-3">
+                <span class="p-input-icon-right p-float-label">
+                    <i class="pi pi-envelope"></i>
+                    <input id="email" type="text" pInputText formControlName="email" [ngClass]="{'invalid-field': formGroup.controls['email'].invalid && formGroup.controls['email'].touched}"/>
+                    <label htmlFor="email">E-mail</label>
+                </span>
+                <div *ngIf="formGroup.get('email')?.hasError('required') && formGroup.get('email')?.touched" class="validation-message">
+                    É necessário preencher o e-mail.
+                </div>
+                <div *ngIf="formGroup.get('email')?.hasError('email') && formGroup.get('email')?.touched && formGroup.get('email')?.value" class="validation-message">
+                    Deve ser um e-mail válido.
+                </div>
+            </div>
+
+            <div class="card flex flex-wrap justify-content-center gap-3">
+                <span class="p-input-icon-right p-float-label">
+                    <i class="pi pi-lock"></i>
+                    <input class="ipt" id="senha" type="password" pInputText formControlName="senha" [ngClass]="{'invalid-field': formGroup.controls['senha'].invalid && formGroup.controls['senha'].touched}"/>
+                    <label htmlFor="senha">Senha</label>
+                </span>
+                <div *ngIf="formGroup.controls['senha'].invalid && formGroup.controls['senha'].touched" class="validation-message">
+                    É necessário preencher a senha.
+                </div>
+            </div>
+
+            <div class="card flex justify-content-center m-0">
+                <span class="p-float-label">
+                    <p-dropdown formControlName="cargo" [options]="office" placeholder="Selecione uma cargo" inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['cargo'].invalid && formGroup.controls['cargo'].touched}"></p-dropdown>
+                    <label for="float-label">Cargo</label>
+                </span>
+                <div *ngIf="formGroup.controls['cargo'].invalid && formGroup.controls['cargo'].touched && !formGroup.controls['cargo'].value" class="validation-message">
+                    É necessário selecionar uma cargo.
+                </div>
+            </div>
+
+            <div class="card flex justify-content-center m-0">
+                <span class="p-float-label">
+                    <p-dropdown formControlName="categoria" [options]="categorys" placeholder="Selecione uma Categoria" inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched}"></p-dropdown>
+                    <label for="float-label">Categoria</label>
+                </span>
+                <div *ngIf="formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched && !formGroup.controls['categoria'].value" class="validation-message">
+                    É necessário selecionar uma categoria.
+                </div>
+            </div>
+
+            <div class="card flex justify-content-center m-0">
+                <span class="p-float-label">
+                    <p-dropdown formControlName="terceirizado" [options]="outsourced" placeholder="Selecione caso seja terceiro." inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['terceirizado'].invalid && formGroup.controls['terceirizado'].touched}"></p-dropdown>
+                    <label for="float-label">Terceiro</label>
+                </span>
+                <div *ngIf="formGroup.controls['terceirizado'].invalid && formGroup.controls['terceirizado'].touched && !formGroup.controls['terceirizado'].value" class="validation-message">
+                    É necessário selecionar uma categoria.
+                </div>
+            </div>
+            <ng-container *ngIf="showEmpresaInput">
+                <div class="card flex flex-wrap justify-content-center gap-3">
+                    <span class="p-input-icon-right p-float-label">
+                        <i class="pi pi-briefcase"></i>
+                        <input  id="empresa" type="text" pInputText formControlName="empresa" [ngClass]="{'invalid-field': formGroup.controls['empresa'].invalid && formGroup.controls['empresa'].touched}"/>
+                        <label htmlFor="empresa">Empresa</label>
+                    </span>
+                    <div *ngIf="formGroup.controls['empresa'].invalid && formGroup.controls['empresa'].touched" class="validation-message">
+                        É necessário preencher a empresa.
+                    </div>
+                </div>
+            </ng-container>
+
+            <div class="card flex justify-content-center btn-submit">
+                <button pButton pRipple label="Submit" class="p-button-success btn" (click)="submitForm()"></button>
+            </div>
+            
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+
+<!-- <div class="title-box" cdkFocusInitial>
     <h3 class="title" align="center" mat-dialog-tittle>Adicione um novo cadastro</h3>
     <i  id="close" class='bx bx-x-circle' [mat-dialog-close]="true"></i>
 </div>
@@ -59,4 +155,4 @@
     </div>
 </mat-dialog-content>
 
-
+ -->

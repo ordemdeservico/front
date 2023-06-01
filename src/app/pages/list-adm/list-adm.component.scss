@@ -1,102 +1,57 @@
 .container {
-  width: calc(100vw - 275px);
-  height: auto;
+  width: calc(100vw - 260px);
+  height: 100%;
   position: absolute;
   right: 0;
   padding-right: 64px;
   padding-left: 64px;
   overflow: auto;
+  
 
-  .btns {
+  .new-user {
     width: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 150px 42px 0 42px;
+    margin: 185px 0 32px 0;
     gap: 32px;
-  
-    .btn {
+
+    p-button {
       width: 272px;
+    }
+    
+    ::ng-deep .p-button-success {
+      width: 100%;
+      max-width: 272px;
       height: 56px;
       border-radius: 16px;
-      padding: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
       border: none;
       transition: all 0.5s ease;
-      white-space: nowrap;
+    }
 
-      i {
-        text-align: center;
-        font-size: 24px;
-      }
-    }
-  
-    .btn-new {
-      background-color: var(--color-2);
-      color: var(--color-5);
-    }
-  
-    .btn-new:hover {
-      background-color: var(--color-3);
-      font-weight: 700;
-    }
   }
   
-  .table-box {
-    width: auto;
-    margin: 42px !important;
-    border-radius: 16px;
-    border: 1px solid var(--color-12);
+  ::ng-deep .p-datatable .p-datatable-header {
+    border-radius: 16px 16px 0 0 !important;
+    background: rgba(114, 189, 81, 0.5);
+  }
 
-    .table-header {
-      width: 100%;
-      height: 64px;
-      border-radius: 16px 16px 0 0;
-      background: rgba(114, 189, 81, 0.5);
-      display: flex;
-      align-items: center;
-      font-weight: 500;
+  ::ng-deep .p-datatable>.p-datatable-wrapper {
+    border: 1px solid var(--color-12) !important;
+  }
 
-      .nameDescription {
-        height: 100%;
-        width: 100%;
-        max-width: 400px;
-        padding-left: 32px;
-        display: flex;
-        align-items: center;
-      }
-      
-      .roleDescription,
-      .outsourcedDescription,
-      .dateDescription {
-        height: 100%;
-        width: 100%;
-        max-width: 200px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
+  ::ng-deep .p-datatable .p-paginator-bottom {
+    border: none !important;
+  }
 
+  .card {
+    .p-element {
+      border-radius: 8px;
     }
   }
+
 }
 
-
-::ng-deep .mat-mdc-text-field-wrapper {
-  width: 272px !important;
-  height: 56px !important;
-  border-radius: 16px !important;
-}
-
-::ng-deep .mdc-text-field--filled .mdc-line-ripple::after {
-  border: none !important;
-}
-
-::ng-deep .mat-mdc-form-field-bottom-align::before{
-  display: none !important;
-}
 
 @media only screen and (max-width: 768px) {
     .container {
@@ -104,20 +59,4 @@
       padding: 8px;
     }
     
-    .btns {
-      margin: 150px 0 0 0!important;
-      gap: 32px;
-    }
-
-    .table-box {
-      margin: 8px 0 0 0 !important;
-      height: auto !important;
-    }
-
-    .nameDescription,
-    .roleDescription,
-    .outsourcedDescription,
-    .dateDescription {
-      max-width: 100px !important;
-    }
   }

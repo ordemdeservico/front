@@ -12,10 +12,7 @@ export class TokenService {
   constructor() { }
 
   returnToken(){
-    console.log();
-    console.log(localStorage.getItem('token'));
     return localStorage.getItem(KEY) ?? '';
-    
   }
 
   saveToken(token: string){

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeLogin, LoginResponse } from './home-login';
 import { HomeLoginService } from './home-login.service';
-import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms';
+import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/shared/token.service';
 @Component({
   selector: 'app-home-login',
   templateUrl: './home-login.component.html',
@@ -16,7 +17,8 @@ export class HomeLoginComponent implements OnInit {
   constructor(
     private service: HomeLoginService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private token: TokenService
   ) {
     this.formGroup = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -26,17 +28,15 @@ export class HomeLoginComponent implements OnInit {
 
   submitLogin() {
     if (this.formGroup.valid) {
-
       const formValues = this.formGroup.value;
-      console.log(formValues)
       this.service.validateLogin(formValues).subscribe(
       (res: LoginResponse) => {
         console.log("Dados enviados com sucesso!");
         if (res.token) {
-          localStorage.setItem('token', res.token);
+          this.token.saveToken(res.token);
+          // localStorage.setItem('token', res.token);
           if (res.id_usuario) {
-            localStorage.setItem('id_usuario', res.id_usuario);
-            console.log(res.id_usuario);
+            // localStorage.setItem('id_usuario', res.id_usuario);
             if (res.cargo === 'Admin') {
               this.router.navigate(['/dashboard-adm']);	
             }
@@ -51,7 +51,6 @@ export class HomeLoginComponent implements OnInit {
         }
       },
       error => {
-        // Lógica em caso de erro no envio para o backend
         console.error("Erro ao enviar os dados:", error);
       }
       );

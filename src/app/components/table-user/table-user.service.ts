@@ -1,23 +1,23 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
-import { TokenService } from 'src/app/shared/token.service';
-import { environment } from 'src/environments/environment';
+// import { Injectable } from '@angular/core';
+// import { HttpClient, HttpHeaders } from '@angular/common/http';
+// import { Observable } from 'rxjs';
+// import { TokenService } from 'src/app/shared/token.service';
+// import { environment } from 'src/environments/environment';
 
-const API = environment.API;
+// const API = environment.API;
 
-@Injectable({
-  providedIn: 'root'
-})
-export class TableUserService {
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class TableUserService {
 
-  constructor(private tokenService : TokenService, private http: HttpClient) { }
+//   constructor(private tokenService : TokenService, private http: HttpClient) { }
 
-  private readonly API = `${API}/user`;
+//   private readonly API = `${API}/user`;
 
-  listUsers(): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
-    return this.http.get<any>(this.API, { headers });
-  }
+//   listUsers(): Observable<any> {
+//     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
+//     return this.http.get<any>(this.API, { headers });
+//   }
 
-}
+// }

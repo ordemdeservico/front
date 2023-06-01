@@ -1,24 +1,29 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+
 import { ModalAddUserComponent } from "src/app/components/modal-add-user/modal-add-user.component";
-import { MatDialogModule } from '@angular/material/dialog';
-import { MatSelectModule } from '@angular/material/select';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { TableModule } from 'primeng/table';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { DialogModule } from 'primeng/dialog';
+import { ButtonModule } from 'primeng/button';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 @NgModule({
   declarations: [
     ModalAddUserComponent
   ],
   imports: [
-  CommonModule,
-    MatDialogModule,
-    MatSelectModule,
+    CommonModule,
+    TableModule,
+    DropdownModule,
+    DialogModule,
+    ButtonModule,
+    InputTextModule,
+    InputTextareaModule,
     ReactiveFormsModule,
-    FormsModule,
-    MatFormFieldModule,
-    MatInputModule,
+    FormsModule
   ],
   exports: [
     ModalAddUserComponent

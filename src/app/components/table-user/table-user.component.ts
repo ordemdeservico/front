@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { TableUser } from './table-user';
-import { TableUserService } from './table-user.service';
+// import { TableUserService } from './table-user.service';
 @Component({
   selector: 'app-table-user',
   templateUrl: './table-user.component.html',

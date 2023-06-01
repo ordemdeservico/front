@@ -1,109 +1,103 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
+import { ListAdm } from './list-adm';
+import { ListAdmService } from '../list-adm.service';
+import { MessageService } from 'primeng/api';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { UserDetailsComponent } from 'src/app/components/user-details/user-details.component';
+import { DatePipe } from '@angular/common';
 import { ModalAddUserComponent } from 'src/app/components/modal-add-user/modal-add-user.component';
-import { TableUser } from 'src/app/components/table-user/table-user';
-import { TableUserService } from 'src/app/components/table-user/table-user.service';
-
 
 @Component({
   selector: 'app-list-adm',
   templateUrl: './list-adm.component.html',
-  styleUrls: ['./list-adm.component.scss']
+  styleUrls: ['./list-adm.component.scss'],
+  providers: [DialogService, MessageService, DatePipe]
 })
 export class ListAdmComponent implements OnInit {
 
-  // usersInfo: any[] = [];
-  userList: TableUser[] = [];
+  userList: ListAdm[] = [];
+  visible!: boolean;
+  selectedUser: ListAdm | undefined;
+  ref!: DynamicDialogRef;
+  dataAtual: string;
+
 
   constructor(
-    // private http: HttpClient,
-    public dialog: MatDialog,
-    private tableUserService: TableUserService
-    ) {}
+    private ListAdmService: ListAdmService,
+    public dialogService: DialogService, 
+    public messageService: MessageService,
+    private datePipe: DatePipe,
+  ) {
+      this.dataAtual = this.obterDataAtual();
+  }
 
 
-  openDialog() {
-    const dialogRef = this.dialog.open(ModalAddUserComponent, {
-      panelClass: 'modal-border',
-      data: { dialogRef: null } // Inicializa a propriedade dialogRef como null
-    });
 
-    dialogRef.afterClosed().subscribe((result: any) => {
-      if (result) {
-        console.log(`Dialog result: ${result}`);
+  obterDataAtual(): string {
+    const dataAtual = new Date();
+    return this.datePipe.transform(dataAtual, 'dd/MM/yyyy') || ''; 
+  }
+
+  openModal(): void {
+    this.ref = this.dialogService.open(ModalAddUserComponent, {
+      header: 'Cadastrar Usuário',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: false,
+      styleClass: 'custom-dialog-header'
+    })
+  }
+  
+  show(user: ListAdm): void {
+    this.ref = this.dialogService.open(UserDetailsComponent, {
+      header: user.nome,
+      width: '70%',
+      contentStyle: { overflow: 'auto' },
+      baseZIndex: 10000,
+      maximizable: true,
+      data: {
+        selectedUser: user
       }
     });
-}
-  
-  ngOnInit() {
-    this.loadUserList();
   }
-  toppings = new FormControl('');
-  toppingList: string[] = ['Nome', 'E-mail', 'Cargo', 'Terceiro'];
 
   loadUserList(): void {
-    this.tableUserService.listUsers().subscribe(
+    this.ListAdmService.listUsers().subscribe(
       (response) => {
         console.log(response);
-        this.userList = response.result as TableUser[];
+        this.userList = response.result as ListAdm[];
       },
       (error) => {
         console.error(error);
       }
     );
   }
-}
-  // usersInfo = [
-  //   {
-  //     name: 'Aldo',
-  //     mail: 'aldo@gmail.com',	
-  //     role: 'Técnico',
-  //     outsourced: 'Não',
-  //     date: '02/05/2023'
-  //   },
-  //   {
-  //     name: 'Cezar Santos',
-  //     mail: 'cezar@gmail.com',	
-  //     role: 'Técnico',
-  //     outsourced: 'Não',
-  //     date: '02/05/2023'
-  //   },
-  //   {
-  //     name: 'Geovandro',
-  //     mail: 'geovandro@gmail.com',	
-  //     role: 'Técnico',
-  //     outsourced: 'Não',
-  //     date: '02/05/2023'
-  //   },
-  //   {
-  //     name: 'João Eduardo',
-  //     mail: 'joaoeduardo@gmail.com',	
-  //     role: 'Técnico',
-  //     outsourced: 'Não',
-  //     date: '02/05/2023'
-  //   },
-  //   {
-  //     name: 'Otávio',
-  //     mail: 'otavio@gmail.com',	
-  //     role: 'Técnico',
-  //     outsourced: 'Não',
-  //     date: '02/05/2023'
-  //   },
-  //   {
-  //     name: 'Osivado',
-  //     mail: 'osivaldo@gmail.com',	
-  //     role: 'Técnico',
-  //     outsourced: 'Não',
-  //     date: '02/05/2023'
-  //   },
-  //   {
-  //     name: 'João Eduardo',
-  //     mail: 'joaoeduardo@gmail.com',	
-  //     role: 'Técnico',
-  //     outsourced: 'Não',
-  //     date: '02/05/2023'
-  //   }
-  // ] 
-  
 
+  showSuccess() {
+    this.messageService.add({ severity: 'success', summary: 'Successo!', detail: 'Login efetuado.' });
+  }
+
+
+//   openDialog() {
+//     const dialogRef = this.dialog.open(ModalAddUserComponent, {
+//       panelClass: 'modal-border',
+//       data: { dialogRef: null } // Inicializa a propriedade dialogRef como null
+//     });
+
+//     dialogRef.afterClosed().subscribe((result: any) => {
+//       if (result) {
+//         console.log(`Dialog result: ${result}`);
+//       }
+//     });
+// }
+  
+  ngOnInit() {
+    this.loadUserList();
+    
+  }
+
+  toppings = new FormControl('');
+  toppingList: string[] = ['Nome', 'E-mail', 'Cargo', 'Terceiro'];
+}
+  

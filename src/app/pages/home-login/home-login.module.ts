@@ -5,6 +5,7 @@ import { HomeLoginRoutingModule } from './home-login-routing.module';
 import { HomeLoginComponent } from './home-login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
 @NgModule({
   declarations: [
     HomeLoginComponent

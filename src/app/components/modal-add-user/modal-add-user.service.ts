@@ -1,8 +1,8 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ModalAddUser } from './modal-add-user';
+import { TokenService } from 'src/app/shared/token.service';
 
 const API = environment.API;
 
@@ -10,17 +10,11 @@ const API = environment.API;
   providedIn: 'root'
 })
 export class ModalAddUserService {
-    constructor(private http: HttpClient) { }
+
+    constructor(private http: HttpClient, private tokenService : TokenService) { }
 
     addUser(newUser: ModalAddUser){
-        return this.http.post(`${API}/user/create`, newUser)
+        const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
+        return this.http.post(`${API}/user/create`, newUser, {headers: headers})
     }
-
-
-    // private readonly API = `${API}/user`;
-
-    // listUsers(): Observable<any> {
-    //     return this.http.get<any>(this.API);
-    // }
-
 }

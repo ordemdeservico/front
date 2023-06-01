@@ -3,36 +3,62 @@
 </div>
 
 <div class="container">
-    <div class="btns">
-        <button class="btn btn-new" (click)="openDialog()">
-            Novo
-            <i class='bx bx-user-plus'></i>
-        </button>
-
-        <mat-form-field class="meu-form-field">
-            <mat-label>Filtro</mat-label>
-            <mat-select [autofocus]="false" [formControl]="toppings">
-                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-            </mat-select>
-        </mat-form-field>
+    <div class="new-user">
+        <p-button (click)="openModal()" label="Novo" icon="pi pi-user-plus" iconPos="right" styleClass="p-button-success"></p-button>
     </div>
 
-    <div class="table-box">
-        <div class="table-header">
-            <p class="nameDescription">Nome</p>
-            <p class="roleDescription">Cargo</p>
-            <p class="outsourcedDescription">Terceiro</p>
-            <p class="dateDescription">Data de Inserção</p>
-        </div>
-        
-        <div class="table-users">
-            <!-- <app-table-user></app-table-user> -->
-            <app-table-user [table]="userList"></app-table-user>
-        </div>
-        <!-- <div class="table-users" *ngIf="usersInfo.length > 0">
-            <ng-container *ngFor="let user of usersInfo" [user]="user">
-                <app-table-user [user]="user" ></app-table-user>
-            </ng-container>
-        </div> -->
+    <div class="card">
+        <p-table
+            #dt1
+            [value]="userList"
+            dataKey="id"
+            [rows]="5"
+            [showCurrentPageReport]="true"
+            [paginator]="true"
+            currentPageReportTemplate=" {first} de {totalRecords} "
+            [globalFilterFields]="['nome', 'email', 'cargo', 'terceirizado']"
+            >
+            <ng-template pTemplate="caption">
+                <div class="flex">
+                    <span class="p-input-icon-left ml-auto">
+                        <i class="pi pi-search"></i>
+                        <input #inputSearch pInputText type="text" (input)="dt1.filterGlobal(inputSearch.value, 'contains')" placeholder="Pesquisar"/>
+                    </span>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th style="min-width:15rem">
+                        <div class="flex align-items-center">Nome</div>
+                    </th>
+                    <th style="min-width:15rem">
+                        <div class="flex align-items-center">E-mail</div>
+                    </th>
+                    <th style="min-width:15rem">
+                        <div class="flex align-items-center">Categoria</div>
+                    </th>
+                    <th style="min-width:10rem">
+                        <div class="flex align-items-center">Terceiro</div>
+                    </th>
+                    <th style="min-width:10rem">
+                        <div class="flex align-items-center">Data</div>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-user>
+                <tr (click)="show(user)">
+                    <td> {{ user.nome }} </td>
+                    <td> {{ user.email }} </td>
+                    <td> {{ user.cargo }} </td>
+                    <td> {{ user.terceirizado }} </td>
+                    <td> {{ dataAtual }} </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="7">Usuário não encontrado.</td>
+                </tr>
+            </ng-template>
+        </p-table>
     </div>
 </div>
