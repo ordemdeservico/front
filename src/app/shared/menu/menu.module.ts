@@ -1,10 +1,13 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MenuComponent } from './menu.component';
-import { RouterModule } from '@angular/router';
-import { MenuService } from '../menu.service';
 
+import { RouterModule } from '@angular/router';
+import { MenuComponent } from './menu.component';
 import { ButtonModule } from 'primeng/button';
+import { DialogModule } from 'primeng/dialog';
+import { PasswordModule } from 'primeng/password';
+import { ToastModule } from 'primeng/toast';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -16,7 +19,11 @@ import { ButtonModule } from 'primeng/button';
   imports: [
     CommonModule,
     RouterModule,
-    ButtonModule
+    ButtonModule,
+    DialogModule,
+    PasswordModule,
+    ToastModule,
+    FormsModule
     
   ],
   exports: [

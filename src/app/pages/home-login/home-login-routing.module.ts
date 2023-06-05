@@ -1,10 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeLoginComponent } from './home-login.component';
+import { TokenGuard } from '../../guards/token.guard';
+import { AdminGuard } from '../../guards/admin.guard';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home-login',
     component: HomeLoginComponent,
   },
   {
@@ -13,7 +15,7 @@ const routes: Routes = [
       import('../dashboard-tec/dashboard-tec.module').then(
         (m) => m.DashboardTecModule
       ),
-      canActivate: []
+      canActivate: [TokenGuard]
   },
   {
     path: 'dashboard-adm',
@@ -21,6 +23,7 @@ const routes: Routes = [
       import('../dashboard-adm/dashboard-adm.module').then(
         (m) => m.DashboardAdmModule
       ),
+      canActivate: [TokenGuard, AdminGuard],
   },
   {
     path: 'dashboard-user',
@@ -28,6 +31,7 @@ const routes: Routes = [
       import('../dashboard-user/dashboard-user.module').then(
         (m) => m.DashboardUserModule
       ),
+      canActivate: [TokenGuard],
   },
 ];
 

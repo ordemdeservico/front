@@ -7,7 +7,7 @@ import { ModalOsAdmComponent } from '../modal-os-adm/modal-os-adm.component';
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss']
 })
-export class CardComponent implements AfterViewInit {
+export class CardComponent {
 
   
 
@@ -24,9 +24,9 @@ export class CardComponent implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
-    console.log(this.os);
-  }
+  // ngAfterViewInit(): void {
+  //   console.log(this.os);
+  // }
 
   
 }
