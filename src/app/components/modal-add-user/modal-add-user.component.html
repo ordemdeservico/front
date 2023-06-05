@@ -2,6 +2,7 @@
     <div class="flex justify-content-center" [style]="{ width: '30vw' }">
   
         <form class="forms" [formGroup]="formGroup">
+            <input type="hidden" formControlName="data_insercao">
             <div class="card flex flex-wrap justify-content-center gap-3">
                 <span class="p-input-icon-right p-float-label">
                     <i class="pi pi-user"></i>
@@ -30,7 +31,7 @@
             <div class="card flex flex-wrap justify-content-center gap-3">
                 <span class="p-input-icon-right p-float-label">
                     <i class="pi pi-lock"></i>
-                    <input class="ipt" id="senha" type="password" pInputText formControlName="senha" [ngClass]="{'invalid-field': formGroup.controls['senha'].invalid && formGroup.controls['senha'].touched}"/>
+                    <input id="senha" type="password" pInputText formControlName="senha" [ngClass]="{'invalid-field': formGroup.controls['senha'].invalid && formGroup.controls['senha'].touched}"/>
                     <label htmlFor="senha">Senha</label>
                 </span>
                 <div *ngIf="formGroup.controls['senha'].invalid && formGroup.controls['senha'].touched" class="validation-message">

@@ -41,72 +41,35 @@
         }
     }
 
-    .box-text {
+    .form {
         display: flex;
         flex-direction: column;
-        align-items: center;
         justify-content: center;
-        position: relative;
+        align-items: center;
+        gap: 24px;
 
-        .input {
-            width: 360px;
+        .p-input-icon-left, .p-input-icon-right {
+            width: 300px;
+        }
+
+        .card {
             display: flex;
+            flex-direction: column-reverse;
             justify-content: center;
             align-items: center;
-            position: relative;
-
-            label {
-                position: absolute;
-                top: 30%;
-                left: 5px;
-                padding-left: 32px;
-                transform: translateY(-50%);
-                font-size: 16px;
-                color: var(--color-8);
-                font-weight: 500;
-                pointer-events: none;
-                transition: .5s;
-            }
 
             input {
                 width: 100%;
-                height: 56px;
                 border: none;
                 outline: none;
-                border-radius: 16px;
                 background: var(--color-12);
                 font-size: 16px;
-                padding-left: 32px;
-                margin-bottom: 32px;
             }
 
-            i {  
-                pointer-events: none;
-                color: var(--color-6);
-                font-size: 16px;
-                position: absolute;
-                height: 100%;
-                right: 28px;
-                top: 23%;
-                transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
-            }
         }
 
-        // .input input:focus~label,
-        // .input input:valid~label {
-        //     top: 9px;
-        // }
 
-
-       
-        #voltar {
-            color: var(--color-8);
-            text-decoration: underline;
-            cursor: pointer;
-            font-style: italic;
-        }
-
-        .btn-entrar {
+        .p-button {
             margin-bottom: 28px;
             width: 160px;
             height: 56px;
@@ -134,7 +97,7 @@
     }
 
     .contact-area {
-        margin-top: 48px;
+        margin-top: 200px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -142,6 +105,21 @@
     }
 }
 
+.invalid-field {
+    border-color: red !important;
+}
+
+.validation-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+// ::ng-deep .p-dialog .p-dialog-content {
+//     display: flex;
+//     justify-content: center !important;
+//     align-items: center !important;
+// }
 
 
 @media screen and (max-width: 768px) {

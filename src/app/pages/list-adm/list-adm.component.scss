@@ -7,24 +7,23 @@
   padding-left: 64px;
   overflow: auto;
   
+  .caption {
+    display: flex !important;
+    width: 100%;
+  }
 
   .new-user {
     width: auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 185px 0 32px 0;
     gap: 32px;
 
-    p-button {
-      width: 272px;
-    }
-    
     ::ng-deep .p-button-success {
       width: 100%;
-      max-width: 272px;
-      height: 56px;
-      border-radius: 16px;
+      max-width: 234px;
+      height: 47px;
+      border-radius: 8px;
       border: none;
       transition: all 0.5s ease;
     }
@@ -34,6 +33,10 @@
   ::ng-deep .p-datatable .p-datatable-header {
     border-radius: 16px 16px 0 0 !important;
     background: rgba(114, 189, 81, 0.5);
+    display: flex !important;
+    align-items: center;
+    margin-top: 190px;
+    gap: 32px;
   }
 
   ::ng-deep .p-datatable>.p-datatable-wrapper {

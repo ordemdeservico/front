@@ -39,7 +39,6 @@ import { ModalAddUserModule } from 'src/app/components/modal-add-user/modal-add-
     ButtonModule,
     InputTextModule,
     ToastModule,
-    UserDetailsModule,
     ModalAddUserModule,
     
 
@@ -50,6 +49,9 @@ import { ModalAddUserModule } from 'src/app/components/modal-add-user/modal-add-
     MatSelectModule,
     ReactiveFormsModule,
     HttpClientModule
+  ],
+  exports: [
+    ListAdmComponent
   ]
 })
 export class ListAdmModule { }

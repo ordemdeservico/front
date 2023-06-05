@@ -3,9 +3,7 @@
 </div>
 
 <div class="container">
-    <div class="new-user">
-        <p-button (click)="openModal()" label="Novo" icon="pi pi-user-plus" iconPos="right" styleClass="p-button-success"></p-button>
-    </div>
+
 
     <div class="card">
         <p-table
@@ -13,18 +11,24 @@
             [value]="userList"
             dataKey="id"
             [rows]="5"
+            [rowHover]="true"
+            [pEditableRow]="true"
             [showCurrentPageReport]="true"
             [paginator]="true"
-            currentPageReportTemplate=" {first} de {totalRecords} "
+            currentPageReportTemplate=" {last} de {totalRecords}"
             [globalFilterFields]="['nome', 'email', 'cargo', 'terceirizado']"
             >
             <ng-template pTemplate="caption">
-                <div class="flex">
+                
                     <span class="p-input-icon-left ml-auto">
                         <i class="pi pi-search"></i>
                         <input #inputSearch pInputText type="text" (input)="dt1.filterGlobal(inputSearch.value, 'contains')" placeholder="Pesquisar"/>
                     </span>
-                </div>
+
+                    <div class="new-user">
+                        <p-button (click)="openModal()" label="Novo" icon="pi pi-user-plus" iconPos="right" styleClass="p-button-success"></p-button>
+                    </div>
+                
             </ng-template>
             <ng-template pTemplate="header">
                 <tr>
@@ -43,15 +47,20 @@
                     <th style="min-width:10rem">
                         <div class="flex align-items-center">Data</div>
                     </th>
+                    <th></th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-user>
-                <tr (click)="show(user)">
+                <tr class="p-selectable-row">
                     <td> {{ user.nome }} </td>
                     <td> {{ user.email }} </td>
                     <td> {{ user.cargo }} </td>
-                    <td> {{ user.terceirizado }} </td>
-                    <td> {{ dataAtual }} </td>
+                    <td> {{ user.terceirizado === 1 ? 'Sim' : 'Não' }} </td>
+                    <td> {{ user.data_insercao | date:'dd/MM/yyyy' }} </td>
+                    <!-- <td>
+                        <button pButton pRipple icon="pi pi-pencil" class="p-button-outlined p-button-success" style="height: 4px; width: 24px; padding: 12px;"></button>
+                        <button pButton pRipple icon="pi pi-trash" class="p-button-outlined p-button-danger" style="height: 4px; width: 24px; padding: 12px;"></button>
+                    </td> -->
                 </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">

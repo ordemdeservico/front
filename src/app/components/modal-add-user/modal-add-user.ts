@@ -6,4 +6,5 @@ export interface ModalAddUser {
     terceirizado?: boolean;
     empresa?: string;
     tipo_servico_id?: string;
+    data_insercao: string;
 }

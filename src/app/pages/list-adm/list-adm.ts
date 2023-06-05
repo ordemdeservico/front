@@ -6,4 +6,5 @@ export interface ListAdm {
     empresa?: string;
     cargo?: string;
     tipo_servico_id?: string;
+    data_insercao: string;
 }

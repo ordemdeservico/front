@@ -8,21 +8,30 @@
         <h1>Login</h1>
     </div>
     
-    <form class="box-text" [formGroup]="formGroup">
-        <div class="input">
-            <i class='icon bx bx-envelope'></i>
-            <input type="text" formControlName="email" placeholder="E-mail">
-            <!-- <label for="">E-mail</label> -->
+    <form class="form" [formGroup]="formGroup">
+        <div class="card flex flex-wrap justify-content-center gap-3">
+            <span class="p-input-icon-right p-float-label">
+                <i class="pi pi-envelope"></i>
+                <input id="password" type="email" pInputText formControlName="email" [ngClass]="{'invalid-field': formGroup.controls['email'].invalid && formGroup.controls['email'].touched}"/>
+                <label htmlFor="email">E-mail</label>
+            </span>
+            <div *ngIf="formGroup.controls['email'].invalid && formGroup.controls['email'].touched" class="validation-message">
+                É necessário preencher o e-mail.
+            </div>
         </div>
-        <div class="input">
-            <i class='icon bx bx-lock'></i>
-            <input type="password" formControlName="senha" placeholder="Senha">
-            <!-- <label for="">Senha</label> -->
+
+        <div class="card flex flex-wrap justify-content-center gap-3">
+            <span class="p-input-icon-right p-float-label">
+                <i class="pi pi-lock"></i>
+                <input id="senha" type="password" pInputText formControlName="senha" [ngClass]="{'invalid-field': formGroup.controls['senha'].invalid && formGroup.controls['senha'].touched}"/>
+                <label htmlFor="senha">Senha</label>
+            </span>
+            <div *ngIf="formGroup.controls['senha'].invalid && formGroup.controls['senha'].touched" class="validation-message">
+                É necessário preencher a senha.
+            </div>
         </div>
-        <button class="btn-entrar" (click)="submitLogin()">
-            <h5> Entrar </h5>
-        </button>
-        <!-- <a id="voltar" href="">Voltar e emitir uma OS</a> -->
+        <p-toast></p-toast>
+        <p-button label="Entrar" styleClass="p-button-success" (click)="submitLogin()"></p-button>
     </form>
 
     <div class="contact-area">

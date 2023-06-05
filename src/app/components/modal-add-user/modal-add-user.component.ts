@@ -1,13 +1,17 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 import { ModalAddUserService } from './modal-add-user.service';
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
+import { DatePipe } from '@angular/common';
+import { ListAdm } from 'src/app/pages/list-adm/list-adm';
+import { ListAdmComponent } from 'src/app/pages/list-adm/list-adm.component';
 
 
 @Component({
   selector: 'app-modal-add-user',
   templateUrl: './modal-add-user.component.html',
   styleUrls: ['./modal-add-user.component.scss'],
+  providers: [ DatePipe ]
 })
 export class ModalAddUserComponent implements OnInit {
 
@@ -17,13 +21,18 @@ export class ModalAddUserComponent implements OnInit {
   office: string[] = [];
   formGroup: FormGroup;
   showEmpresaInput = false;
+  data_insercao: string;
+  userList: ListAdm[] = [];
+
 
   constructor(
     private formBuilder: FormBuilder,
     private service: ModalAddUserService,
-    private ref: DynamicDialogRef
+    private ref: DynamicDialogRef,
+    private datePipe: DatePipe,
+    private ListAdmComponent: ListAdmComponent
   ) {
-
+    this.data_insercao = this.obterDataAtual();
     this.formGroup = this.formBuilder.group({
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -31,9 +40,14 @@ export class ModalAddUserComponent implements OnInit {
       cargo: ['', Validators.required],
       categoria: ['', Validators.required],
       terceirizado: ['', Validators.required],
-      empresa: ['', this.showEmpresaInput ? Validators.required : null]
+      empresa: ['', this.showEmpresaInput ? Validators.required : null],
+      data_insercao: [this.obterDataAtual()]
     });
  
+  }
+  obterDataAtual(): string {
+    const data_insercao = new Date();
+    return this.datePipe.transform(data_insercao, 'yyyy/MM/dd') || ''; 
   }
 
   closeModal(): void {
@@ -43,17 +57,18 @@ export class ModalAddUserComponent implements OnInit {
   submitForm() {
     this.submitted = true;
     const formValues = this.formGroup.value;
+    formValues.data_insercao = this.obterDataAtual();
     if (this.formGroup.valid) {
       if (formValues.terceirizado == 'Sim') {
         formValues.terceirizado = 1;
       } else if (formValues.terceirizado == 'Não') {
         formValues.terceirizado = 0;
       }
-      console.log(formValues.empresa)
       this.service.addUser(formValues).subscribe(
         response => {
           console.log("Dados enviados com sucesso!");
           this.closeModal();
+          this.ListAdmComponent.loadUserList();
         },
         error => {
           console.error("Erro ao enviar os dados:", error);
@@ -64,6 +79,7 @@ export class ModalAddUserComponent implements OnInit {
       this.formGroup.markAllAsTouched();
     }
   }
+
 
   ngOnInit() {
     this.formGroup.get('terceirizado')?.valueChanges.subscribe((value) => {

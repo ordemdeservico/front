@@ -26,9 +26,9 @@
           <td> {{ selectedUser?.nome }} </td>
           <td> {{ selectedUser?.email }} </td>
           <td> {{ selectedUser?.cargo }} </td>
-          <td> {{ selectedUser?.terceirizado }} </td>
+          <td> {{ terceirizadoLabel() }} </td>
           <td> {{ selectedUser?.empresa }} </td>
-          <td> {{ selectedUser?.senha }} </td>
+          <td> {{ selectedUser?.data_insercao | date:'dd/MM/yyyy' }} </td>
       </tr>
     </ng-template>
   </p-table>

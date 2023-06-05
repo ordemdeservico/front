@@ -13,8 +13,9 @@ export class ModalAddUserService {
 
     constructor(private http: HttpClient, private tokenService : TokenService) { }
 
-    addUser(newUser: ModalAddUser){
-        const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
-        return this.http.post(`${API}/user/create`, newUser, {headers: headers})
+    addUser(newUser: ModalAddUser) {
+      const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
+      return this.http.post(`${API}/user/create`, newUser, { headers });
     }
+    
 }

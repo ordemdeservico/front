@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { ListAdm } from './list-adm';
-import { ListAdmService } from '../list-adm.service';
+import { ListAdmService } from './list-adm.service';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { UserDetailsComponent } from 'src/app/components/user-details/user-details.component';
@@ -20,24 +20,15 @@ export class ListAdmComponent implements OnInit {
   visible!: boolean;
   selectedUser: ListAdm | undefined;
   ref!: DynamicDialogRef;
-  dataAtual: string;
+  
 
 
   constructor(
     private ListAdmService: ListAdmService,
     public dialogService: DialogService, 
-    public messageService: MessageService,
-    private datePipe: DatePipe,
-  ) {
-      this.dataAtual = this.obterDataAtual();
-  }
+    public messageService: MessageService
+  ) { }
 
-
-
-  obterDataAtual(): string {
-    const dataAtual = new Date();
-    return this.datePipe.transform(dataAtual, 'dd/MM/yyyy') || ''; 
-  }
 
   openModal(): void {
     this.ref = this.dialogService.open(ModalAddUserComponent, {
@@ -74,24 +65,7 @@ export class ListAdmComponent implements OnInit {
     );
   }
 
-  showSuccess() {
-    this.messageService.add({ severity: 'success', summary: 'Successo!', detail: 'Login efetuado.' });
-  }
 
-
-//   openDialog() {
-//     const dialogRef = this.dialog.open(ModalAddUserComponent, {
-//       panelClass: 'modal-border',
-//       data: { dialogRef: null } // Inicializa a propriedade dialogRef como null
-//     });
-
-//     dialogRef.afterClosed().subscribe((result: any) => {
-//       if (result) {
-//         console.log(`Dialog result: ${result}`);
-//       }
-//     });
-// }
-  
   ngOnInit() {
     this.loadUserList();
     
