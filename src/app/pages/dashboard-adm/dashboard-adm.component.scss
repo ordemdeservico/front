@@ -51,10 +51,12 @@
     padding: 16px;
     display: flex;
     justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    white-space: wrap;
 
-    app-card {
+     app-list-cards {
+      display: flex;
+      flex-wrap: wrap;
       margin: 16px;
     }
   }

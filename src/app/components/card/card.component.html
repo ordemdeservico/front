@@ -1,29 +1,42 @@
-<div class="card">
+<div class="card" *ngIf="card">
     <div class="itens">
+        <div class="item status">
+            <i class='bx bx-alarm'></i>
+            <p>{{ card.nivel_prioridade }}</p>
+        </div>
+        <div class="item priority">
+            <i class='bx bx-purchase-tag-alt'></i>
+            <p>{{ card.status_os }}</p>
+        </div>
         <div class="item institute">
             <i class='bx bx-briefcase-alt'></i>
-            <p>{{ os.institute }}</p>
+            <p>{{ card.setor_principal_nome }}</p>
         </div>
         <div class="item sector">
             <i class='bx bx-map'></i>
-            <p>{{ os.sector }}</p>
-        </div>
-        <div class="item date">
-            <i class='bx bx-calendar-week'></i>
-            <p>{{ os.date }}</p>
+            <p>{{ card.setor_secundario_nome }}</p>
         </div>
         <div class="item category">
             <i class='bx bx-wrench'></i>
-            <p>{{ os.category }}</p>
+            <p>{{ card.tipo_servico_nome }}</p>
         </div>
     </div>
     <div class="id">
-        <!-- <p>ID: {{os.id | number: '1.0-0'}}</p> -->
-        <p>ID: {{ os.id.toString().padStart(4, '0') }}</p>
-        <span></span>
+        <p>ID: {{ card.id.toString().padStart(4, '0') }}</p>
     </div>
 
     <div class="details">
-        <p (click)="openDialog()">Detalhes</p>
+        <p (click)="openModal()">Detalhes</p>
     </div>
 </div>
+
+<!-- <p-dialog [(visible)]="displayModal" [modal]="true" [responsive]="true" [showHeader]="false">
+    <app-modal-os-adm [orderService]="card"></app-modal-os-adm>
+</p-dialog> -->
+
+<p-dialog header="Header" [(visible)]="displayModal" [breakpoints]="{ '960px': '65vw' }" [style]="{ width: '40vw' }" [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="header">
+        <span class="text-xl font-bold">Ordem de Serviço: {{ card?.id }}</span>
+    </ng-template>
+    <app-modal-os-adm [orderService]="card"></app-modal-os-adm>
+</p-dialog>

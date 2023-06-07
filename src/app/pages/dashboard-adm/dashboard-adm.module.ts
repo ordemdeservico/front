@@ -7,6 +7,9 @@ import { MenuModule } from 'src/app/shared/menu/menu.module';
 import { CardModule } from 'src/app/components/card/card.module';
 import { MatSelectModule } from '@angular/material/select';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ListCardsModule } from 'src/app/components/list-cards/list-cards.module';
+import { ModalOsAdmModule } from 'src/app/components/modal-os-adm/modal-os-adm.module';
+import { DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 
 @NgModule({
@@ -19,7 +22,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     MenuModule,
     CardModule,
     MatSelectModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+    ListCardsModule,
+    ModalOsAdmModule,
+    DynamicDialogModule
+    // DialogModule
+  ],
+  providers: [DynamicDialogRef]
 })
 export class DashboardAdmModule { }

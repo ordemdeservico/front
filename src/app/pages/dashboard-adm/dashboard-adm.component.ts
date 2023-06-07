@@ -1,12 +1,17 @@
 import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
+import { MessageService } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-dashboard-adm',
   templateUrl: './dashboard-adm.component.html',
-  styleUrls: ['./dashboard-adm.component.scss']
+  styleUrls: ['./dashboard-adm.component.scss'],
+  // providers: [DialogService, MessageService]
 })
 export class DashboardAdmComponent {
+
+  // constructor(public dialogService: DialogService ) { }
 
   toppings = new FormControl('');
   toppingList: string[] = ['Nome', 'E-mail', 'Cargo', 'Terceiro'];

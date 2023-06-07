@@ -1,38 +1,13 @@
-.title-box {
-    background-color: var(--color-12);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
 
-    .title {
-        font-size: 1.5rem;
-        font-weight: 700;
-        color: var(--color-7);
-    }
+.card {
 
-    #close {
-        position: absolute;
-        cursor: pointer;
-        margin: 8px;
-        width: auto;
-        top: 0;
-        right: 0;
-        font-size: 1.5rem;
-        color: var(--color-2);
-    }
-}
-
-
-.mat-typography {
-    width: auto;
-    background-color: var(--color-12);
-    
     .itens {
         width: 100%;
         height: 100%;
         padding: 16px;
         display: flex;
+        flex: 1;
+        flex-wrap: wrap;
 
         .column {
             flex: 1;
@@ -67,46 +42,8 @@
             margin-bottom: 16px;
             gap: 0.3rem;
 
-            mat-form-field {
-                
-                textarea {
-                    resize: none;
-                    cursor: text;
-            
-                }
-            }
-        }
-
-        .feedback-area {
-            width: 100%;
-            
-            .feedback-box {
-                max-width: 360px;
-
-                mat-form-field {
-                    width: 100%;
-                    border: none;
-                    outline: none;
-                    border-radius: 16px;
-                    
-
-                    mat-form-select {
-                        padding: 0 16px 0 16px;
-                        appearance: none;
-                        outline: none;
-                        width: 100%;
-                        height: 56px;
-                        border-radius: 16px;
-                        background-color: var(--color-12);
-                        border: none;
-                        font-size: 1rem;
-                        color: var(--color-8);
-                        font-weight: 500;
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                    }
-                }
+            textarea {
+                height: auto !important;
             }
         }
     }
@@ -116,7 +53,7 @@
         height: auto;
         display: flex;
         justify-content: flex-start;
-        align-items: center !important;
+        align-items: center;
         text-align: center;
 
         i {
@@ -131,40 +68,5 @@
             color: var(--color-8);
         }
     }
-
-    mat-dialog-actions {
-        .btn-submit {
-            width: 147px;
-            height: 56px;
-            background-color: var(--color-2);
-            color: var(--color-5);
-            font-weight: 500;
-            border: none;
-            outline: none;
-            border-radius: 16px;
-            margin-bottom: 16px;
-            transition: all 0.5s ease;
-        }
-
-        .btn-submit:hover {
-            background-color: var(--color-3);
-            font-weight: 700;
-        }
-    }
-
 }
 
-.example-additional-selection {
-    opacity: 0.75;
-    font-size: 0.75em;
-}
-
-.example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
-}
-
-.example-full-width {
-    width: 100%;
-}

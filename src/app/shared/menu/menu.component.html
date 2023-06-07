@@ -56,16 +56,30 @@
     </div>
     <span class="line"></span>
     <div class="password-box">
-        <div class="card flex justify-content-center p-float-label">
-            <p-password [(ngModel)]="value" [toggleMask]="true"></p-password>
-            <label for="password">Senha Antiga</label>
-        </div>
-        <div class="card flex justify-content-center p-float-label">
-            <p-password [(ngModel)]="value" [toggleMask]="true"></p-password>
-            <label for="password">Senha Nova</label>
-        </div>
-        <p-toast></p-toast>
-        <p-button label="Confirmar" styleClass="p-button-success btn"></p-button>
+        <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+            <div class="card flex justify-content-center p-float-label">
+                <p-password formControlName="oldPassword" [toggleMask]="true"></p-password>
+                <label for="oldPassword">Senha Antiga</label>
+                <small class="text-danger"
+                    *ngIf="passwordForm.get('oldPassword')?.invalid && (passwordForm.get('oldPassword')?.touched || passwordForm.get('oldPassword')?.dirty)">
+                    Campo obrigatório
+                </small>
+            </div>
+            <div class="card flex justify-content-center p-float-label">
+                <p-password formControlName="newPassword" [toggleMask]="true"></p-password>
+                <label for="newPassword">Senha Nova</label>
+                <small class="text-danger"
+                    *ngIf="passwordForm.get('newPassword')?.invalid && (passwordForm.get('newPassword')?.touched || passwordForm.get('newPassword')?.dirty)">
+                    Campo obrigatório
+                </small>
+                <small class="text-danger"
+                    *ngIf="passwordForm.get('newPassword')?.hasError('minlength') && (passwordForm.get('newPassword')?.touched || passwordForm.get('newPassword')?.dirty)">
+                    A senha deve ter pelo menos 3 caracteres
+                </small>
+            </div>
+            <p-toast></p-toast>
+            <p-button label="Confirmar" styleClass="p-button-success btn" [disabled]="passwordForm.invalid" (click)="changePassword()"></p-button>
+        </form>
     </div>
     <span class="line"></span>
     <p-button label="Logout" styleClass="p-button-danger btn" (click)="logout()"></p-button>

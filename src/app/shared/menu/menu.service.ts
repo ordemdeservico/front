@@ -21,5 +21,13 @@ export class MenuService {
     return this.http.get<any>(this.API, { headers });
   }
 
+  changePassword(senhaVelha: string, senhaNova: string): Observable<any> {
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
+    const body = { senhaVelha, senhaNova };
+    const id = this.tokenService.returnId();
+  
+    return this.http.patch<any>(`${this.API}/password/${id}`, body, { headers });
+  }
+
 }
 

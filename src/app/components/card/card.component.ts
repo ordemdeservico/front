@@ -1,32 +1,29 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { ModalOsAdmComponent } from '../modal-os-adm/modal-os-adm.component';
+import { Component, Input, OnInit } from '@angular/core';
+import { OrderService } from 'src/app/shared/models/order-service.model';
+import { MessageService } from 'primeng/api';
+
 
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
-  styleUrls: ['./card.component.scss']
+  styleUrls: ['./card.component.scss'],
+  providers: [MessageService]
 })
-export class CardComponent {
+export default class CardComponent implements OnInit {
 
-  
+  @Input() card?: OrderService;
 
-  @Input() os: any;
-
-  constructor(public dialog: MatDialog) {}
+  displayModal: boolean = false;
 
 
-  openDialog() {
-    const dialogRef = this.dialog.open(ModalOsAdmComponent, {panelClass: 'modal-border'});
+  constructor() { }
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+    openModal() {
+      this.displayModal = !this.displayModal;
+    }
+
+  ngOnInit() {
+
   }
 
-  // ngAfterViewInit(): void {
-  //   console.log(this.os);
-  // }
-
-  
 }

@@ -7,7 +7,7 @@ import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { PasswordModule } from 'primeng/password';
 import { ToastModule } from 'primeng/toast';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -23,7 +23,8 @@ import { FormsModule } from '@angular/forms';
     DialogModule,
     PasswordModule,
     ToastModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
     
   ],
   exports: [

@@ -4,7 +4,7 @@
 
 <div class="container">
     <div class="buttons">
-        <button class="btn btn-os">
+        <!-- <button class="btn btn-os">
             Nova OS
             <i class='bx bx-cog'></i>
         </button>
@@ -14,12 +14,10 @@
             <mat-select [autofocus]="false" [formControl]="toppings">
                 <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
             </mat-select>
-        </mat-form-field>
+        </mat-form-field> -->
     </div>
     
     <div class="cards">
-        <ng-container *ngFor="let item of items">
-            <app-card [os]="item" ></app-card>
-        </ng-container>
+        <app-list-cards ></app-list-cards>
     </div>
 </div>

@@ -56,7 +56,6 @@ export class ListAdmComponent implements OnInit {
   loadUserList(): void {
     this.ListAdmService.listUsers().subscribe(
       (response) => {
-        console.log(response);
         this.userList = response.result as ListAdm[];
       },
       (error) => {

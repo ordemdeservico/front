@@ -6,6 +6,7 @@ import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/api';
 import { TokenService } from '../token.service';
 import { AuthService } from '../auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -18,14 +19,41 @@ export class MenuComponent implements OnInit {
   value: string = '';
   username = '';
   usermail = '';
+  passwordForm: FormGroup;
 
   constructor(
     private router: Router,
     private menuService: MenuService,
     private token: TokenService,
-    private authService: AuthService
-    ) { }
+    private authService: AuthService,
+    private formBuilder: FormBuilder,
+    private messageService: MessageService
+    ) { 
+      this.passwordForm = this.formBuilder.group({
+        oldPassword: ['', Validators.required],
+        newPassword: ['', [Validators.required, Validators.minLength(3)]]
+      });
+    }
     
+    changePassword() {
+      if (this.passwordForm.valid) {
+        const oldPassword = this.passwordForm.get('oldPassword')?.value;
+        const newPassword = this.passwordForm.get('newPassword')?.value;
+
+
+        this.menuService.changePassword(oldPassword, newPassword).subscribe(
+          () => {
+            this.messageService.add({ severity: 'success', summary: 'Senha atualizada', detail: 'A senha foi atualizada com sucesso.' });
+            this.passwordForm.reset();
+          },
+          (error) => {
+            console.error('Erro ao atualizar a senha:', error);
+            this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'Ocorreu um erro ao atualizar a senha. Por favor, tente novamente.' });
+          }
+        );
+      }
+    }
+
 
     showDialog() {
         this.visible = true;
