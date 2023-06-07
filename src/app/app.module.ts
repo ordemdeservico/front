@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MatOptionModule } from '@angular/material/core';
 import { MatDialogModule } from '@angular/material/dialog';
+import { DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 
 
@@ -27,9 +28,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatSelectModule,
     MatOptionModule,
     MatDialogModule,
+    DynamicDialogModule
  
   ],
-  providers: [],
+  providers: [DynamicDialogRef],
   bootstrap: [AppComponent]
 })
 export class AppModule { 

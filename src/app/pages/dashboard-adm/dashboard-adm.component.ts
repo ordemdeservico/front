@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
+import { HomeLoginService } from '../home-login/home-login.service';
 
 @Component({
   selector: 'app-dashboard-adm',
@@ -11,11 +12,12 @@ import { DialogService } from 'primeng/dynamicdialog';
 })
 export class DashboardAdmComponent {
 
-  // constructor(public dialogService: DialogService ) { }
+  constructor(public loginService: HomeLoginService ) { }
 
   toppings = new FormControl('');
   toppingList: string[] = ['Nome', 'E-mail', 'Cargo', 'Terceiro'];
   
+
   items = [
     {
       id: 1,
