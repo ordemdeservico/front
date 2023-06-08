@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HomeLogin, LoginResponse } from './home-login';
 import { TokenService } from 'src/app/shared/token.service';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, throwError } from 'rxjs';
 
 const API = environment.API;
 
@@ -21,10 +21,43 @@ export class HomeLoginService {
       return this.http.post<LoginResponse>(`${API}/user/login`, loginUser)
   }
 
-
   userVerify(): Observable<string> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
-    return this.http.get<string>(`${API}/user/identify`, { headers });
+    return this.http.get<any>(`${API}/user/identify`, { headers }).pipe(
+      map((response: any) => response.cargo),
+      catchError((error) => {
+        console.error(error);
+        return throwError(error.message);
+      })
+    );
   }
+  // userVerify(): Observable<string> {
+  //   const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
+  //   return this.http.get<string>(`${API}/user/identify`, { headers });
+  // }
+
+  // isVerify(): Observable<string> {
+  //   return this.userVerify().pipe(
+  //     map((response: any) => {
+  //       if (response.cargo == 'Admin') {
+  //         console.log('Usuário autenticado, cargo:', response.cargo);
+  //         return response.cargo;
+  //       } else if (response.cargo == 'Tecnico') {
+  //         console.log('Usuário autenticado, cargo:', response.cargo);
+  //         return response.cargo;
+  //       } else if (response.cargo == 'Solicitante') {
+  //         console.log('Usuário autenticado, cargo:', response.cargo);
+  //         return response.cargo;
+  //       } else {
+  //         console.log('Usuário não autenticado, cargo:', response.cargo);
+  //         return response.cargo;
+  //       }
+  //     }),
+  //     catchError((error) => {
+  //       console.error(error);
+  //       return throwError(error.message);
+  //     })
+  //   );
+  // }
 
 }

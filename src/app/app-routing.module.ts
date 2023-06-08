@@ -7,7 +7,6 @@ import { TokenGuard } from './guards/token.guard';
 import { AdminGuard } from './guards/admin.guard';
 
 const routes: Routes = [
-
   {
     path: 'home-login',
     loadChildren: () =>

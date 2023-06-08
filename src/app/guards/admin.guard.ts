@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, catchError, combineLatest, of, switchMap } from 'rxjs';
 import { AuthService } from '../shared/auth.service';
 import { HomeLoginService } from '../pages/home-login/home-login.service';
 
@@ -16,32 +16,28 @@ export class AdminGuard implements CanActivate {
     private loginService: HomeLoginService
     ){ }
     
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      const isAuthenticated = this.authService.getIsAuthenticated();
-      const isVerify = this.loginService.userVerify().subscribe(
-        (response: any) => {
-          if (response.cargo == 'Admin') {
-            console.log('Usuário autenticado, cargo:',response.cargo)
-            return true
+    canActivate(
+      route: ActivatedRouteSnapshot,
+      state: RouterStateSnapshot
+    ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+      return combineLatest([
+        of(this.authService.getIsAuthenticated()),
+        this.loginService.userVerify()
+      ]).pipe(
+        switchMap(([isAuthenticated, cargo]) => {
+          if (isAuthenticated && cargo === 'Admin') {
+            return of(true);
           } else {
-            return false
+            this.router.navigateByUrl('/home-login');
+            return of(false);
           }
-        },
-        (error) => {
+        }),
+        catchError((error) => {
           console.error(error);
-          return false;
-        }
-      )
-
-      if (isAuthenticated && isVerify) {
-        return true;
-      } 
-
-      this.router.navigateByUrl('/home-login');
-      return false;
-
-  }
+          this.router.navigateByUrl('/home-login');
+          return of(false);
+        })
+      );
+    }
   
 }
