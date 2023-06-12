@@ -7,6 +7,7 @@ import { MessageService } from 'primeng/api';
 import { TokenService } from '../token.service';
 import { AuthService } from '../auth.service';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { HomeLoginService } from 'src/app/pages/home-login/home-login.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
@@ -14,7 +15,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   providers: [MessageService]
 })
 export class MenuComponent implements OnInit {
-  isOnRouteAdm: boolean = false;
+  isAdmin = false;
   visible: boolean = false;
   value: string = '';
   username = '';
@@ -27,7 +28,8 @@ export class MenuComponent implements OnInit {
     private token: TokenService,
     private authService: AuthService,
     private formBuilder: FormBuilder,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private loginService: HomeLoginService
     ) { 
       this.passwordForm = this.formBuilder.group({
         oldPassword: ['', Validators.required],
@@ -84,7 +86,14 @@ export class MenuComponent implements OnInit {
     
 
   ngOnInit() {
-    this.isOnRouteAdm = this.router.isActive('/dashboard-adm', false);
+    this.loginService.userVerify().subscribe(
+      (cargo: string) => {
+        this.isAdmin = cargo === 'Admin';
+      },
+      (error) => {
+        console.error(error);
+      }
+    );
     this.username = this.token.returnName() as string; 
     this.usermail = this.token.returnMail() as string;
   }
