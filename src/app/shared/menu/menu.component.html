@@ -58,7 +58,7 @@
     <div class="password-box">
         <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
             <div class="card flex justify-content-center p-float-label">
-                <p-password formControlName="oldPassword" [toggleMask]="true"></p-password>
+                <p-password formControlName="oldPassword" [toggleMask]="true" [feedback]="false"></p-password>
                 <label for="oldPassword">Senha Antiga</label>
                 <small class="text-danger"
                     *ngIf="passwordForm.get('oldPassword')?.invalid && (passwordForm.get('oldPassword')?.touched || passwordForm.get('oldPassword')?.dirty)">
