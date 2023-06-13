@@ -6,9 +6,6 @@ import { AppComponent } from './app.component';
 import { MenuModule } from './shared/menu/menu.module';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatSelectModule } from '@angular/material/select';
-import { MatOptionModule } from '@angular/material/core';
-import { MatDialogModule } from '@angular/material/dialog';
 import { DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 
@@ -25,9 +22,6 @@ import { DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
     MenuModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    MatSelectModule,
-    MatOptionModule,
-    MatDialogModule,
     DynamicDialogModule
  
   ],

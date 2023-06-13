@@ -4,20 +4,23 @@
 
 <div class="container">
     <div class="buttons">
-        <!-- <button class="btn btn-os">
-            Nova OS
-            <i class='bx bx-cog'></i>
-        </button>
+        <div class="new-user">
+            <p-button label="Novo" icon="pi pi-user-plus" iconPos="right" styleClass="p-button-success"></p-button>
+        </div>
 
-        <mat-form-field class="meu-form-field">
-            <mat-label>Filtro</mat-label>
-            <mat-select [autofocus]="false" [formControl]="toppings">
-                <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-            </mat-select>
-        </mat-form-field> -->
+        <div class="card flex justify-content-center">
+            <p-multiSelect 
+            [options]="groupedFilters" 
+            [group]="true" 
+            [(ngModel)]="selectedFilter" 
+            defaultLabel="Selecione um Filtro" 
+            scrollHeight="250px" 
+            display="chip"
+            ></p-multiSelect>
+        </div>
     </div>
     
     <div class="cards">
-        <app-list-cards ></app-list-cards>
+        <app-list-cards [selectedFilterAdm]="selectedFilter"></app-list-cards>
     </div>
 </div>

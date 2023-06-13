@@ -8,42 +8,13 @@
   padding-left: 64px;
 
   .buttons {
-    padding: 16px;
+    padding: 32px 0 0 48px;
     width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     margin-top: calc(20vh);
     gap: 32px;
-
-    .btn {
-      width: 100%;
-      max-width: 168px;
-      height: 56px;
-      border-radius: 16px;
-      padding: 16px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      border: none;
-      transition: all 0.5s ease;
-      white-space: nowrap;
-
-      i {
-        text-align: center;
-        font-size: 24px;
-      }
-    }
-
-    .btn-os {
-      background-color: var(--color-2);
-      color: var(--color-5);
-    }
-
-    .btn-os:hover {
-      background-color: var(--color-3);
-      font-weight: 700;
-    }
   }
 
   .cards {
@@ -62,30 +33,15 @@
   }
 }
 
-::ng-deep .meu-form-field .mat-mdc-text-field-wrapper {
-  width: 100%;
-  border-radius: 16px;
-  max-width: 168px;
-}
-
-::ng-deep .mdc-text-field--filled .mdc-line-ripple::after {
-  border: none;
-}
-
-::ng-deep .mat-mdc-form-field-subscript-wrapper {
-  display: none;
-}
-
-
 @media only screen and (max-width: 768px) {
   .container {
     width: calc(100% - 78px);
     padding: 8px;
   }
 
-  .buttons {
-    gap: 0 !important;
-  }
+  // .buttons {
+  //   gap: 0 !important;
+  // }
 
 }
 
