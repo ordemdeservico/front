@@ -11,27 +11,32 @@ import { FilterOs } from 'src/app/pages/dashboard-adm/dashboard-adm';
 })
 export class ListCardsComponent implements OnChanges {
 
-  @Input() selectedFilterAdm!: FilterOs;
+  @Input() selectedFilterAdm: any;
 
   orderServices: OrderService[] = [];
-
+  
   constructor (private cardsService: ListCardsService) { }
 
   ngOnInit(): void {
-    
+    this.cardsService.getOsByFilter('').subscribe(
+      (res) => {
+        this.orderServices = res.result;
+      }
+    );
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    console.log(this.selectedFilterAdm)
     console.log('Alterações detectadas:', changes);
-    if (changes['selectedFilterAdm']) {
+    if (changes['selectedFilterAdm'] && this.selectedFilterAdm || '') {
       this.getOsByFilters();
-      console.log(changes['selectedFilterAdm'])
-    };
+    }
   }
 
   getOsByFilters() { 
-    console.log('Filtro:', this.selectedFilterAdm);
-    this.cardsService.getOsByFilter(this.selectedFilterAdm).subscribe(
+    console.log('Filtro:', this.selectedFilterAdm[0]);
+
+    this.cardsService.getOsByFilter(this.selectedFilterAdm[0] || '').subscribe(
       (res) => {
         console.log('Resposta da API:', res);
         this.orderServices = res.result;

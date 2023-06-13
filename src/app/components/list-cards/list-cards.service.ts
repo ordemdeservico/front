@@ -23,17 +23,16 @@ export class ListCardsService {
     let params = new HttpParams();
   
     if (filtros) {
-
       console.log('Filtros:', filtros);
-   
-      // params = params.set('nivel_prioridade', filtros || '');
-
-      
-      params = params.set('setor_principal_id', filtros || '');
-
-     
-      // params = params.set('status_os', filtros || '')
-      console.log('Params:', params)
+      if (filtros.data.filter == 'setor_principal_id') {
+        params = params.append(filtros.data.filter || '', filtros.data.value || '');
+      } else if (filtros.data.filter == 'status_os') {
+        params = params.append(filtros.data.filter || '', filtros.data.value || '');
+      } else if (filtros.data.filter == 'nivel_prioridade') {
+        console.log('teste', filtros.data.filter)
+        params = params.append(filtros.data.filter || '', filtros.data.value || '');
+      } 
+  
     }
     const options = { params: params, headers: headers };
     return this.http.get(`${API}/ordem-servico/admin/filtros`, options );

@@ -13,9 +13,8 @@ import { FilterOs } from "src/app/pages/dashboard-adm/dashboard-adm";
 export class DashboardAdmComponent implements OnInit {
 
   groupedFilters: any[];
-  selectedFilter!: FilterOs;
+  selectedFilter: any;
   orderServices: OrderService[] = [];
-  status: any;
   
   constructor(
     public loginService: HomeLoginService,
@@ -26,33 +25,33 @@ export class DashboardAdmComponent implements OnInit {
         label: 'Instituição',
         value: 'setor_principal_id',
         items: [
-          { label: 'FSNT Geral', value: 'FSNT', filter: 'setor_principal_id' },
-          { label: 'Fatec', value: 'FATEC', filter: 'setor_principal_id' },
-          { label: 'Senai', value: 'SENAI', filter: 'setor_principal_id' },
-          { label: 'CSN', value: 'CSN', filter: 'setor_principal_id' }
+          { label: 'FSNT Geral', data: { value: 'FSNT', filter: 'setor_principal_id' } },
+          { label: 'Fatec', data: { value: 'FATEC', filter: 'setor_principal_id' } },
+          { label: 'Senai', data: { value: 'SENAI', filter: 'setor_principal_id' } },
+          { label: 'CSN', data: { value: 'CSN', filter: 'setor_principal_id' } }
         ]
       },
       {
         label: 'Status',
         value: 'status_os',
         items: [
-          { label: 'Solicitada', value: 'Solicitada', filter: 'status_os' },
-          { label: 'Aprovada', value: 'Aprovada', filter: 'status_os' },
-          { label: 'Concluída', value: 'Concluida', filter: 'status_os' },
-          { label: 'Finalizada', value: 'Finalizada', filter: 'status_os' }
+          { label: 'Solicitada', data: { value: 'Solicitada', filter: 'status_os' } },
+          { label: 'Aprovada', data: { value: 'Aprovada', filter: 'status_os' } },
+          { label: 'Concluida', data: { value: 'Concluida', filter: 'status_os' } },
+          { label: 'Finalizada', data: { value: 'Finalizada', filter: 'status_os' } }
         ]
       },
       {
         label: 'Prioridade',
         value: 'nivel_prioridade',
         items: [
-          { label: 'P1 - 1 Dia', value: 'P1 - 1 dia', filter: 'nivel_prioridade' },
-          { label: 'P2 - 2 Dias', value: 'P2 - 2 dias', filter: 'nivel_prioridade' },
-          { label: 'P3 - 4 Dias', value: 'P4 - 3 dias', filter: 'nivel_prioridade' },
-          { label: 'P4 - 7 Dias', value: 'P4 - 7 dias', filter: 'nivel_prioridade' },
-          { label: 'P5 - 10 Dias', value: 'P5 - 10 dias', filter: 'nivel_prioridade' },
-          { label: 'P6 - 15 Dias', value: 'P6 - 15 dias', filter: 'nivel_prioridade' },
-          { label: 'P7 - 25 Dias', value: 'P7 - 25 dias', filter: 'nivel_prioridade' },
+          { label: 'P1 - 1 Dia', data: { value: 'P1 - 1 dia', filter: 'nivel_prioridade' } },
+          { label: 'P2 - 2 Dias', data: { value: 'P2 - 2 dias', filter: 'nivel_prioridade' } },
+          { label: 'P3 - 4 Dias', data: { value: 'P4 - 3 dias', filter: 'nivel_prioridade' } },
+          { label: 'P4 - 7 Dias', data: { value: 'P4 - 7 dias', filter: 'nivel_prioridade' } },
+          { label: 'P5 - 10 Dias', data: { value: 'P5 - 10 dias', filter: 'nivel_prioridade' } },
+          { label: 'P6 - 15 Dias', data: { value: 'P6 - 15 dias', filter: 'nivel_prioridade' } },
+          { label: 'P7 - 25 Dias', data: { value: 'P7 - 25 dias', filter: 'nivel_prioridade' } },
         ]
       }
     ];
