@@ -1,8 +1,7 @@
-import { Component, OnInit, OnChanges, SimpleChanges } from "@angular/core";
+import { Component } from "@angular/core";
 import { HomeLoginService } from '../home-login/home-login.service';
 import { OrderService } from 'src/app/shared/models/order-service.model';
 import { ListCardsService } from 'src/app/components/list-cards/list-cards.service';
-import { FilterOs } from "src/app/pages/dashboard-adm/dashboard-adm";
 
 
 @Component({
@@ -10,7 +9,7 @@ import { FilterOs } from "src/app/pages/dashboard-adm/dashboard-adm";
   templateUrl: './dashboard-adm.component.html',
   styleUrls: ['./dashboard-adm.component.scss']
 })
-export class DashboardAdmComponent implements OnInit {
+export class DashboardAdmComponent {
 
   groupedFilters: any[];
   selectedFilter: any;
@@ -57,16 +56,6 @@ export class DashboardAdmComponent implements OnInit {
     ];
     
   }
-
-
-  updateOrderServices(orderServices: OrderService[]) {
-    this.orderServices = orderServices;
-  }
-
-
-  ngOnInit() {
-
-}
 
 
 }

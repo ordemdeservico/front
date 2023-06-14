@@ -1,7 +1,7 @@
-import { Component, Input, OnInit, OnChanges, SimpleChanges, EventEmitter, Output } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ListCardsService } from './list-cards.service';
 import { OrderService } from 'src/app/shared/models/order-service.model';
-import { FilterOs } from 'src/app/pages/dashboard-adm/dashboard-adm';
+
 
 
 @Component({
@@ -9,7 +9,7 @@ import { FilterOs } from 'src/app/pages/dashboard-adm/dashboard-adm';
   templateUrl: './list-cards.component.html',
   styleUrls: ['./list-cards.component.scss']
 })
-export class ListCardsComponent implements OnChanges {
+export class ListCardsComponent implements OnInit, OnChanges {
 
   @Input() selectedFilterAdm: any;
 
@@ -18,7 +18,7 @@ export class ListCardsComponent implements OnChanges {
   constructor (private cardsService: ListCardsService) { }
 
   ngOnInit(): void {
-    this.cardsService.getOsByFilter('').subscribe(
+    this.cardsService.getOsByFilter([]).subscribe(
       (res) => {
         this.orderServices = res.result;
       }
@@ -26,19 +26,15 @@ export class ListCardsComponent implements OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.selectedFilterAdm)
-    console.log('Alterações detectadas:', changes);
     if (changes['selectedFilterAdm'] && this.selectedFilterAdm || '') {
       this.getOsByFilters();
     }
   }
 
   getOsByFilters() { 
-    console.log('Filtro:', this.selectedFilterAdm[0]);
-
-    this.cardsService.getOsByFilter(this.selectedFilterAdm[0] || '').subscribe(
+    const filters = this.selectedFilterAdm.map((filter: { data: any; }) => filter.data);
+    this.cardsService.getOsByFilter(filters).subscribe(
       (res) => {
-        console.log('Resposta da API:', res);
         this.orderServices = res.result;
       },
       (err) => {

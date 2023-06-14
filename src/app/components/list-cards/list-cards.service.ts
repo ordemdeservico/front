@@ -17,23 +17,19 @@ export class ListCardsService {
  
   constructor(private http: HttpClient, private tokenService : TokenService) { }
 
-  getOsByFilter(filtros: any): Observable<any> {
-    console.log('Filtros:', filtros);
+  getOsByFilter(filtros: any[]): Observable<any> {
     const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`).set('Content-Type', 'application/json');
     let params = new HttpParams();
   
     if (filtros) {
-      console.log('Filtros:', filtros);
-      if (filtros.data.filter == 'setor_principal_id') {
-        params = params.append(filtros.data.filter || '', filtros.data.value || '');
-      } else if (filtros.data.filter == 'status_os') {
-        params = params.append(filtros.data.filter || '', filtros.data.value || '');
-      } else if (filtros.data.filter == 'nivel_prioridade') {
-        console.log('teste', filtros.data.filter)
-        params = params.append(filtros.data.filter || '', filtros.data.value || '');
-      } 
+      for (const filter of filtros) {
+        if (filter.filter === 'setor_principal_id' || filter.filter === 'status_os' || filter.filter === 'nivel_prioridade') {
+          params = params.append(filter.filter, filter.value);
+        }
+      }
   
     }
+    
     const options = { params: params, headers: headers };
     return this.http.get(`${API}/ordem-servico/admin/filtros`, options );
   }
