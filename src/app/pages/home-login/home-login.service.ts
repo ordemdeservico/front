@@ -22,8 +22,8 @@ export class HomeLoginService {
   }
 
   userVerify(): Observable<string> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
-    return this.http.get<any>(`${API}/user/identify`, { headers }).pipe(
+    // const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
+    return this.http.get<any>(`${API}/user/identify`).pipe(
       map((response: any) => response.cargo),
       catchError((error) => {
         console.error(error);

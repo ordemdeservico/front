@@ -1,7 +1,6 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { FilterOs } from 'src/app/pages/dashboard-adm/dashboard-adm';
 import { OrderService } from 'src/app/shared/models/order-service.model';
 import { TokenService } from 'src/app/shared/token.service';
 import { environment } from 'src/environments/environment';
@@ -18,7 +17,6 @@ export class ListCardsService {
   constructor(private http: HttpClient, private tokenService : TokenService) { }
 
   getOsByFilter(filtros: any[]): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`).set('Content-Type', 'application/json');
     let params = new HttpParams();
   
     if (filtros) {
@@ -30,15 +28,41 @@ export class ListCardsService {
   
     }
     
-    const options = { params: params, headers: headers };
+    const options = { params: params };
     return this.http.get(`${API}/ordem-servico/admin/filtros`, options );
   }
 
   getCardInfos(): Observable<any>{
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
-    return this.http.get(`${API}/ordem-servico/`, { headers });
+    return this.http.get(`${API}/ordem-servico/`);
   }
 
+  getAllTec(): Observable<any> {
+    return this.http.get(`${API}/user/tecnico`);
+  }  
+
+  getAllServices(): Observable<any> {
+    return this.http.get(`${API}/tipo-servico/`);
+  }
+
+  getAllSetoresPrincipais(): Observable<any> {
+    return this.http.get(`${API}/setor-principal/`);
+  }
+
+  getAllSetoresSecundarioByPrimario(setor: any): Observable<any> {
+    let params = new HttpParams();
+
+    if (setor) {
+      params = params.append('SetorPrincipal', setor)
+    }
+    const options = { params: params };
+    console.log(params)
+    return this.http.get(`${API}/setor-secundario/instituicao`, options );
+  }
+
+  getAllSetorSecundarios(): Observable<any> {
+    return this.http.get(`${API}/setor-secundario/`);
+  
+  }
 
   setSelectedOrderService(orderService: OrderService): void {
     this.selectedOrderService = orderService;

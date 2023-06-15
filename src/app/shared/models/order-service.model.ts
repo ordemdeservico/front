@@ -1,9 +1,10 @@
 export interface OrderService {
+  length: number
   id: number
   solicitante_id: number
   data_solicitacao: string
   descricao: string
-  setor_principal_id: string
+  setor_principal_id: number
   setor_secundario_id: number
   status_os: string
   nivel_prioridade: string
@@ -18,7 +19,7 @@ export interface OrderService {
   relatorio: string
   feedback: string
   setor_principal_nome: string
-  setor_secundario_nome: string
+  setor_secundario_com_bloco: string
   setor_secundario_bloco: any
   tipo_servico_nome: string
   solicitante_nome: string

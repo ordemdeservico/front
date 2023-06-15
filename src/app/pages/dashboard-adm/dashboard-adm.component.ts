@@ -46,7 +46,7 @@ export class DashboardAdmComponent {
         items: [
           { label: 'P1 - 1 Dia', data: { value: 'P1 - 1 dia', filter: 'nivel_prioridade' } },
           { label: 'P2 - 2 Dias', data: { value: 'P2 - 2 dias', filter: 'nivel_prioridade' } },
-          { label: 'P3 - 4 Dias', data: { value: 'P4 - 3 dias', filter: 'nivel_prioridade' } },
+          { label: 'P3 - 4 Dias', data: { value: 'P3 - 3 dias', filter: 'nivel_prioridade' } },
           { label: 'P4 - 7 Dias', data: { value: 'P4 - 7 dias', filter: 'nivel_prioridade' } },
           { label: 'P5 - 10 Dias', data: { value: 'P5 - 10 dias', filter: 'nivel_prioridade' } },
           { label: 'P6 - 15 Dias', data: { value: 'P6 - 15 dias', filter: 'nivel_prioridade' } },

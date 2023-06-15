@@ -17,8 +17,7 @@ export class ListAdmService {
   private readonly API = `${API}/user`;
 
   listUsers(): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
-    return this.http.get<any>(this.API, { headers });
+    return this.http.get<any>(this.API);
   }
 
   

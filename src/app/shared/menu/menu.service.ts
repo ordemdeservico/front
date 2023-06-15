@@ -17,16 +17,14 @@ export class MenuService {
   constructor(private tokenService : TokenService, private http: HttpClient) { }
 
   listAdm(): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
-    return this.http.get<any>(this.API, { headers });
+    return this.http.get<any>(this.API);
   }
 
   changePassword(senhaVelha: string, senhaNova: string): Observable<any> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
     const body = { senhaVelha, senhaNova };
     const id = this.tokenService.returnId();
   
-    return this.http.patch<any>(`${this.API}/password/${id}`, body, { headers });
+    return this.http.patch<any>(`${this.API}/password/${id}`, body);
   }
 
 }

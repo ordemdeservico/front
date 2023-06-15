@@ -1,230 +1,180 @@
-<div class="card flex justify-content-center">
-    <div class="itens" >
-        <div class="column">
-            <div class="item">
+<ng-container *ngIf="orderService?.status_os  !== 'Solicitada'">
+    <div class="card flex justify-content-center">
+        <div class="itens" >
+            <div class="column">
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-user'></i>
+                        <label>Nome</label>
+                    </div>
+                    <p>{{ orderService?.solicitante_nome }}</p>
+                </div>
+    
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-envelope'></i>
+                        <label>E-mail</label>
+                    </div>
+                    <p>{{ orderService?.solicitante_email }}</p>
+                </div>
+    
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-briefcase-alt'></i>
+                        <label>Instituição</label>
+                    </div>
+                    <p>{{ orderService?.setor_principal_nome }}</p>
+                </div>
+            </div>
+    
+            <div class="column">
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-map'></i>
+                        <label>Setor</label>
+                    </div>
+                    <p>{{ orderService?.setor_secundario_com_bloco}}</p>
+                </div>
+    
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-wrench'></i>
+                        <label>Categoria</label>
+                    </div>
+                    <p>{{ orderService?.tipo_servico_nome }}</p>
+                </div>
+    
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-calendar-week'></i>
+                        <label>Data</label>
+                    </div>
+                    <p>{{ orderService?.data_solicitacao | date:'dd/MM/yyyy' }}</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="fields">
+            <div class="field">
+                <div class="item-title">
+                    <i class='bx bx-file'></i>
+                    <label>Descrição</label>
+                </div>
+                <p>{{ orderService?.descricao }}</p>
+            </div>
+    
+            <div class="field">
                 <div class="item-title">
                     <i class='bx bx-user'></i>
-                    <label>Nome</label>
+                    <label>Técnico Responsável</label>
                 </div>
-                <p>{{ orderService?.id }}</p>
+                <p>{{ orderService?.tecnico_nome }}</p>
             </div>
-
-            <div class="item">
+    
+            <div class="field">
                 <div class="item-title">
-                    <i class='bx bx-envelope'></i>
-                    <label>E-mail</label>
+                    <i class='bx bx-cart'></i>
+                    <label>Relatório</label>
                 </div>
-                <p>josefelipe@gmail.com</p>
+                <textarea rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado">{{ orderService?.relatorio }}</textarea>
             </div>
-
-            <div class="item">
+    
+            <div class="field">
                 <div class="item-title">
-                    <i class='bx bx-briefcase-alt'></i>
-                    <label>Instituição</label>
+                    <i class='bx bx-clipboard' ></i>
+                    <label>Materiais</label>
                 </div>
-                <p>{{ orderService?.setor_principal_nome }}</p>
+                <textarea rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Material utilizado na OS">{{ orderService?.material }}</textarea>
             </div>
+    
+            <div class="select card flex justify-content-center m-0">
+                <span class="p-float-label">
+                    <p-dropdown [options]="feedback" placeholder="Selecione uma feedback" inputId="float-label"></p-dropdown>
+                    <label for="float-label">Feedback</label>
+                </span>
+            </div>
+    
         </div>
-
-        <div class="column">
-            <div class="item">
-                <div class="item-title">
-                    <i class='bx bx-map'></i>
-                    <label>Setor</label>
-                </div>
-                <p>{{ orderService?.setor_secundario_nome }}</p>
-            </div>
-
-            <div class="item">
-                <div class="item-title">
-                    <i class='bx bx-wrench'></i>
-                    <label>Categoria</label>
-                </div>
-                <p>{{ orderService?.tipo_servico_nome }}</p>
-            </div>
-
-            <div class="item">
-                <div class="item-title">
-                    <i class='bx bx-calendar-week'></i>
-                    <label>Data</label>
-                </div>
-                <p>{{ orderService?.data_solicitacao | date:'dd/MM/yyyy' }}</p>
-            </div>
+            
+    
+        <div class="card flex justify-content-center btn-submit">
+            <!-- <button pButton pRipple label="Submit" class="p-button-success btn" (click)="submitForm()"></button> -->
         </div>
     </div>
+</ng-container>
 
-    <div class="fields">
-        <div class="field">
-            <div class="item-title">
-                <i class='bx bx-file'></i>
-                <label>Descrição</label>
+
+
+<ng-container *ngIf="orderService?.status_os  === 'Solicitada'">
+    <div class="card flex justify-content-center">
+        <div class="itens" >
+            <div class="column-info">
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-user'></i>
+                        <label>Nome</label>
+                    </div>
+                    <p>{{ orderService?.solicitante_nome }}</p>
+                </div>
+    
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-envelope'></i>
+                        <label>E-mail</label>
+                    </div>
+                    <p>{{ orderService?.solicitante_email }}</p>
+                </div>
+
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-calendar-week'></i>
+                        <label>Data</label>
+                    </div>
+                    <p>{{ orderService?.data_solicitacao | date:'dd/MM/yyyy' }}</p>
+                </div>
             </div>
-            <p>{{ orderService?.descricao }}</p>
         </div>
-
-        <div class="field">
-            <div class="item-title">
-                <i class='bx bx-user'></i>
-                <label>Técnico Responsável</label>
+    
+        <div class="dropdown">
+            <div class="select card flex justify-content-center m-0">
+                <label for="float-label">Instituição</label>
+                <p-dropdown  [options]="setor_principal" placeholder="{{ orderService?.setor_principal_nome }}" [(ngModel)]="selectedSetor" (ngModelChange)="getAllSecundarios()"></p-dropdown>
             </div>
-            <p>Jair de Oliveira</p>
-        </div>
 
-        <div class="field">
-            <div class="item-title">
-                <i class='bx bx-cart'></i>
-                <label>Relatório</label>
+            <div class="select card flex justify-content-center m-0">
+                <label for="float-label">Setor</label>
+                <p-dropdown  [options]="setor_secundario"></p-dropdown>
             </div>
-            <textarea rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado">{{ orderService?.relatorio }}</textarea>
-        </div>
 
-        <div class="field">
-            <div class="item-title">
-                <i class='bx bx-clipboard' ></i>
-                <label>Materiais</label>
+            <div class="select card flex justify-content-center m-0">
+                <label for="float-label">Categoria</label>
+                <p-dropdown  [options]="tipo_servico" placeholder="{{ !!orderService?.tipo_servico_nome || 'Categoria do Serviço' }}"></p-dropdown>
             </div>
-            <textarea rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Material utilizado na OS">{{ orderService?.material }}</textarea>
-        </div>
 
-        <div class="select card flex justify-content-center m-0">
-            <span class="p-float-label">
-                <p-dropdown [options]="feedback" placeholder="Selecione uma feedback" inputId="float-label"></p-dropdown>
-                <label for="float-label">Feedback</label>
-            </span>
-        </div>
+            <div class="select card flex justify-content-center m-0">
+                <label for="float-label">Prioridade</label>
+                <p-dropdown  [options]="nivel_prioridade" placeholder="Nível de prioridade"></p-dropdown>
+            </div>
 
-    </div>
+            <div class="select card flex justify-content-center m-0">
+                <label for="float-label">Responsável</label>
+                <p-dropdown  [options]="tecnico" placeholder="Técnico responsável"></p-dropdown>
+            </div>
+        </div>
         
-
-    <div class="card flex justify-content-center btn-submit">
-        <!-- <button pButton pRipple label="Submit" class="p-button-success btn" (click)="submitForm()"></button> -->
-    </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="title-box" cdkFocusInitial>
-    <h2 class="title" align="center" mat-dialog-title>Ordem de Serviço</h2>
-    <i id="close" class='bx bx-x-circle' [mat-dialog-close]="true"></i>
-</div>
-<mat-dialog-content class="mat-typography">
-    <div class="itens" >
-        <div class="column">
-            <div class="item">
+        <div class="fields">
+            <div class="fieldDescription">
                 <div class="item-title">
-                    <i class='bx bx-user'></i>
-                    <label>Nome</label>
+                    <i class='bx bx-file'></i>
+                    <label>Descrição</label>
                 </div>
-                <p>José Felipe</p>
-            </div>
-
-            <div class="item">
-                <div class="item-title">
-                    <i class='bx bx-envelope'></i>
-                    <label>E-mail</label>
-                </div>
-                <p>josefelipe@gmail.com</p>
-            </div>
-
-            <div class="item">
-                <div class="item-title">
-                    <i class='bx bx-briefcase-alt'></i>
-                    <label>Instituição</label>
-                </div>
-                <p>Fatec</p>
+                <textarea class="textDescription" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado">{{ orderService?.descricao }}</textarea>
             </div>
         </div>
-
-        <div class="column">
-            <div class="item">
-                <div class="item-title">
-                    <i class='bx bx-map'></i>
-                    <label>Setor</label>
-                </div>
-                <p>C-01 Synapse</p>
-            </div>
-
-            <div class="item">
-                <div class="item-title">
-                    <i class='bx bx-wrench'></i>
-                    <label>Categoria</label>
-                </div>
-                <p>Civil</p>
-            </div>
-
-            <div class="item">
-                <div class="item-title">
-                    <i class='bx bx-calendar-week'></i>
-                    <label>Data</label>
-                </div>
-                <p>27/07/2023</p>
-            </div>
+       
+    
+        <div class="card flex justify-content-center btn-submit">
+            <button pButton pRipple label="Submit" class="p-button-success btn"></button>
         </div>
     </div>
-
-    <div class="fields">
-        <div class="field">
-            <div class="item-title">
-                <i class='bx bx-file'></i>
-                <label>Descrição</label>
-            </div>
-            <p>Ar-condicionado está fazendo barulho e não está gelando....</p>
-        </div>
-
-        <div class="field">
-            <div class="item-title">
-                <i class='bx bx-user'></i>
-                <label>Técnico Responsável</label>
-            </div>
-            <p>Jair de Oliveira</p>
-        </div>
-
-        <div class="field">
-            <div class="item-title">
-                <i class='bx bx-cart'></i>
-                <label>Relatório</label>
-            </div>
-            <mat-form-field class="example-full-width" [autofocus]="false">
-                <textarea [autofocus]="false" matInput placeholder="Relatório do serviço realizado" [autofocus]="false">Foi necessário fazer uma limpeza no ar e trocar o filtro</textarea>
-            </mat-form-field>
-        </div>
-
-        <div class="field">
-            <div class="item-title">
-                <i class='bx bx-clipboard' ></i>
-                <label>Materiais</label>
-            </div>
-            <mat-form-field class="example-full-width">
-                <textarea [autofocus]="false" matInput placeholder="Material utilizado na OS">Filtro Novo</textarea>
-            </mat-form-field>
-        </div>
-
-        <div class="feedback-area">
-            <div class="feedback-box">
-                <mat-form-field>
-                    <mat-label>Feedback</mat-label>
-                    <mat-select [autofocus]="false" [formControl]="toppings">
-                        <mat-option *ngFor="let topping of toppingList" [value]="topping">{{topping}}</mat-option>
-                    </mat-select>
-                </mat-form-field>
-            </div>
-        </div>
-
-    </div>
-    <mat-dialog-actions align="center">
-        <button class="btn-submit" mat-button [mat-dialog-close]="true" type="submit">Finalizar</button>
-    </mat-dialog-actions>
-</mat-dialog-content> -->
+</ng-container>
