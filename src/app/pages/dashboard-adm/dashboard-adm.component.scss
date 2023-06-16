@@ -29,13 +29,14 @@
       display: flex;
       flex-wrap: wrap;
       margin: 16px;
+      max-height: 100%;
     }
   }
 }
 
 @media only screen and (max-width: 768px) {
   .container {
-    width: calc(100% - 78px);
+    width: calc(100% - 160px);
     padding: 8px;
   }
 
