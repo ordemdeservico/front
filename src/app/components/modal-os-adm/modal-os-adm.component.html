@@ -135,46 +135,60 @@
             </div>
         </div>
     
-        <div class="dropdown">
+        <form class="dropdown" [formGroup]="formGroup">
             <div class="select card flex justify-content-center m-0">
                 <label for="float-label">Instituição</label>
-                <p-dropdown  [options]="setor_principal" placeholder="{{ orderService?.setor_principal_nome }}" [(ngModel)]="selectedSetor" (ngModelChange)="getAllSecundarios()"></p-dropdown>
+                <p-dropdown  formControlName="setor_principal_id" [options]="setor_principal" placeholder="{{ orderService?.setor_principal_nome }}" [(ngModel)]="selectedSetor" (ngModelChange)="getAllSecundarios()" ></p-dropdown>
             </div>
 
             <div class="select card flex justify-content-center m-0">
                 <label for="float-label">Setor</label>
-                <p-dropdown  [options]="setor_secundario"></p-dropdown>
+                <p-dropdown  formControlName="setor_secundario_id" [options]="setor_secundario"></p-dropdown>
             </div>
 
             <div class="select card flex justify-content-center m-0">
                 <label for="float-label">Categoria</label>
-                <p-dropdown  [options]="tipo_servico" placeholder="{{ !!orderService?.tipo_servico_nome || 'Categoria do Serviço' }}"></p-dropdown>
+                <p-dropdown formControlName="tipo_servico_id" [options]="tipo_servico" placeholder="{{ !!orderService?.tipo_servico_nome || 'Categoria do Serviço' }}"></p-dropdown>
             </div>
 
             <div class="select card flex justify-content-center m-0">
                 <label for="float-label">Prioridade</label>
-                <p-dropdown  [options]="nivel_prioridade" placeholder="Nível de prioridade"></p-dropdown>
+                <p-dropdown formControlName="nivel_prioridade" [options]="nivel_prioridade" placeholder="Nível de prioridade"></p-dropdown>
             </div>
 
             <div class="select card flex justify-content-center m-0">
                 <label for="float-label">Responsável</label>
-                <p-dropdown  [options]="tecnico" placeholder="Técnico responsável"></p-dropdown>
+                <p-dropdown formControlName="tecnico_id"  [options]="tecnico" placeholder="Técnico responsável"></p-dropdown>
             </div>
-        </div>
-        
-        <div class="fields">
+            
+        </form>
+        <div class="fields" *ngIf="orderService">
             <div class="fieldDescription">
                 <div class="item-title">
                     <i class='bx bx-file'></i>
                     <label>Descrição</label>
                 </div>
-                <textarea class="textDescription" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado">{{ orderService?.descricao }}</textarea>
+                <textarea class="textDescription" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado"  [(ngModel)]="orderService.descricao"></textarea>
             </div>
         </div>
+        
        
     
         <div class="card flex justify-content-center btn-submit">
-            <button pButton pRipple label="Submit" class="p-button-success btn"></button>
+            <button pButton pRipple label="Aprovar" class="p-button-success btn" (click)="getFormValues()"></button>
+            <button pButton pRipple label="Declinar" class="p-button-danger btn" (click)="openModal()"></button>
         </div>
+        <!-- <div class="card flex justify-content-center btn-submit">
+        </div> -->
     </div>
 </ng-container>
+
+<p-dialog header="Header" [(visible)]="displayModal" [breakpoints]="{ '960px': '65vw' }" [style]="{ width: '30vw'} "  [draggable]="false" [resizable]="false">
+    <ng-template pTemplate="header">
+        <span class=" header">Deseja declinar esta ordem de serviço?</span>
+    </ng-template>
+    <div class="card flex justify-content-center btn-decline">
+        <button pButton pRipple label="Voltar" class="p-button-success btn" (click)="openModal()"></button>
+        <button pButton pRipple label="Declinar" class="p-button-danger btn" (click)="openModal()"></button>
+    </div>
+</p-dialog>

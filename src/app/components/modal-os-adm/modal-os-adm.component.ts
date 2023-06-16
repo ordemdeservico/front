@@ -1,11 +1,11 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from "@angular/core";
+import { Component, Input, OnInit, } from "@angular/core";
+import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { DynamicDialogRef } from "primeng/dynamicdialog";
 import { ListCardsService } from "../list-cards/list-cards.service";
 import { OrderService } from "src/app/shared/models/order-service.model";
-import { SetorSecundario } from "src/app/shared/models/setor_secundario.model";
 import { Observable, lastValueFrom, map } from "rxjs";
 
-interface DropdownOptions{
+interface DropdownOptions {
   label: string;
   value: number;
 }
@@ -18,6 +18,7 @@ interface DropdownOptions{
 export class ModalOsAdmComponent implements OnInit {
 
   @Input() orderService?: OrderService;
+  @Input() displayModal?: boolean;
 
   feedback: string[] = [];
   setor_principal: {label: string; value: number}[] = [];
@@ -26,19 +27,73 @@ export class ModalOsAdmComponent implements OnInit {
   tipo_servico: DropdownOptions[] = [];
   nivel_prioridade: string[] = [];
   selectedSetor?: number;
+  formGroup: FormGroup;
+  formValues: any[] =[];
+  textValue: any;
 
   constructor(
+    private formBuilder: FormBuilder,
     private ref: DynamicDialogRef,
     private listCardsService: ListCardsService
-  ) { }
+  ) {
+      this.formGroup = this.formBuilder.group({
+        setor_principal_id: ['', Validators.required],
+        setor_secundario_id: ['', Validators.required],
+        tipo_servico_id: ['', Validators.required],
+        nivel_prioridade: ['', Validators.required],
+        tecnico_id: ['', Validators.required],
+      });
+   }
 
   closeModal(): void {
     this.ref.close();
   }
 
+  openModal(): void {
+    this.displayModal = !this.displayModal;
+  }
 
+  getFormValues() {
+    this.formValues = this.formGroup.value;
+    console.log(this.formValues);
+    console.log(Object.keys(this.formGroup.controls));
+  
+    const nomesItens = Object.keys(this.formGroup.controls);
+  
+    const parametros: any = {};
+  
+    for (const nomeItem of nomesItens) {
+      const valor = this.formGroup.controls[nomeItem].value;
+      parametros[nomeItem] = valor ;
+    }
+  
+    
+    parametros['ordem_servico_id'] = this.orderService!.id;
+  
+    const value: any = {
+      ...parametros
+    };
+  
+    this.listCardsService.aprovarOs(value).subscribe(
+      (res) => {
+        console.log(res);
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
+
+    this.listCardsService.getOsByFilter([]).subscribe(
+      (res) => {
+        console.log('teste', res)
+        this.orderService = res.result;
+      }
+    );
+  }
+  
 
   async ngOnInit() {
+
 
     this.tecnico = await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllTec()));
     this.setor_principal= await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllSetoresPrincipais()));
@@ -48,6 +103,10 @@ export class ModalOsAdmComponent implements OnInit {
     const {setor_principal_id} = this.orderService!
     if (setor_principal_id) {
       this.selectedSetor = setor_principal_id;
+    }
+    const {descricao} = this.orderService!
+    if (descricao) {
+      this.textValue = descricao;
     }
 
     this.getAllSecundarios();

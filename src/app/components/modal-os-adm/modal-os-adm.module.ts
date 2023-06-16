@@ -7,7 +7,8 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
 
@@ -20,7 +21,9 @@ import { FormsModule } from '@angular/forms';
     InputTextareaModule,
     DropdownModule,
     ButtonModule,
-    FormsModule
+    FormsModule,
+    DialogModule,
+    ReactiveFormsModule
   ],
   exports: [
     ModalOsAdmComponent
