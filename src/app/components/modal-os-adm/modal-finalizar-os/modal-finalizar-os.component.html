@@ -1,0 +1,104 @@
+<ng-container *ngIf="orderService?.status_os  !== 'Solicitada'">
+    <div class="card flex justify-content-center">
+        <div class="itens" >
+            <div class="column">
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-user'></i>
+                        <label>Nome</label>
+                    </div>
+                    <p>{{ orderService?.solicitante_nome }}</p>
+                </div>
+    
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-envelope'></i>
+                        <label>E-mail</label>
+                    </div>
+                    <p>{{ orderService?.solicitante_email }}</p>
+                </div>
+    
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-briefcase-alt'></i>
+                        <label>Instituição</label>
+                    </div>
+                    <p>{{ orderService?.setor_principal_nome }}</p>
+                </div>
+            </div>
+    
+            <div class="column">
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-map'></i>
+                        <label>Setor</label>
+                    </div>
+                    <p>{{ orderService?.setor_secundario_com_bloco}}</p>
+                </div>
+    
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-wrench'></i>
+                        <label>Categoria</label>
+                    </div>
+                    <p>{{ orderService?.tipo_servico_nome }}</p>
+                </div>
+    
+                <div class="item">
+                    <div class="item-title">
+                        <i class='bx bx-calendar-week'></i>
+                        <label>Data</label>
+                    </div>
+                    <p>{{ orderService?.data_solicitacao | date:'dd/MM/yyyy' }}</p>
+                </div>
+            </div>
+        </div>
+    
+        <div class="fields">
+            <div class="field">
+                <div class="item-title">
+                    <i class='bx bx-file'></i>
+                    <label>Descrição</label>
+                </div>
+                <p>{{ orderService?.descricao }}</p>
+            </div>
+    
+            <div class="field">
+                <div class="item-title">
+                    <i class='bx bx-user'></i>
+                    <label>Técnico Responsável</label>
+                </div>
+                <p>{{ orderService?.tecnico_nome }}</p>
+            </div>
+    
+            <div class="field">
+                <div class="item-title">
+                    <i class='bx bx-cart'></i>
+                    <label>Relatório</label>
+                </div>
+                <textarea rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado">{{ orderService?.relatorio }}</textarea>
+            </div>
+    
+            <div class="field">
+                <div class="item-title">
+                    <i class='bx bx-clipboard' ></i>
+                    <label>Materiais</label>
+                </div>
+                <textarea rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Material utilizado na OS">{{ orderService?.material }}</textarea>
+            </div>
+    
+            <div class="select card flex justify-content-center m-0">
+                <span class="p-float-label">
+                    <p-dropdown [options]="feedback" placeholder="Selecione uma feedback" inputId="float-label"></p-dropdown>
+                    <label for="float-label">Feedback</label>
+                </span>
+            </div>
+    
+        </div>
+            
+    
+        <div class="card flex justify-content-center btn-submit">
+            <!-- <button pButton pRipple label="Submit" class="p-button-success btn" (click)="submitForm()"></button> -->
+        </div>
+    </div>
+</ng-container>

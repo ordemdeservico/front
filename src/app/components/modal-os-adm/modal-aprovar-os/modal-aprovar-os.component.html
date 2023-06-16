@@ -1,0 +1,78 @@
+
+<div class="card flex justify-content-center">
+    <div class="itens" >
+        <div class="column-info">
+            <div class="item">
+                <div class="item-title">
+                    <i class='bx bx-user'></i>
+                    <label>Nome</label>
+                </div>
+                <p>{{ orderService?.solicitante_nome }}</p>
+            </div>
+
+            <div class="item">
+                <div class="item-title">
+                    <i class='bx bx-envelope'></i>
+                    <label>E-mail</label>
+                </div>
+                <p>{{ orderService?.solicitante_email }}</p>
+            </div>
+
+            <div class="item">
+                <div class="item-title">
+                    <i class='bx bx-calendar-week'></i>
+                    <label>Data</label>
+                </div>
+                <p>{{ orderService?.data_solicitacao | date:'dd/MM/yyyy' }}</p>
+            </div>
+        </div>
+    </div>
+
+    <form class="dropdown" [formGroup]="formGroup">
+        <div class="select card flex justify-content-center m-0">
+            <label for="float-label">Instituição</label>
+            <p-dropdown  formControlName="setor_principal_id" [options]="setor_principal" placeholder="{{ orderService?.setor_principal_nome }}" [(ngModel)]="selectedSetor" (ngModelChange)="getAllSecundarios()" ></p-dropdown>
+        </div>
+
+        <div class="select card flex justify-content-center m-0">
+            <label for="float-label">Setor</label>
+            <p-dropdown  formControlName="setor_secundario_id" [options]="setor_secundario"></p-dropdown>
+        </div>
+
+        <div class="select card flex justify-content-center m-0">
+            <label for="float-label">Categoria</label>
+            <p-dropdown formControlName="tipo_servico_id" [options]="tipo_servico" placeholder="{{ !!orderService?.tipo_servico_nome || 'Categoria do Serviço' }}"></p-dropdown>
+        </div>
+
+        <div class="select card flex justify-content-center m-0">
+            <label for="float-label">Prioridade</label>
+            <p-dropdown formControlName="nivel_prioridade" [options]="nivel_prioridade" placeholder="Nível de prioridade"></p-dropdown>
+        </div>
+
+        <div class="select card flex justify-content-center m-0">
+            <label for="float-label">Responsável</label>
+            <p-dropdown formControlName="tecnico_id"  [options]="tecnico" placeholder="Técnico responsável"></p-dropdown>
+        </div>
+        
+    </form>
+    <div class="fields" *ngIf="orderService">
+        <div class="fieldDescription">
+            <div class="item-title">
+                <i class='bx bx-file'></i>
+                <label>Descrição</label>
+            </div>
+            <textarea class="textDescription" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado"  [(ngModel)]="orderService.descricao"></textarea>
+        </div>
+    </div>
+    
+    
+
+    <div class="card flex justify-content-center btn-submit">
+        <button pButton pRipple label="Aprovar" class="p-button-success btn" (click)="getFormValues()"></button>
+        <button pButton pRipple label="Declinar" class="p-button-danger btn" (click)="openModalDecline()"></button>
+    </div>
+    <!-- <div class="card flex justify-content-center btn-submit">
+    </div> -->
+</div>
+
+
