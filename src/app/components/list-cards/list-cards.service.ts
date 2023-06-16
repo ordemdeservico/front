@@ -79,6 +79,13 @@ aprovarOs(params: any): Observable<any> {
 }
 
 
+  declinarOs(params: number): Observable<any> {
+    let httpParams = new HttpParams().set("ordem_servico_id", params)
+    console.log(params);
+    return this.http.delete(`${API}/ordem-servico/rejeitar`, { params: httpParams })
+  }
+
+
   setSelectedOrderService(orderService: OrderService): void {
     this.selectedOrderService = orderService;
   }
