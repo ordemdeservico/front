@@ -8,7 +8,7 @@ export interface OrderService {
   status_os: string
   nivel_prioridade?: string
   servico_terceirizado?: number
-  tipo_servico_id: number
+  tipo_servico_id?: number
   tecnico_id?: number
   data_inicial?: string
   hora_inicial?: string
