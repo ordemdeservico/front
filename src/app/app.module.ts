@@ -8,6 +8,7 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AuthInterceptor } from './auth.interceptor';
+import { ModalDeclinarOsComponent } from './components/modal-os-adm/modal-declinar-os/modal-declinar-os.component';
 
 
 
