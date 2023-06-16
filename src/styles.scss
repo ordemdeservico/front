@@ -4,24 +4,24 @@
 
 
 
-.modal-border {
-  box-shadow: #4EA926;
-  --mdc-dialog-container-shape: 16px;
-}
+// .modal-border {
+//   box-shadow: #4EA926;
+//   --mdc-dialog-container-shape: 16px;
+// }
 
-.mdc-text-field--filled:not(.mdc-text-field--disabled) {
-  background-color: #D9D9D9;
-}
+// .mdc-text-field--filled:not(.mdc-text-field--disabled) {
+//   background-color: #D9D9D9;
+// }
 
 
 
-.mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
-  border: none !important;
-}
+// .mdc-text-field--filled:not(.mdc-text-field--disabled) .mdc-line-ripple::before {
+//   border: none !important;
+// }
 
-.mdc-text-field--filled .mdc-line-ripple::after {
-  border: none !important;
-}
+// .mdc-text-field--filled .mdc-line-ripple::after {
+//   border: none !important;
+// }
 
 * { 
     margin: 0;
