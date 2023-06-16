@@ -13,10 +13,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
-import { UserDetailsModule } from 'src/app/components/user-details/user-details.module';
 import { ModalAddUserModule } from 'src/app/components/modal-add-user/modal-add-user.module';
-
-
 
 
 

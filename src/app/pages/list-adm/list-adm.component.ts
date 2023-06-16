@@ -4,7 +4,6 @@ import { ListAdm } from './list-adm';
 import { ListAdmService } from './list-adm.service';
 import { MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { UserDetailsComponent } from 'src/app/components/user-details/user-details.component';
 import { DatePipe } from '@angular/common';
 import { ModalAddUserComponent } from 'src/app/components/modal-add-user/modal-add-user.component';
 
@@ -40,18 +39,7 @@ export class ListAdmComponent implements OnInit {
     })
   }
   
-  show(user: ListAdm): void {
-    this.ref = this.dialogService.open(UserDetailsComponent, {
-      header: user.nome,
-      width: '70%',
-      contentStyle: { overflow: 'auto' },
-      baseZIndex: 10000,
-      maximizable: true,
-      data: {
-        selectedUser: user
-      }
-    });
-  }
+
 
   loadUserList(): void {
     this.ListAdmService.listUsers().subscribe(
