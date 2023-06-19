@@ -3,8 +3,6 @@
 </div>
 
 <div class="container">
-
-
     <div class="card">
         <p-table
             #dt1
@@ -56,11 +54,12 @@
                     <td> {{ user.email }} </td>
                     <td> {{ user.cargo }} </td>
                     <td> {{ user.terceirizado === 1 ? 'Sim' : 'Não' }} </td>
-                    <td> {{ user.data_insercao | date:'dd/MM/yyyy' }} </td>
-                    <!-- <td>
-                        <button pButton pRipple icon="pi pi-pencil" class="p-button-outlined p-button-success" style="height: 4px; width: 24px; padding: 12px;"></button>
-                        <button pButton pRipple icon="pi pi-trash" class="p-button-outlined p-button-danger" style="height: 4px; width: 24px; padding: 12px;"></button>
-                    </td> -->
+                    <td> {{ user.data_insercao ? (user.data_insercao | date:'dd/MM/yyyy') : '16/06/2023' }} </td>
+                    <td>
+                        <!-- <p-toast></p-toast> -->
+                        <p-speedDial [model]="items" direction="up" showIcon="pi pi-ellipsis-v" hideIcon="pi pi-times" buttonClassName="p-button-secondary p-button-text"></p-speedDial>
+                    </td>
+                    <!-- <td><p-button icon="pi pi-ellipsis-v" styleClass="p-button-secondary p-button-text" (click)="toggleOverlayPanel($event)"></p-button></td> -->
                 </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">
@@ -71,3 +70,9 @@
         </p-table>
     </div>
 </div>
+
+
+<p-overlayPanel #op>
+    <p-button icon="pi pi-pencil" styleClass="p-button-secondary p-button-text"></p-button>
+    <p-button icon="pi pi-trash" styleClass="p-button-secondary p-button-text"></p-button>
+</p-overlayPanel>

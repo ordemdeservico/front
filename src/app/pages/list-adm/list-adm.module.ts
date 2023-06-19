@@ -14,8 +14,8 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
 import { ModalAddUserModule } from 'src/app/components/modal-add-user/modal-add-user.module';
-
-
+import { OverlayPanelModule } from 'primeng/overlaypanel';
+import { SpeedDialModule } from 'primeng/speeddial';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,9 @@ import { ModalAddUserModule } from 'src/app/components/modal-add-user/modal-add-
     ListAdmRoutingModule,
     MenuModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    OverlayPanelModule,
+    SpeedDialModule
   ],
   exports: [
     ListAdmComponent
