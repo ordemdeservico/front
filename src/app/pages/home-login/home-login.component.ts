@@ -33,10 +33,6 @@ export class HomeLoginComponent implements OnInit {
     });
   }
 
-  showError() {
-    this.messageService.add({ severity: 'error', summary: 'Error', detail: 'Message Content' });
-  }
-
   submitLogin() {
     if (this.formGroup.valid) {
       const formValues = this.formGroup.value;
