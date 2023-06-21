@@ -65,18 +65,18 @@ export class ListCardsService {
     return this.http.get(`${API}/setor-secundario/`);
   }
 
-aprovarOs(params: any): Observable<any> {
-  let httpParams = new HttpParams();
-  
-  for (const key in params) {
-    if (params.hasOwnProperty(key)) {
-      httpParams = httpParams.append(key, params[key]);
+  aprovarOs(params: any): Observable<any> {
+    let httpParams = new HttpParams();
+    
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        httpParams = httpParams.append(key, params[key]);
+      }
     }
-  }
   
-  console.log(httpParams);
-  return this.http.patch<any>(`${API}/ordem-servico/aprovar`, httpParams);
-}
+    console.log(httpParams);
+    return this.http.patch<any>(`${API}/ordem-servico/aprovar`, httpParams);
+  }
 
 
   declinarOs(params: number): Observable<any> {
@@ -85,6 +85,14 @@ aprovarOs(params: any): Observable<any> {
     return this.http.delete(`${API}/ordem-servico/rejeitar`, { params: httpParams })
   }
 
+  finalizarOs(id: number, feedback: string): Observable<any> {
+    let params = new HttpParams();
+
+    params = params.set("ordem_servico_id", id);
+    params = params.set("feedback", feedback);
+    console.log('Finalizar OS: ', params);
+    return this.http.patch(`${API}/ordem-servico/finalizar`, params);
+  }
 
   setSelectedOrderService(orderService: OrderService): void {
     this.selectedOrderService = orderService;
