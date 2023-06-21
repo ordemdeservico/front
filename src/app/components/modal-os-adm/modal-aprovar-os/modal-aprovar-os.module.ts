@@ -8,6 +8,8 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 
 
@@ -27,7 +29,9 @@ import { DialogModule } from 'primeng/dialog';
         ButtonModule,
         FormsModule,
         DialogModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        ToastModule,
+        ConfirmDialogModule
     ]
 })
 export class ModalAprovarOsModule { }

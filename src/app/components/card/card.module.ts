@@ -4,7 +4,6 @@ import CardComponent from './card.component';
 import { DialogModule } from 'primeng/dialog';
 import { ModalAprovarOsModule } from '../modal-os-adm/modal-aprovar-os/modal-aprovar-os.module';
 import { ModalFinalizarOsModule } from "../modal-os-adm/modal-finalizar-os/modal-finalizar-os.module";
-import { ModalDeclinarOsModule } from '../modal-os-adm/modal-declinar-os/modal-declinar-os.module';
 
 
 @NgModule({
@@ -19,7 +18,7 @@ import { ModalDeclinarOsModule } from '../modal-os-adm/modal-declinar-os/modal-d
         DialogModule,
         ModalAprovarOsModule,
         ModalFinalizarOsModule,
-        ModalDeclinarOsModule
+ 
     ]
 })
 export class CardModule { }
