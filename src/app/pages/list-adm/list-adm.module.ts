@@ -16,6 +16,10 @@ import { ToastModule } from 'primeng/toast';
 import { ModalAddUserModule } from 'src/app/components/modal-add-user/modal-add-user.module';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { SpeedDialModule } from 'primeng/speeddial';
+import { ModalEditUserModule } from 'src/app/components/modal-edit-user/modal-edit-user.module';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+
+
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { SpeedDialModule } from 'primeng/speeddial';
     ReactiveFormsModule,
     HttpClientModule,
     OverlayPanelModule,
-    SpeedDialModule
+    SpeedDialModule,
+    ModalEditUserModule,
+    ConfirmDialogModule,
   ],
   exports: [
     ListAdmComponent

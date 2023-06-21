@@ -53,9 +53,21 @@
             <label for="float-label">Responsável</label>
             <p-dropdown formControlName="tecnico_id"  [options]="tecnico" placeholder="Técnico responsável"></p-dropdown>
         </div>
+
+        <div class="fields" *ngIf="orderService">
+            <div class="fieldDescription">
+                <div class="item-title">
+                    <i class='bx bx-file'></i>
+                    <label>Descrição</label>
+                </div>
+                <textarea formControlName="descricao" class="textDescription" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado" [(ngModel)]="orderService.descricao"></textarea>
+            </div>
+        </div>
+
+
         
     </form>
-    <div class="fields" *ngIf="orderService">
+    <!-- <div class="fields" *ngIf="orderService">
         <div class="fieldDescription">
             <div class="item-title">
                 <i class='bx bx-file'></i>
@@ -63,7 +75,7 @@
             </div>
             <textarea class="textDescription" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado"  [(ngModel)]="orderService.descricao"></textarea>
         </div>
-    </div>
+    </div> -->
     
     
 

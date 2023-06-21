@@ -6,16 +6,17 @@ import { Observable, lastValueFrom, map } from 'rxjs';
 import { DynamicDialogRef } from "primeng/dynamicdialog";
 import { ModalEvent } from 'src/app/shared/models/modalEvent.model';
 
+
 interface DropdownOptions {
   label: string;
   value: number;
 }
 
-
 @Component({
   selector: 'app-modal-aprovar-os',
   templateUrl: './modal-aprovar-os.component.html',
   styleUrls: ['./modal-aprovar-os.component.scss'],
+
 })
 
 export class ModalAprovarOsComponent implements OnInit {
@@ -38,7 +39,8 @@ export class ModalAprovarOsComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private ref: DynamicDialogRef,
-    private listCardsService: ListCardsService
+    private listCardsService: ListCardsService,
+
   ) {
     this.formGroup = this.formBuilder.group({
       setor_principal_id: ['', Validators.required],
@@ -46,6 +48,7 @@ export class ModalAprovarOsComponent implements OnInit {
       tipo_servico_id: ['', Validators.required],
       nivel_prioridade: ['', Validators.required],
       tecnico_id: ['', Validators.required],
+      descricao: [this.orderService?.descricao, Validators.required]
     });
   }
 
@@ -57,6 +60,7 @@ export class ModalAprovarOsComponent implements OnInit {
     };
     this.displayModalEvent.emit(modalEvent);
   }
+
 
 
   getFormValues() {

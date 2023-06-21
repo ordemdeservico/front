@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { TokenService } from 'src/app/shared/token.service';
 import { environment } from 'src/environments/environment';
-import { ListAdm } from './list-adm';
+
 
 const API = environment.API;
 
@@ -12,13 +11,41 @@ const API = environment.API;
 })
 export class ListAdmService {
 
-  constructor(private tokenService : TokenService, private http: HttpClient) { }
-
-  private readonly API = `${API}/user`;
+  constructor(private http: HttpClient) { }
 
   listUsers(): Observable<any> {
-    return this.http.get<any>(this.API);
+    return this.http.get<any>(`${API}/user`);
   }
+
+  getUserById(id: number): Observable<any> {
+    let params = new HttpParams().set('id', id);
+
+    return this.http.get(`${API}/user/${id}`, { params: params })
+  }
+
+  deleteUserById(id: number): Observable<any> {
+    let params = new HttpParams().set('id', id);
+
+    return this.http.delete(`${API}/user/${id}`, { params: params })
+  }
+
+  updateUser(params: any, id: number): Observable<any> {
+    let httpParams = new HttpParams();
+  
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        httpParams = httpParams.append(key, params[key]);
+      }
+    }
+      
+  console.log(httpParams);
+  return this.http.patch<any>(`${API}/user/${id}`, httpParams);
+  }
+
+  getAllCategories(): Observable<any> {
+    return this.http.get<any>(`${API}/tipo-servico/`);
+  }
+
 
   
 }

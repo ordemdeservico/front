@@ -4,6 +4,7 @@
 
 <div class="container">
     <div class="card">
+        <p-toast></p-toast>
         <p-table
             #dt1
             [value]="userList"
@@ -26,7 +27,6 @@
                     <div class="new-user">
                         <p-button (click)="openModal()" label="Novo" icon="pi pi-user-plus" iconPos="right" styleClass="p-button-success"></p-button>
                     </div>
-                
             </ng-template>
             <ng-template pTemplate="header">
                 <tr>
@@ -53,13 +53,12 @@
                     <td> {{ user.nome }} </td>
                     <td> {{ user.email }} </td>
                     <td> {{ user.cargo }} </td>
-                    <td> {{ user.terceirizado === 1 ? 'Sim' : 'Não' }} </td>
+                    <td> {{ user.terceirizado }} </td>
                     <td> {{ user.data_insercao ? (user.data_insercao | date:'dd/MM/yyyy') : '16/06/2023' }} </td>
                     <td>
-                        <!-- <p-toast></p-toast> -->
-                        <p-speedDial [model]="items" direction="up" showIcon="pi pi-ellipsis-v" hideIcon="pi pi-times" buttonClassName="p-button-secondary p-button-text"></p-speedDial>
+                        <p-button icon="pi pi-ellipsis-v" styleClass="p-button-rounded p-button-secondary p-button-text" (click)="editUser(user)"></p-button>
                     </td>
-                    <!-- <td><p-button icon="pi pi-ellipsis-v" styleClass="p-button-secondary p-button-text" (click)="toggleOverlayPanel($event)"></p-button></td> -->
+                    
                 </tr>
             </ng-template>
             <ng-template pTemplate="emptymessage">
@@ -72,7 +71,12 @@
 </div>
 
 
-<p-overlayPanel #op>
-    <p-button icon="pi pi-pencil" styleClass="p-button-secondary p-button-text"></p-button>
-    <p-button icon="pi pi-trash" styleClass="p-button-secondary p-button-text"></p-button>
-</p-overlayPanel>
+<p-dialog *ngIf="displayModalEdit" [(visible)]="displayModalEdit" [style]="{ width: '450px' }" header="Editar Usuário" [modal]="true" styleClass="p-fluid">
+    <app-modal-edit-user [userInfo]="selectedUser" (displayModalEvent)="attModalEdit($event)"></app-modal-edit-user>
+
+    <ng-template pTemplate="footer">
+        <!-- <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
+        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button> -->
+    </ng-template>
+</p-dialog>
+

@@ -1,0 +1,64 @@
+::ng-deep .p-dialog-title {
+    text-align: center !important;
+    width: 100%;
+  }
+
+::ng-deep .p-dialog .p-dialog-header .p-dialog-header-icon:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+}
+
+::ng-deep .p-dialog .p-dialog-content {
+    display: flex;
+    justify-content: center !important;
+    align-items: center !important;
+}
+
+.invalid-field {
+    border-color: red !important;
+}
+
+::ng-deep .invalid-field .p-dropdown {
+    border-color: red !important;
+  }
+
+::ng-deep .p-dropdown {
+    display: flex !important;
+    max-width: 240px;
+    width: 240px;
+}
+
+.validation-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.forms {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 24px;
+}
+
+.btn-submit {
+    width: 100%;
+    transition: all 0.5s ease;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+
+.btn:hover {
+    background-color: var(--color-3);
+    font-weight: 700;
+}
+
+::ng-deep .p-fluid .p-button {
+    width: auto;
+}
