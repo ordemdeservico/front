@@ -74,14 +74,12 @@ export class ListCardsService {
       }
     }
   
-    console.log(httpParams);
     return this.http.patch<any>(`${API}/ordem-servico/aprovar`, httpParams);
   }
 
 
   declinarOs(params: number): Observable<any> {
     let httpParams = new HttpParams().set("ordem_servico_id", params)
-    console.log(params);
     return this.http.delete(`${API}/ordem-servico/rejeitar`, { params: httpParams })
   }
 
@@ -90,7 +88,6 @@ export class ListCardsService {
 
     params = params.set("ordem_servico_id", id);
     params = params.set("feedback", feedback);
-    console.log('Finalizar OS: ', params);
     return this.http.patch(`${API}/ordem-servico/finalizar`, params);
   }
 
