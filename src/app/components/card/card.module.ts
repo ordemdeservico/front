@@ -8,17 +8,17 @@ import { ModalFinalizarOsModule } from "../modal-os-adm/modal-finalizar-os/modal
 
 @NgModule({
     declarations: [
-        CardComponent
-    ],
-    exports: [
-        CardComponent
+      CardComponent
     ],
     imports: [
-        CommonModule,
-        DialogModule,
-        ModalAprovarOsModule,
-        ModalFinalizarOsModule,
- 
+      CommonModule,
+      DialogModule,
+      ModalAprovarOsModule,
+      ModalFinalizarOsModule,
+  
+    ],
+    exports: [
+      CardComponent
     ]
-})
+  })
 export class CardModule { }
