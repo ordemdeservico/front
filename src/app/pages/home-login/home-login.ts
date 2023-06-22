@@ -11,3 +11,10 @@ export interface LoginResponse {
     nome: string;
     cargo?: string;
 }
+
+export interface UserInfo {
+    nome: string;
+    email: string;
+    cargo: string;
+    id_usuario: number;
+}

@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HomeLogin, LoginResponse } from './home-login';
+import { HomeLogin, LoginResponse, UserInfo } from './home-login';
 import { TokenService } from 'src/app/shared/token.service';
 import { Observable, catchError, map, throwError } from 'rxjs';
 
@@ -21,14 +21,18 @@ export class HomeLoginService {
       return this.http.post<LoginResponse>(`${API}/user/login`, loginUser)
   }
 
+  infoUser():Observable<UserInfo> {
+    return this.http.get<UserInfo>(`${API}/user/identify`)
+  }
+
   userVerify(): Observable<string> {
-    // const headers = new HttpHeaders().set('Authorization', `Bearer ${this.tokenService.returnToken()}`);
     return this.http.get<any>(`${API}/user/identify`).pipe(
       map((response: any) => response.cargo),
       catchError((error) => {
         console.error(error);
         return throwError(error.message);
       })
+      
     );
   }
   // userVerify(): Observable<string> {
