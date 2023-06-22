@@ -9,9 +9,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DynamicDialogModule, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { AuthInterceptor } from './auth.interceptor';
 
+
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
     
   ],
   imports: [
