@@ -16,9 +16,6 @@ export class MenuService {
 
   constructor(private tokenService : TokenService, private http: HttpClient) { }
 
-  listAdm(): Observable<any> {
-    return this.http.get<any>(this.API);
-  }
 
   changePassword(senhaVelha: string, senhaNova: string): Observable<any> {
     const body = { senhaVelha, senhaNova };

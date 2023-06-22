@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Router } from "@angular/router";
-import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MenuService } from './menu.service';
-import { ButtonModule } from 'primeng/button';
 import { MessageService } from 'primeng/api';
 import { TokenService } from '../token.service';
 import { AuthService } from '../auth.service';
@@ -73,27 +72,39 @@ export class MenuComponent implements OnInit {
     }
 
     navigateToListAdm() {
-      this.menuService.listAdm().subscribe(
-        (response) => {
-          this.router.navigate(['/dashboard-adm/list-adm']);  
-        },
-        (error) => {
-          console.error('Erro na requisição para a API:', error);
-        }
-      );
+      this.router.navigate(['/list-adm']);  
     }
   
     
 
+
   ngOnInit() {
-    this.loginService.userVerify().subscribe(
-      (cargo: string) => {
-        this.isAdmin = cargo === 'Admin';
+    this.loginService.infoUser().subscribe(
+      (res) => {
+        if (res.cargo === 'Admin') {
+          this.isAdmin = true;
+        }
+        console.log('Resposta: ',res);
+        console.log('Resposta: ',res.id_usuario);
+        console.log('Resposta: ',res.nome);
+        console.log('Resposta: ',res.email);
+        console.log('Resposta: ',res.cargo);
+      
       },
-      (error) => {
-        console.error(error);
+      (err) => {
+        console.error(err);
       }
-    );
+    )
+
+    // this.loginService.userVerify().subscribe(
+    //   (cargo: string) => {
+    //     this.isAdmin = cargo === 'Admin';
+    //     console.log('teste', cargo);
+    //   },
+    //   (error) => {
+    //     console.error(error);
+    //   }
+    // );
     this.username = this.token.returnName() as string; 
     this.usermail = this.token.returnMail() as string;
   }
