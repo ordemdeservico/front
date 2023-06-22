@@ -46,7 +46,6 @@ export class ModalFinalizarOsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('oi',this.orderService)
 
   }
 
