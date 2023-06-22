@@ -1,0 +1,49 @@
+
+.container {
+    width: calc(100vw - 260px);
+    height: auto;
+    position: absolute;
+    right: 0;
+    padding-right: 64px;
+    padding-left: 64px;
+  
+    .buttons {
+      padding: 32px 0 0 48px;
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: calc(20vh);
+      gap: 32px;
+    }
+  
+    .cards {
+      width: 100%;
+      padding: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+  
+       app-list-cards {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 16px;
+        max-height: 100%;
+      }
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .container {
+      width: calc(100% - 160px);
+      padding: 8px;
+    }
+  
+    // .buttons {
+    //   gap: 0 !important;
+    // }
+  
+  }
+  
+  

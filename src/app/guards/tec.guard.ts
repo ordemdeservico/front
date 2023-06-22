@@ -26,18 +26,15 @@ export class TecGuard implements CanActivate {
       ]).pipe(
         switchMap(([isAuthenticated, cargo]) => {
           if (isAuthenticated && cargo === 'Tecnico') {
-            console.log('Teste-1')
             return of(true);
           } else {
             this.router.navigateByUrl('/home-login');
-            console.log('Teste-2')
             return of(false);
           }
         }),
         catchError((error) => {
           console.error(error);
           this.router.navigateByUrl('/home-login');
-          console.log('Teste-3')
           return of(false);
         })
       );

@@ -1,1 +1,16 @@
-<app-modal-os-tec></app-modal-os-tec>
+<div class="menu">
+    <app-menu></app-menu>
+</div>
+
+<div class="container">
+    <div class="buttons">
+        <div class="new-user">
+            <p-button label="Novo" icon="pi pi-user-plus" iconPos="right" styleClass="p-button-success" (click)="navigateToForm()"></p-button>
+        </div>
+
+    </div>
+    
+    <div class="cards">
+        <app-list-cards></app-list-cards>
+    </div>
+</div>

@@ -24,11 +24,7 @@ export class ListCardsComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.getUserInfo();
-    this.cardsService.getOsByFilter([]).subscribe(
-      (res) => {
-        this.serviceOrders = res.result;
-      }
-    );
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
@@ -40,13 +36,20 @@ export class ListCardsComponent implements OnInit, OnChanges {
   getUserInfo() {
     this.loginService.infoUser().subscribe(
       (res) => {
-      if (res.cargo == 'Tecnio') {
+      if (res.cargo == 'Tecnico') {
           this.getOsByTec(res.id_usuario);
         } else if (res.cargo == 'Solicitante') {
           this.getOsByUser(res.id_usuario);
         }
         this.role = res.cargo;
-        console.log('List Cards: ', res);
+        if (this.role == 'Admin') {
+          this.cardsService.getOsByFilter([]).subscribe(
+            (res) => {
+              this.serviceOrders = res.result;
+            }
+          );
+        }
+        
       },
       (err) => {
         console.error(err);

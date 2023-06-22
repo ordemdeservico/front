@@ -81,32 +81,17 @@ export class MenuComponent implements OnInit {
   ngOnInit() {
     this.loginService.infoUser().subscribe(
       (res) => {
+        this.username = res.nome
+        this.usermail = res.email
         if (res.cargo === 'Admin') {
           this.isAdmin = true;
         }
-        console.log('Resposta: ',res);
-        console.log('Resposta: ',res.id_usuario);
-        console.log('Resposta: ',res.nome);
-        console.log('Resposta: ',res.email);
-        console.log('Resposta: ',res.cargo);
       
       },
       (err) => {
         console.error(err);
       }
     )
-
-    // this.loginService.userVerify().subscribe(
-    //   (cargo: string) => {
-    //     this.isAdmin = cargo === 'Admin';
-    //     console.log('teste', cargo);
-    //   },
-    //   (error) => {
-    //     console.error(error);
-    //   }
-    // );
-    this.username = this.token.returnName() as string; 
-    this.usermail = this.token.returnMail() as string;
   }
   
 
