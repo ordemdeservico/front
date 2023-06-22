@@ -4,20 +4,19 @@
     .itens {
         width: auto;
         height: 100%;
-        padding: 16px;
         display: flex;
         justify-content: center;
         align-items: center;
         flex: 1;
         flex-wrap: wrap;
        
-
         .column {
             flex: 1;
             display: flex;
             flex-direction: column;
             justify-content: flex-start;
             align-items: flex-start;
+            padding-right: 0.3rem;
 
             .item {
                 width: auto;
@@ -42,7 +41,6 @@
     .fields {
         height: auto;
         width: auto;
-        padding: 16px;
         display: flex;
         align-items: center;
         flex-direction: column;
