@@ -37,5 +37,6 @@
     </ng-template>
     <app-modal-aprovar-os *ngIf="card?.status_os == 'Solicitada'" [orderService]="card" [displayModal]="displayModalSolicitada" (displayModalEvent)="attModalSolicitada($event)"></app-modal-aprovar-os>
     <app-modal-finalizar-os *ngIf="card?.status_os == 'Concluida' " [orderService]="card"></app-modal-finalizar-os>
+    <app-modal-concluir-os *ngIf="card?.status_os == 'Aprovada' " [orderService]="card"></app-modal-concluir-os>
 </p-dialog>
 
