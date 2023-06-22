@@ -44,6 +44,12 @@ const routes: Routes = [
     loadChildren: () =>
       import('./pages/list-adm/list-adm.module').then((m) => m.ListAdmModule),
   },
+  {
+    path: 'home-form',
+    canActivate: [TokenGuard, AdminGuard],
+    loadChildren: () =>
+      import('./pages/home-form/home-form.module').then((m) => m.HomeFormModule),
+  },
 
 ];
 
