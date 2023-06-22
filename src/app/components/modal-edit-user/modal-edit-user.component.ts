@@ -61,7 +61,7 @@ export class ModalEditUserComponent implements OnInit {
     this.formGroup = this.formBuilder.group({
       nome: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      senha: ['', Validators.required],
+      senha: [''],
       cargo: ['', Validators.required],
       categoria: ['', Validators.required],
       terceirizado: ['', Validators.required],
