@@ -1,28 +1,28 @@
-<div class="card" *ngIf="card">
+<div class="card" *ngIf="orderService">
     <div class="itens">
         <div class="item status">
             <i class='bx bx-alarm'></i>
-            <p>{{ card.nivel_prioridade }}</p>
+            <p>{{ orderService.nivel_prioridade }}</p>
         </div>
         <div class="item priority">
             <i class='bx bx-purchase-tag-alt'></i>
-            <p>{{ card.status_os }}</p>
+            <p>{{ orderService.status_os }}</p>
         </div>
         <div class="item institute">
             <i class='bx bx-briefcase-alt'></i>
-            <p>{{ card.setor_principal_nome }}</p>
+            <p>{{ orderService.setor_principal_nome }}</p>
         </div>
         <div class="item sector">
             <i class='bx bx-map'></i>
-            <p>{{ card.setor_secundario_com_bloco }}</p>
+            <p>{{ orderService.setor_secundario_com_bloco }}</p>
         </div>
         <div class="item category">
             <i class='bx bx-wrench'></i>
-            <p>{{ card.tipo_servico_nome }}</p>
+            <p>{{ orderService.tipo_servico_nome }}</p>
         </div>
     </div>
     <div class="id">
-        <p>ID: {{ card.id.toString().padStart(4, '0') }}</p>
+        <p>ID: {{ orderService.id.toString().padStart(4, '0') }}</p>
     </div>
 
     <div class="details">
@@ -31,12 +31,13 @@
 </div>
 
 
-<p-dialog header="Header" [(visible)]="displayModalSolicitada" [breakpoints]="{ '960px': '65vw' }" [style]="{ width: '30vw'}"  [draggable]="false" [resizable]="false">
+<p-dialog header="Header" [(visible)]="displayModal" [breakpoints]="{ '960px': '65vw' }" [style]="{ width: '30vw'}"  [draggable]="false" [resizable]="false">
     <ng-template pTemplate="header">
-        <span class="header">Ordem de Serviço: {{ card?.id }}</span>
+        <span class="header">Ordem de Serviço: {{ orderService?.id }}</span>
     </ng-template>
-    <app-modal-aprovar-os *ngIf="card?.status_os == 'Solicitada'" [orderService]="card" [displayModal]="displayModalSolicitada" (displayModalEvent)="attModalSolicitada($event)"></app-modal-aprovar-os>
-    <app-modal-finalizar-os *ngIf="card?.status_os == 'Concluida' " [orderService]="card"></app-modal-finalizar-os>
-    <app-modal-concluir-os *ngIf="card?.status_os == 'Aprovada' " [orderService]="card"></app-modal-concluir-os>
+    <app-modal-os-user *ngIf="role == 'Solicitante'" [orderService]="orderService"></app-modal-os-user>
+    <app-modal-aprovar-os *ngIf="orderService?.status_os == 'Solicitada' && role == 'Admin'" [orderService]="orderService" [displayModal]="displayModal" (displayModalEvent)="attModalSolicitada($event)"></app-modal-aprovar-os>
+    <app-modal-finalizar-os *ngIf="orderService?.status_os == 'Concluida' && role == 'Admin'" [orderService]="orderService"></app-modal-finalizar-os>
+    <app-modal-concluir-os *ngIf="orderService?.status_os == 'Aprovada' && role == 'Admin' || role == 'Tecnico'" [orderService]="orderService"></app-modal-concluir-os>
 </p-dialog>
 

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { ListCardsService } from './list-cards.service';
 import { OrderService } from 'src/app/shared/models/order-service.model';
+import { HomeLoginService } from 'src/app/pages/home-login/home-login.service';
 
 
 
@@ -13,14 +14,19 @@ export class ListCardsComponent implements OnInit, OnChanges {
 
   @Input() selectedFilterAdm: any;
 
-  orderServices: OrderService[] = [];
-  
-  constructor (private cardsService: ListCardsService) { }
+  serviceOrders: OrderService[] = [];
+  role: any;
+
+  constructor (
+    private cardsService: ListCardsService,
+    private loginService: HomeLoginService
+  ) { }
 
   ngOnInit(): void {
+    this.getUserInfo();
     this.cardsService.getOsByFilter([]).subscribe(
       (res) => {
-        this.orderServices = res.result;
+        this.serviceOrders = res.result;
       }
     );
   }
@@ -31,11 +37,52 @@ export class ListCardsComponent implements OnInit, OnChanges {
     }
   }
 
+  getUserInfo() {
+    this.loginService.infoUser().subscribe(
+      (res) => {
+      if (res.cargo == 'Tecnio') {
+          this.getOsByTec(res.id_usuario);
+        } else if (res.cargo == 'Solicitante') {
+          this.getOsByUser(res.id_usuario);
+        }
+        this.role = res.cargo;
+        console.log('List Cards: ', res);
+      },
+      (err) => {
+        console.error(err);
+      }
+    )
+  }
+
+  getOsByUser(id: any) {
+    this.cardsService.getOsByUser(id).subscribe(
+      (res) => {
+        console.log(res);
+        this.serviceOrders = res.result;
+      },
+      (err) => {
+        console.error(err);
+      }
+    )
+  }
+
+  getOsByTec(id: any) {
+    this.cardsService.getOsByTec(id).subscribe(
+      (res) => {
+        console.log(res);
+        this.serviceOrders = res.result;
+      },
+      (err) => {
+        console.error(err);
+      }
+    )
+  }
+
   getOsByFilters() { 
     const filters = this.selectedFilterAdm.map((filter: { data: any; }) => filter.data);
     this.cardsService.getOsByFilter(filters).subscribe(
       (res) => {
-        this.orderServices = res.result;
+        this.serviceOrders = res.result;
       },
       (err) => {
         console.error(err);

@@ -91,6 +91,20 @@ export class ListCardsService {
     return this.http.patch(`${API}/ordem-servico/finalizar`, params);
   }
 
+
+  getOsByUser(user: number): Observable<any> {
+    return this.http.get(`${API}/ordem-servico/solicitante/${user}` );
+  }
+
+  getOsByTec(user: number): Observable<any> {
+    return this.http.get(`${API}/ordem-servico/tecnico/${user}` );
+  }
+
+
+
+
+
+
   setSelectedOrderService(orderService: OrderService): void {
     this.selectedOrderService = orderService;
   }

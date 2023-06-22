@@ -3,7 +3,6 @@ import { OrderService } from 'src/app/shared/models/order-service.model';
 import { MessageService } from 'primeng/api';
 
 
-
 @Component({
   selector: 'app-card',
   templateUrl: './card.component.html',
@@ -12,18 +11,19 @@ import { MessageService } from 'primeng/api';
 })
 export default class CardComponent implements OnInit {
 
-  @Input() card?: OrderService;
-
-  displayModalSolicitada: boolean = false;
+  @Input() orderService?: OrderService;
+  @Input() role?: string;
+  
+  displayModal: boolean = false;
 
   constructor() { }
 
   openModal() {
-    this.displayModalSolicitada = !this.displayModalSolicitada;
+    this.displayModal = !this.displayModal;
   }
 
   attModalSolicitada(event: boolean) {
-    this.displayModalSolicitada = event;
+    this.displayModal = event;
     
   }
 

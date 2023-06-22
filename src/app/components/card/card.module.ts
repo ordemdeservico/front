@@ -6,7 +6,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ModalAprovarOsModule } from '../modal-os-adm/modal-aprovar-os/modal-aprovar-os.module';
 import { ModalFinalizarOsModule } from "../modal-os-adm/modal-finalizar-os/modal-finalizar-os.module";
 import { ModalConcluirOsModule } from '../modal-os-adm/modal-concluir-os/modal-concluir-os.module';
-
+import { ModalOsUserModule } from '../modal-os-user/modal-os-user.module';
 
 @NgModule({
     declarations: [
@@ -18,6 +18,7 @@ import { ModalConcluirOsModule } from '../modal-os-adm/modal-concluir-os/modal-c
       ModalAprovarOsModule,
       ModalFinalizarOsModule,
       ModalConcluirOsModule,
+      ModalOsUserModule
   
     ],
     exports: [
