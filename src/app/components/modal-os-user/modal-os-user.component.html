@@ -1,0 +1,27 @@
+<div class="itens" >
+    <div class="column-info">
+        <div class="item">
+            <div class="item-title">
+                <i class='bx bx-user'></i>
+                <label>Nome</label>
+            </div>
+            <p>{{ orderService?.solicitante_nome }}</p>
+        </div>
+
+        <div class="item">
+            <div class="item-title">
+                <i class='bx bx-envelope'></i>
+                <label>E-mail</label>
+            </div>
+            <p>{{ orderService?.solicitante_email }}</p>
+        </div>
+
+        <div class="item">
+            <div class="item-title">
+                <i class='bx bx-calendar-week'></i>
+                <label>Data</label>
+            </div>
+            <p>{{ orderService?.data_solicitacao | date:'dd/MM/yyyy' }}</p>
+        </div>
+    </div>
+</div>
