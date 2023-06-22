@@ -96,6 +96,12 @@
     height: 100%;
 }
 
+.profile-modal {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
 .infos {
     display: flex;
     flex-direction: column;

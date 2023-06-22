@@ -32,57 +32,58 @@
     <ng-template pTemplate="header">
         <span class="header">Meus Dados</span>
     </ng-template>
-    <div class="infos">
-
-        <div class="item">
-            <div class="item-title">
-                <i class='bx bx-user'></i>
-                <label>Nome</label>
+    <div class="profile-modal">
+        <div class="infos">
+            <div class="item">
+                <div class="item-title">
+                    <i class='bx bx-user'></i>
+                    <label>Nome</label>
+                </div>
+                <div class="item-info">
+                    <p>{{ username }}</p>
+                </div>
             </div>
-            <div class="item-info">
-                <p>{{ username }}</p>
+    
+            <div class="item">
+                <div class="item-title">
+                    <i class='bx bx-envelope'></i>
+                    <label>E-mail</label>
+                </div>
+                <div class="item-info">
+                    <p>{{ usermail }}</p>
+                </div>
             </div>
         </div>
-
-        <div class="item">
-            <div class="item-title">
-                <i class='bx bx-envelope'></i>
-                <label>E-mail</label>
-            </div>
-            <div class="item-info">
-                <p>{{ usermail }}</p>
-            </div>
+        <span class="line"></span>
+        <div class="password-box">
+            <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
+                <div class="card flex justify-content-center p-float-label">
+                    <p-password formControlName="oldPassword" [toggleMask]="true" [feedback]="false"></p-password>
+                    <label for="oldPassword">Senha Antiga</label>
+                    <small class="text-danger"
+                        *ngIf="passwordForm.get('oldPassword')?.invalid && (passwordForm.get('oldPassword')?.touched || passwordForm.get('oldPassword')?.dirty)">
+                        Campo obrigatório
+                    </small>
+                </div>
+                <div class="card flex justify-content-center p-float-label">
+                    <p-password formControlName="newPassword" [toggleMask]="true"></p-password>
+                    <label for="newPassword">Senha Nova</label>
+                    <small class="text-danger"
+                        *ngIf="passwordForm.get('newPassword')?.invalid && (passwordForm.get('newPassword')?.touched || passwordForm.get('newPassword')?.dirty)">
+                        Campo obrigatório
+                    </small>
+                    <small class="text-danger"
+                        *ngIf="passwordForm.get('newPassword')?.hasError('minlength') && (passwordForm.get('newPassword')?.touched || passwordForm.get('newPassword')?.dirty)">
+                        A senha deve ter pelo menos 3 caracteres
+                    </small>
+                </div>
+                <p-toast></p-toast>
+                <p-button label="Confirmar" styleClass="p-button-success btn" [disabled]="passwordForm.invalid" (click)="changePassword()"></p-button>
+            </form>
         </div>
+        <span class="line"></span>
+        <p-button label="Logout" styleClass="p-button-outlined p-button-danger btn" (click)="logout()"></p-button>
     </div>
-    <span class="line"></span>
-    <div class="password-box">
-        <form [formGroup]="passwordForm" (ngSubmit)="changePassword()">
-            <div class="card flex justify-content-center p-float-label">
-                <p-password formControlName="oldPassword" [toggleMask]="true" [feedback]="false"></p-password>
-                <label for="oldPassword">Senha Antiga</label>
-                <small class="text-danger"
-                    *ngIf="passwordForm.get('oldPassword')?.invalid && (passwordForm.get('oldPassword')?.touched || passwordForm.get('oldPassword')?.dirty)">
-                    Campo obrigatório
-                </small>
-            </div>
-            <div class="card flex justify-content-center p-float-label">
-                <p-password formControlName="newPassword" [toggleMask]="true"></p-password>
-                <label for="newPassword">Senha Nova</label>
-                <small class="text-danger"
-                    *ngIf="passwordForm.get('newPassword')?.invalid && (passwordForm.get('newPassword')?.touched || passwordForm.get('newPassword')?.dirty)">
-                    Campo obrigatório
-                </small>
-                <small class="text-danger"
-                    *ngIf="passwordForm.get('newPassword')?.hasError('minlength') && (passwordForm.get('newPassword')?.touched || passwordForm.get('newPassword')?.dirty)">
-                    A senha deve ter pelo menos 3 caracteres
-                </small>
-            </div>
-            <p-toast></p-toast>
-            <p-button label="Confirmar" styleClass="p-button-success btn" [disabled]="passwordForm.invalid" (click)="changePassword()"></p-button>
-        </form>
-    </div>
-    <span class="line"></span>
-    <p-button label="Logout" styleClass="p-button-outlined p-button-danger btn" (click)="logout()"></p-button>
 </p-dialog>
 
 
