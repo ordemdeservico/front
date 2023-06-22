@@ -7,18 +7,20 @@ import { ModalAprovarOsModule } from '../modal-os-adm/modal-aprovar-os/modal-apr
 import { ModalFinalizarOsModule } from "../modal-os-adm/modal-finalizar-os/modal-finalizar-os.module";
 import { ModalConcluirOsModule } from '../modal-os-adm/modal-concluir-os/modal-concluir-os.module';
 import { ModalOsUserModule } from '../modal-os-user/modal-os-user.module';
+import { ModalFinalizadaModule } from '../modal-finalizada/modal-finalizada.module';
 
 @NgModule({
     declarations: [
       CardComponent
     ],
     imports: [
-      CommonModule,
+    CommonModule,
       DialogModule,
       ModalAprovarOsModule,
       ModalFinalizarOsModule,
       ModalConcluirOsModule,
-      ModalOsUserModule
+      ModalOsUserModule,
+      ModalFinalizadaModule
   
     ],
     exports: [
