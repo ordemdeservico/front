@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { HomeLoginService } from '../home-login/home-login.service';
 import { OrderService } from 'src/app/shared/models/order-service.model';
 import { ListCardsService } from 'src/app/components/list-cards/list-cards.service';
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -17,7 +18,8 @@ export class DashboardAdmComponent {
   
   constructor(
     public loginService: HomeLoginService,
-    public cardsService: ListCardsService
+    public cardsService: ListCardsService,
+    private router: Router
   ) { 
     this.groupedFilters = [
       {
@@ -57,5 +59,8 @@ export class DashboardAdmComponent {
     
   }
 
+  navigateToForm(){
+    this.router.navigate(['/home-form'])
+  }
 
 }
