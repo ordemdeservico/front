@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeLoginComponent } from './home-login.component';
 import { TokenGuard } from '../../guards/token.guard';
 import { AdminGuard } from '../../guards/admin.guard';
+import { TecGuard } from '../../guards/tec.guard';
+import { UserGuard } from '../../guards/user.guard';
 
 const routes: Routes = [
   {
@@ -15,7 +17,7 @@ const routes: Routes = [
       import('../dashboard-tec/dashboard-tec.module').then(
         (m) => m.DashboardTecModule
       ),
-      canActivate: [TokenGuard]
+      canActivate: [TokenGuard, TecGuard]
   },
   {
     path: 'dashboard-adm',
@@ -31,7 +33,7 @@ const routes: Routes = [
       import('../dashboard-user/dashboard-user.module').then(
         (m) => m.DashboardUserModule
       ),
-      canActivate: [TokenGuard],
+      canActivate: [TokenGuard, UserGuard],
   },
 ];
 
