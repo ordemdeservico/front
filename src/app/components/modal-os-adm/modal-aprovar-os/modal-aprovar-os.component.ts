@@ -149,7 +149,7 @@ export class ModalAprovarOsComponent implements OnInit {
     this.nivel_prioridade = [
       'P1 - 1 dia',
       'P2 - 2 dias',
-      'P3 - 3 dias',
+      'P3 - 4 dias',
       'P4 - 7 dias',
       'P5 - 10 dias',
       'P6 - 15 dias',
