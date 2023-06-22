@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { ModalAddUserComponent } from "src/app/components/modal-add-user/modal-add-user.component";
+import { ModalAddUserComponent } from "src/app/components/modal-os-adm/modal-add-user/modal-add-user.component";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TableModule } from 'primeng/table';
 import { InputTextModule } from 'primeng/inputtext';
