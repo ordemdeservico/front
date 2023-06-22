@@ -13,10 +13,10 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ToastModule } from 'primeng/toast';
-import { ModalAddUserModule } from 'src/app/components/modal-add-user/modal-add-user.module';
+import { ModalAddUserModule } from 'src/app/components/modal-os-adm/modal-add-user/modal-add-user.module';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { SpeedDialModule } from 'primeng/speeddial';
-import { ModalEditUserModule } from 'src/app/components/modal-edit-user/modal-edit-user.module';
+import { ModalEditUserModule } from 'src/app/components/modal-os-adm/modal-edit-user/modal-edit-user.module';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 

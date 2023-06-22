@@ -4,7 +4,7 @@ import { ListAdmService } from './list-adm.service';
 import { MessageService, ConfirmationService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DatePipe } from '@angular/common';
-import { ModalAddUserComponent } from 'src/app/components/modal-add-user/modal-add-user.component';
+import { ModalAddUserComponent } from 'src/app/components/modal-os-adm/modal-add-user/modal-add-user.component';
 
 
 @Component({
