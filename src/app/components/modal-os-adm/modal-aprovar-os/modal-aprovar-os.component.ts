@@ -24,7 +24,7 @@ export class ModalAprovarOsComponent implements OnInit {
 
   @Input("orderService") orderService?: OrderService;
   @Input() displayModal?: boolean;
-  @Output() displayModalEvent = new EventEmitter();
+  @Output() attCards = new EventEmitter();
 
 
   setor_principal: { label: string; value: number }[] = [];
@@ -68,8 +68,7 @@ export class ModalAprovarOsComponent implements OnInit {
         this.messageService.add({ severity: 'success', summary: 'Sucesso!', detail: 'Usuário excluido.', life: 3000 });
         this.listCardsService.declinarOs(this.orderService!.id).subscribe(
           (res) => {
-            // this.listCardsService.getOsByFilter([]).subscribe(); Não atualiza as os
-            this.displayModalEvent.emit(false);
+            this.attCards.emit(true);
           },
           (err) => {
             console.error(err);
@@ -102,9 +101,7 @@ export class ModalAprovarOsComponent implements OnInit {
           (res) => {
             console.log(res);
             this.messageService.add({ severity: 'success', summary: 'Sucesso!', detail: 'Ordem de serviço aprovada.' });
-            this.displayModalEvent.emit(false);
-            // this.listCardsService.getOsByFilter([]).subscribe(); Não atualiza as os
-            
+            this.attCards.emit(true);
           },
           (err) => {
             console.error(err);
@@ -149,7 +146,7 @@ export class ModalAprovarOsComponent implements OnInit {
     this.nivel_prioridade = [
       'P1 - 1 dia',
       'P2 - 2 dias',
-      'P3 - 3 dias',
+      'P3 - 4 dias',
       'P4 - 7 dias',
       'P5 - 10 dias',
       'P6 - 15 dias',
