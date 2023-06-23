@@ -51,7 +51,7 @@
 
             <div class="card flex justify-content-center m-0">
                 <span class="p-float-label">
-                    <p-dropdown formControlName="categoria" [options]="categorys" placeholder="Selecione uma Categoria" inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched}"></p-dropdown>
+                    <p-dropdown formControlName="categoria" [options]="categories" optionLabel="nome" optionValue="id" placeholder="Selecione uma Categoria" inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched}"></p-dropdown>
                     <label for="float-label">Categoria</label>
                 </span>
                 <div *ngIf="formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched && !formGroup.controls['categoria'].value" class="validation-message">

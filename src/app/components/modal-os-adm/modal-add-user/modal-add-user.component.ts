@@ -5,6 +5,8 @@ import { DynamicDialogRef } from 'primeng/dynamicdialog';
 import { DatePipe } from '@angular/common';
 import { ListAdm } from 'src/app/pages/list-adm/list-adm';
 import { ListAdmComponent } from 'src/app/pages/list-adm/list-adm.component';
+import { lastValueFrom } from 'rxjs';
+import { ListAdmService } from "src/app/pages/list-adm/list-adm.service";
 
 
 @Component({
@@ -16,7 +18,7 @@ import { ListAdmComponent } from 'src/app/pages/list-adm/list-adm.component';
 export class ModalAddUserComponent implements OnInit {
 
   submitted = false;
-  categorys: string[] = [];
+  categories: {id: number, nome: string}[] = []
   outsourced: string[] = [];
   office: string[] = [];
   formGroup: FormGroup;
@@ -30,7 +32,8 @@ export class ModalAddUserComponent implements OnInit {
     private service: ModalAddUserService,
     private ref: DynamicDialogRef,
     private datePipe: DatePipe,
-    private ListAdmComponent: ListAdmComponent
+    private ListAdmComponent: ListAdmComponent,
+    private listAdmService: ListAdmService
   ) {
     this.data_insercao = this.obterDataAtual();
     this.formGroup = this.formBuilder.group({
@@ -57,6 +60,8 @@ export class ModalAddUserComponent implements OnInit {
   submitForm() {
     this.submitted = true;
     const formValues = this.formGroup.value;
+    formValues.tipo_servico_id = formValues.categoria;
+    delete formValues.categoria;
     formValues.data_insercao = this.obterDataAtual();
     if (this.formGroup.valid) {
       if (formValues.terceirizado == 'Sim') {
@@ -66,7 +71,7 @@ export class ModalAddUserComponent implements OnInit {
       }
       this.service.addUser(formValues).subscribe(
         response => {
-          console.log("Dados enviados com sucesso!");
+          console.log("Dados enviados com sucesso!", response);
           this.closeModal();
           this.ListAdmComponent.loadUserList();
         },
@@ -81,7 +86,8 @@ export class ModalAddUserComponent implements OnInit {
   }
 
 
-  ngOnInit() {
+  async ngOnInit() {
+    this.getAllCategories();
     this.formGroup.get('terceirizado')?.valueChanges.subscribe((value) => {
       this.showEmpresaInput = value === 'Sim';
     
@@ -105,20 +111,22 @@ export class ModalAddUserComponent implements OnInit {
       'Não'
     ]
 
-    this.categorys = [
-      'Civil',
-      'Hidráulica', 
-      'Elétrica', 
-      'Pintura', 
-      'Mecânica', 
-      'Mobiliário', 
-      'Ar-Condicionado', 
-      'Eletrônicos', 
-      'Outros'
-    ]; 
+  }
+  async getAllCategories() {
+    try {
+      const response = await lastValueFrom(this.listAdmService.getAllCategories());
+      if (response.result && Array.isArray(response.result)) {
+        this.categories = response.result;
+      } else {
+        console.error('Estrutura de resposta inválida:', response);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   }
 
 }
+
 
 
 
