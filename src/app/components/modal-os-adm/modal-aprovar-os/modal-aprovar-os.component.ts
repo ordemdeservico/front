@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter, SimpleChanges, OnChanges } from '@angular/core';
 import { ListCardsService } from '../../list-cards/list-cards.service';
 import { Validators, FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { OrderService } from 'src/app/shared/models/order-service.model';
@@ -32,7 +32,7 @@ export class ModalAprovarOsComponent implements OnInit {
   tecnico: DropdownOptions[] = [];
   tipo_servico: DropdownOptions[] = [];
   nivel_prioridade: string[] = [];
-  selectedSetor?: number;
+  selectedSetor?: any;
   formGroup: FormGroup;
   formValues: any[] = [];
   textValue: any;
@@ -56,6 +56,10 @@ export class ModalAprovarOsComponent implements OnInit {
     });
   }
 
+  onChangeSetorPrincipal(){
+    this.selectedSetor = this.formGroup.get('setor_principal_id')?.value;
+    this.getAllSecundarios();
+  }
 
   openModalDecline(): any {
     this.confirmationService.confirm({
@@ -84,7 +88,6 @@ export class ModalAprovarOsComponent implements OnInit {
 
   getFormValues() {
     const formValues = this.formGroup.value;
-    console.log(formValues);
     console.log(Object.keys(this.formGroup.controls));
   
     if (this.formGroup.valid) {
@@ -126,7 +129,9 @@ export class ModalAprovarOsComponent implements OnInit {
   }
 
   async ngOnInit() {
-
+    this.formGroup.patchValue({
+      descricao: this.orderService?.descricao
+    });
     this.tecnico = await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllTec()));
     this.setor_principal= await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllSetoresPrincipais()));
     this.tipo_servico = await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllServices()));
@@ -134,6 +139,7 @@ export class ModalAprovarOsComponent implements OnInit {
     const {setor_principal_id} = this.orderService!
     if (setor_principal_id) {
       this.selectedSetor = setor_principal_id;
+      
     }
     const {descricao} = this.orderService!
     if (descricao) {

@@ -32,7 +32,7 @@
     <form class="dropdown" [formGroup]="formGroup">
         <div class="select card flex justify-content-center m-0">
             <label for="float-label">Instituição</label>
-            <p-dropdown  formControlName="setor_principal_id" [options]="setor_principal" placeholder="{{ orderService?.setor_principal_nome }}" [(ngModel)]="selectedSetor" (ngModelChange)="getAllSecundarios()" ></p-dropdown>
+            <p-dropdown  formControlName="setor_principal_id" optionLabel="label" optionValue="value" [options]="setor_principal"  (onChange)="onChangeSetorPrincipal()"></p-dropdown>
         </div>
 
         <div class="select card flex justify-content-center m-0">
@@ -61,7 +61,7 @@
                     <i class='bx bx-file'></i>
                     <label>Descrição</label>
                 </div>
-                <textarea formControlName="descricao" class="textDescription" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado" [(ngModel)]="orderService.descricao"></textarea>
+                <textarea formControlName="descricao"  optionLabel="label" optionValue="value" class="textDescription" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado"></textarea>
             </div>
         </div>
     </form>
