@@ -134,7 +134,6 @@ export class ModalAprovarOsComponent implements OnInit {
     });
     this.tecnico = await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllTec()));
     this.setor_principal= await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllSetoresPrincipais()));
-    console.log('teste', this.setor_principal);
     this.tipo_servico = await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllServices()));
     
     const {setor_principal_id} = this.orderService!
