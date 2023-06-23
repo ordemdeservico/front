@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { OrderService } from 'src/app/shared/models/order-service.model';
 import { MessageService } from 'primeng/api';
 
@@ -13,6 +13,7 @@ export default class CardComponent implements OnInit {
 
   @Input() orderService?: OrderService;
   @Input() role?: string;
+  @Output() attCard = new EventEmitter();
   
   displayModal: boolean = false;
 
@@ -21,10 +22,9 @@ export default class CardComponent implements OnInit {
   openModal() {
     this.displayModal = !this.displayModal;
   }
-
-  attModalSolicitada(event: boolean) {
-    this.displayModal = event;
-    
+  attCards(event: boolean) {
+    this.attCard.emit(event)
+    console.log('Card: ', event);
   }
 
   ngOnInit() {
