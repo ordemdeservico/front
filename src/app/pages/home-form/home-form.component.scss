@@ -154,7 +154,7 @@
     color: var(--color-8);
 }
 
-.os-imput textarea{
+.os-imput textarea {
     background-color: var(--color-12);
     border-bottom-left-radius: 16px;
     border-bottom-right-radius: 16px;
@@ -162,6 +162,7 @@
     outline: none;
     width: 100%;
     border: none;
+    resize: none; 
 }
 
 .os-imput .privacy-terms{
