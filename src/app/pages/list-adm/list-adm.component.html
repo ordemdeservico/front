@@ -37,6 +37,9 @@
                         <div class="flex align-items-center">E-mail</div>
                     </th>
                     <th style="min-width:15rem">
+                        <div class="flex align-items-center">Cargo</div>
+                    </th>
+                    <th style="min-width:10rem">
                         <div class="flex align-items-center">Categoria</div>
                     </th>
                     <th style="min-width:10rem">
@@ -45,6 +48,7 @@
                     <th style="min-width:10rem">
                         <div class="flex align-items-center">Data</div>
                     </th>
+                   
                     <th></th>
                 </tr>
             </ng-template>
@@ -53,6 +57,7 @@
                     <td> {{ user.nome }} </td>
                     <td> {{ user.email }} </td>
                     <td> {{ user.cargo }} </td>
+                    <td> {{ user.tipo_servico_nome || 'Nenhuma' }} </td>
                     <td> {{ user.terceirizado }} </td>
                     <td> {{ user.data_insercao ? (user.data_insercao | date:'dd/MM/yyyy') : '16/06/2023' }} </td>
                     <td>
@@ -73,10 +78,5 @@
 
 <p-dialog *ngIf="displayModalEdit" [(visible)]="displayModalEdit" [style]="{ width: '450px' }" header="Editar Usuário" [modal]="true" styleClass="p-fluid">
     <app-modal-edit-user [userInfo]="selectedUser" (displayModalEvent)="attModalEdit($event)"></app-modal-edit-user>
-
-    <ng-template pTemplate="footer">
-        <!-- <button pButton pRipple label="Cancel" icon="pi pi-times" class="p-button-text" (click)="hideDialog()"></button>
-        <button pButton pRipple label="Save" icon="pi pi-check" class="p-button-text" (click)="saveProduct()"></button> -->
-    </ng-template>
 </p-dialog>
 
