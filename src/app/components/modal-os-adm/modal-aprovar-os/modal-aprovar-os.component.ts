@@ -134,6 +134,7 @@ export class ModalAprovarOsComponent implements OnInit {
     });
     this.tecnico = await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllTec()));
     this.setor_principal= await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllSetoresPrincipais()));
+    console.log('teste', this.setor_principal);
     this.tipo_servico = await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllServices()));
     
     const {setor_principal_id} = this.orderService!
@@ -141,6 +142,9 @@ export class ModalAprovarOsComponent implements OnInit {
       this.selectedSetor = setor_principal_id;
       
     }
+    this.formGroup.patchValue({
+      setor_principal_id: setor_principal_id
+    });
     const {descricao} = this.orderService!
     if (descricao) {
       this.textValue = descricao;
@@ -182,7 +186,7 @@ export class ModalAprovarOsComponent implements OnInit {
   }
 
   private formatToDropdownptions<T extends {nome?:string;id?:number}>(req:Observable<{erros:any,result:T[]}>):Observable<DropdownOptions[]> {
-   return req
+    return req
       .pipe(
         map((res): T[] => res.result),
         map((result): DropdownOptions[] => result.map((item): DropdownOptions => ({
