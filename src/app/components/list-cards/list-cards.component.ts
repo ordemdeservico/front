@@ -17,6 +17,7 @@ export class ListCardsComponent implements OnInit, OnChanges {
   serviceOrders: OrderService[] = [];
   role: any;
 
+
   constructor (
     private cardsService: ListCardsService,
     private loginService: HomeLoginService
@@ -24,7 +25,14 @@ export class ListCardsComponent implements OnInit, OnChanges {
 
   ngOnInit(): void {
     this.getUserInfo();
+   
 
+  }
+
+  attList(event: boolean) {
+    if (event) {
+      this.getUserInfo();
+    }
   }
 
   ngOnChanges(changes: SimpleChanges): void {

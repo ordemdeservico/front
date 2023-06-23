@@ -1,4 +1,5 @@
 <app-card
+    (attCard)="attList($event)"
     [orderService]="serviceOrder"
     [role]="role"
     *ngFor="let serviceOrder of serviceOrders">
