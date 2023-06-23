@@ -1,9 +1,5 @@
 <div class="card" *ngIf="orderService">
     <div class="itens">
-        <div class="item status">
-            <i class='bx bx-alarm'></i>
-            <p>{{ orderService.nivel_prioridade }}</p>
-        </div>
         <div class="item priority">
             <i class='bx bx-purchase-tag-alt'></i>
             <p>{{ orderService.status_os }}</p>
@@ -18,11 +14,16 @@
         </div>
         <div class="item category">
             <i class='bx bx-wrench'></i>
-            <p>{{ orderService.tipo_servico_nome }}</p>
+            <p>{{ orderService.tipo_servico_nome || 'Indefinido' }}</p>
         </div>
     </div>
-    <div class="id">
-        <p>ID: {{ orderService.id.toString().padStart(4, '0') }}</p>
+    <div class="infos">
+        <div class="id">
+            <p>ID: {{ orderService.id.toString().padStart(4, '0') }}</p>
+        </div>
+        <div class="item status" *ngIf="role == 'Admin' || role == 'Tecnico'">
+            <p>{{ orderService.nivel_prioridade }}</p>
+        </div>
     </div>
 
     <div class="details">
