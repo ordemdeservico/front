@@ -25,19 +25,8 @@ export class ModalEditUserComponent implements OnInit {
   selectedCategory?: string;
   user: any;
 
-  categorys: string[] = [
-    'Civil',
-    'Hidráulica',
-    'Elétrica',
-    'Pintura', 
-    'Mecânica',
-    'Mobiliário',
-    'Ar-Condicionado',
-    'Eletrônicos',
-    'Outros',
-  ];
-
-  
+  categories: {id: number, nome: string}[] = []
+   
   outsourced: string[] = [
     'Sim',
     'Não'
@@ -63,8 +52,8 @@ export class ModalEditUserComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       senha: [''],
       cargo: ['', Validators.required],
-      categoria: ['', Validators.required],
-      terceirizado: ['', Validators.required],
+      categoria: [''],
+      terceirizado: [''],
       empresa: ['', this.showEmpresaInput ? Validators.required : null],
     });
    }
@@ -99,21 +88,27 @@ export class ModalEditUserComponent implements OnInit {
 
   submitForm() {
     const formValues = this.formGroup.value;
+    formValues.tipo_servico_id = formValues.categoria;
+    delete formValues.categoria;
+    if (formValues.cargo != 'Solicitante') {
+      this.formGroup.get('cargo')?.setValidators([Validators.required]);
+      this.formGroup.get('terceirizado')?.setValidators([Validators.required]);
+     }
     
     if (!this.arePropertiesEqual(formValues, this.userInfo)) {
       const value: any = { ...formValues };
       
-      this.listAdmService.updateUser(value, this.userInfo.id).subscribe(
-        (res) => {
+      this.listAdmService.updateUser(value, this.userInfo.id).subscribe({
+        next: (res) => {
           console.log(res);
           this.ListAdmComponent.loadUserList();
           this.displayModalEvent.emit(false);
           
         },
-        (err) => {
+        error: (err) => {
           console.error(err);
         }
-      );
+      });
     }
   }
   
@@ -130,6 +125,7 @@ export class ModalEditUserComponent implements OnInit {
   }
 
   async ngOnInit() {
+    this.getAllCategories();
     this.formGroup.get('terceirizado')?.valueChanges.subscribe((value) => {
       this.showEmpresaInput = value === 'Sim';
     
@@ -141,12 +137,12 @@ export class ModalEditUserComponent implements OnInit {
     
       this.formGroup.get('empresa')?.updateValueAndValidity();
     });
-    // this.getAllCategorys();
+    // this.getAllcategories();
     this.formGroup.patchValue(this.userInfo)
     // this.userInfo = {...this.userInfo,  cargo: {value: "Tecnico"}}
     // console.log('teste', this.userInfo)
     this.selectedCargo = this.userInfo.cargo
-    this.selectedCategory = this.userInfo.tipo_servico_nome
+    this.selectedCategory = this.userInfo.tipo_servico_id
     
     console.log(this.selectedCategory)
 
@@ -154,22 +150,18 @@ export class ModalEditUserComponent implements OnInit {
 
   }
 
-  // async getAllCategorys() {
-  //   try {
-  //     const response = await lastValueFrom(this.listAdmService.getAllCategories());
-  //     if (response.result && Array.isArray(response.result)) {
-  //       this.categorys = response.result.map((item: any) => ({
-  //         label: item.nome,
-  //         value: item.id
-  //       }));
-  //       console.log(this.categorys);
-  //     } else {
-  //       console.error('Estrutura de resposta inválida:', response);
-  //     }
-  //   } catch (error) {
-  //     console.error(error);
-  //   }
-  // }
+  async getAllCategories() {
+    try {
+      const response = await lastValueFrom(this.listAdmService.getAllCategories());
+      if (response.result && Array.isArray(response.result)) {
+        this.categories = response.result;
+      } else {
+        console.error('Estrutura de resposta inválida:', response);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  }
   
   
   
