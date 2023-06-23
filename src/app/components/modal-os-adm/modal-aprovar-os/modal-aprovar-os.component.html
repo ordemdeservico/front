@@ -64,28 +64,12 @@
                 <textarea formControlName="descricao" class="textDescription" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado" [(ngModel)]="orderService.descricao"></textarea>
             </div>
         </div>
-
-
-        
     </form>
-    <!-- <div class="fields" *ngIf="orderService">
-        <div class="fieldDescription">
-            <div class="item-title">
-                <i class='bx bx-file'></i>
-                <label>Descrição</label>
-            </div>
-            <textarea class="textDescription" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado"  [(ngModel)]="orderService.descricao"></textarea>
-        </div>
-    </div> -->
-    
-    
 
     <div class="card flex justify-content-center btn-submit">
         <button pButton pRipple label="Aprovar" class="p-button-success btn" (click)="getFormValues()"></button>
         <button pButton pRipple label="Declinar" class="p-button-danger btn" (click)="openModalDecline()"></button>
     </div>
-    <!-- <div class="card flex justify-content-center btn-submit">
-    </div> -->
 </div>
 
 <p-confirmDialog #cd [style]="{ width: '450px' }">
