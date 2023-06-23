@@ -27,7 +27,7 @@
     <div class="card flex flex-wrap justify-content-center gap-3">
         <span class="p-input-icon-right p-float-label">
             <i class="pi pi-lock"></i>
-            <input id="senha" type="password" pInputText formControlName="senha"/>
+            <input id="senha" type="password" pInputText formControlName="senha" placeholder="Senha"/>
             <label htmlFor="senha">Senha</label>
         </span>
     </div>
@@ -45,7 +45,7 @@
 
     <div class="card flex justify-content-center m-0">
         <span class="p-float-label">
-            <p-dropdown formControlName="categoria" [options]="categorys" [(ngModel)]="selectedCategory" placeholder="Selecione uma Categoria" inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched}"></p-dropdown>
+            <p-dropdown formControlName="categoria" [options]="categories" optionLabel="nome" optionValue="id" [(ngModel)]="selectedCategory" placeholder="Selecione uma Categoria" inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched}"></p-dropdown>
             <label for="float-label">Categoria</label>
         </span>
         <div *ngIf="formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched && !formGroup.controls['categoria'].value" class="validation-message">
@@ -76,8 +76,8 @@
     </ng-container>
 
     <div class="card flex justify-content-center btn-submit">
-        <button pButton pRipple label="Editar" class="p-button-success btn" (click)="submitForm()"></button>
-        <button pButton pRipple label="Excluir" class="p-button-danger btn" (click)="deleteUserById(userInfo.id)"></button>
+        <button  class="btn btn-confirm" (click)="submitForm()">Confirmar</button>
+        <button  class="btn btn-decline" (click)="deleteUserById(userInfo.id)">Deletar</button>
     </div>
 </form>
 

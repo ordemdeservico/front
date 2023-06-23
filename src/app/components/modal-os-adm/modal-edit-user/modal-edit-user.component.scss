@@ -52,12 +52,39 @@
     gap: 1rem;
 }
 
-
-
-.btn:hover {
-    background-color: var(--color-3);
+.btn {
+    border: none;
+    outline: none;
+    width: 100px;
+    height: 47px;
+    text-align: center;
+    border-radius: 8px;
     font-weight: 700;
+    color: white;
+    transition: 0.2s all ease;
 }
+
+.btn-confirm {
+    background-color: var(--green1);
+}
+
+.btn-confirm:hover {
+    background-color: var(--green2);
+}
+
+.btn-decline {
+    background-color: var(--red1);
+}
+
+.btn-decline:hover {
+    background-color: var(--red2);
+}
+
+
+// .btn:hover {
+//     background-color: var(--color-3);
+//     font-weight: 700;
+// }
 
 ::ng-deep .p-fluid .p-button {
     width: auto;
