@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div class="fields">
+    <div class="fields" [formGroup]="formGroup">
         <div class="field">
             <div class="item-title">
                 <i class='bx bx-file'></i>
@@ -76,7 +76,7 @@
                 <i class='bx bx-cart'></i>
                 <label>Relatório</label>
             </div>
-            <textarea rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado">{{ orderService?.relatorio }}</textarea>
+            <textarea formControlName="relatorio" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado"></textarea>
         </div>
 
         <div class="field">
@@ -84,10 +84,10 @@
                 <i class='bx bx-clipboard' ></i>
                 <label>Materiais</label>
             </div>
-            <textarea rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Material utilizado na OS">{{ orderService?.material }}</textarea>
+            <textarea formControlName="material" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Material utilizado na OS"></textarea>
         </div>
 
-        <div [formGroup]="formGroup" class="select card flex justify-content-center m-0">
+        <div class="select card flex justify-content-center m-0">
             <span class="p-float-label">
                 <p-dropdown formControlName="feedback" [options]="feedback" placeholder="Selecione uma feedback" inputId="float-label"></p-dropdown>
                 <label for="float-label">Feedback</label>

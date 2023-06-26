@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { DynamicDialogRef } from "primeng/dynamicdialog";
 import { ListCardsService } from '../../list-cards/list-cards.service';
 import { OrderService } from "src/app/shared/models/order-service.model";
@@ -11,6 +11,7 @@ import { Validators, FormGroup, FormBuilder } from '@angular/forms';
 })
 export class ModalFinalizarOsComponent implements OnInit {
   @Input() orderService?: OrderService;
+  @Output() attCards = new EventEmitter();
 
   feedback: string[] = ['Ruim', 'Regular', 'Bom', 'Ótimo', 'Excelente'];
   formGroup: FormGroup;
@@ -22,6 +23,8 @@ export class ModalFinalizarOsComponent implements OnInit {
     private formBuilder: FormBuilder,
   ) {
     this.formGroup = this.formBuilder.group({
+      relatorio: ['', Validators.required],
+      material: [''],
       feedback: ['', Validators.required],
     });
    }
@@ -37,6 +40,7 @@ export class ModalFinalizarOsComponent implements OnInit {
       this.listCardsService.finalizarOs(this.orderService!.id, feedbackValue).subscribe(
         (res) => {
           console.log('OS Finalizada: ', res);
+          this.attCards.emit(true);
         },
         (err) => {
           console.error(err);
@@ -46,7 +50,10 @@ export class ModalFinalizarOsComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.formGroup.patchValue({
+      relatorio: this.orderService?.relatorio,
+      material: this.orderService?.material
+    });
   }
 
 }
