@@ -37,9 +37,9 @@
         <span class="header">Ordem de Serviço: {{ orderService?.id }}</span>
     </ng-template>
     <app-modal-os-user *ngIf="role == 'Solicitante'" [orderService]="orderService"></app-modal-os-user>
-    <app-modal-aprovar-os *ngIf="orderService?.status_os == 'Solicitada' && role == 'Admin'" [orderService]="orderService" [displayModal]="displayModal" (attCards)="attCards($event)"></app-modal-aprovar-os>
-    <app-modal-finalizar-os *ngIf="orderService?.status_os == 'Concluida' && role == 'Admin'" [orderService]="orderService"></app-modal-finalizar-os>
-    <app-modal-concluir-os *ngIf="orderService?.status_os == 'Aprovada' && role == 'Admin' || role == 'Tecnico'" [orderService]="orderService"></app-modal-concluir-os>
-    <app-modal-finalizada *ngIf="orderService?.status_os == 'Finalizada'" [orderService]="orderService"></app-modal-finalizada>
+    <app-modal-aprovar-os *ngIf="orderService?.status_os == 'Solicitada'" [orderService]="orderService" [displayModal]="displayModal" (attCards)="attCards($event)"></app-modal-aprovar-os>
+    <app-modal-finalizar-os *ngIf="orderService?.status_os == 'Concluida'" [orderService]="orderService" (attCards)="attCards($event)"></app-modal-finalizar-os>
+    <app-modal-concluir-os *ngIf="orderService?.status_os == 'Aprovada' && role != 'Solicitante'" [role]="role" [orderService]="orderService" (attCards)="attCards($event)"></app-modal-concluir-os>
+    <app-modal-finalizada *ngIf="orderService?.status_os == 'Finalizada'" [orderService]="orderService">aaa</app-modal-finalizada>
 </p-dialog>
 
