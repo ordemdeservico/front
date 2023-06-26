@@ -46,11 +46,11 @@ export class ListCardsComponent implements OnInit, OnChanges {
       (res) => {
       if (res.cargo == 'Tecnico') {
           this.getOsByTec(res.id_usuario);
-        } else if (res.cargo == 'Solicitante') {
+      } else if (res.cargo == 'Solicitante') {
           this.getOsByUser(res.id_usuario);
-        }
+      }
         this.role = res.cargo;
-        if (this.role == 'Admin') {
+      if (this.role == 'Admin') {
           this.cardsService.getOsByFilter([]).subscribe(
             (res) => {
               this.serviceOrders = res.result;

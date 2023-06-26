@@ -83,6 +83,18 @@ export class ListCardsService {
     return this.http.delete(`${API}/ordem-servico/rejeitar`, { params: httpParams })
   }
 
+  concluirOs(params: any): Observable<any> {
+    let httpParams = new HttpParams();
+    
+    for (const key in params) {
+      if (params.hasOwnProperty(key)) {
+        httpParams = httpParams.append(key, params[key]);
+      }
+    }
+  
+    return this.http.patch<any>(`${API}/ordem-servico/concluir`, httpParams);
+  }
+
   finalizarOs(id: number, feedback: string): Observable<any> {
     let params = new HttpParams();
 
