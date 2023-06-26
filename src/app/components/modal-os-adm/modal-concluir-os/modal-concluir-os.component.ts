@@ -24,7 +24,7 @@ export class ModalConcluirOsComponent implements OnInit {
     private datePipe: DatePipe,
   ) {
     this.formGroup = this.formBuilder.group({
-      material: ['', Validators.required],
+      material: [''],
       relatorio: ['', Validators.required],
     });
    }
