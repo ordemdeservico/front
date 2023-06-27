@@ -1,63 +1,54 @@
 <div>
-    <div class="form-nav">
-      <a class="" aria-current="page" href="#"><img src="../../../assets/flechaEsquerda.png" class="arrow"> Voltar</a>
-      <div class="contact">
-        <a class="">comunicacao@fsnt.com.br </a>
-        <a href="" class="bar">|</a>
-        <a href="">(14) 3405-2033 </a>
-      </div>
+  <div class="form-nav">
+    <a class="" aria-current="page" href="#"><img src="../../../assets/flechaEsquerda.png" class="arrow"> Voltar</a>
+    <div class="contact">
+      <a class="">comunicacao@fsnt.com.br </a>
+      <a href="" class="bar">|</a>
+      <a href="">(14) 3405-2033 </a>
     </div>
+  </div>
     
-    <div class="form-body">
-        <div >
-            <h2>Insira os dados para efetivar uma solicitação</h2>
+  <div class="form-body">
+    <div >
+      <h2>Insira os dados para efetivar uma solicitação</h2>
+      
+      <div class="os-box">
+        <p>Identifique a área da ordem de servico:</p>
+      </div>
+  
+      <div class="input">
+        <form class="dropdown" [formGroup]="formGroup">
+          <div class="select card flex justify-content-center m-0">
+              <label for="float-label">Instituição</label>
+              <p-dropdown  formControlName="setor_principal_id" [options]="options" ></p-dropdown>
+          </div>
+  
+          <div class="select card flex justify-content-center m-0">
+              <label for="float-label">Setor</label>
+              <p-dropdown  formControlName="setor_secundario_id" [options]="options"></p-dropdown>
+          </div>
+  
+          <div class="select card flex justify-content-center m-0">
+              <label for="float-label">Categoria</label>
+              <p-dropdown formControlName="tipo_servico_id" [options]="options" placeholder="{{'Categoria do Serviço' }}"></p-dropdown>
+          </div>
+        </form>
+      </div>
+  
+      <div class="data">
+  
+      </div>
+  
+      <div class="fields">
+        <div class="fieldDescription">
+            <div class="item-title">
+                <i class='bx bx-file'></i>
+                <label>Descrição</label>
+            </div>
+            <textarea formControlName="descricao"  optionLabel="label" optionValue="value" class="textDescription" rows="5" cols="30" pInputTextarea [autoResize]="true"></textarea>
         </div>
-            <div class="os-box">
-                <p>Identifique a área da ordem de servico:</p>
-                <div class="os-imput">
-                 
-                    <select>
-                      <option value="">Instituição</option>
-                      <option value="opcao1">Opção 1</option>
-                      <option value="opcao2">Opção 2</option>
-                      <option value="opcao3">Opção 3</option>
-                    </select>
-
-                    <select>
-                      <option value="">Setor</option>
-                      <option value="opcao1">Opção 1</option>
-                      <option value="opcao2">Opção 2</option> 
-                      <option value="opcao3">Opção 3</option>
-                    </select>
-
-
-                    <select>
-                      <option value="">Categoria</option>
-                      <option value="opcao1">Opção 1</option>
-                      <option value="opcao2">Opção 2</option>
-                      <option value="opcao3">Opção 3</option>
-                    </select>
-
-                    <div class="time">
-                      <label for="datetime">Data e hora:</label>
-                      <div class="datetime-container">
-                        <input type="datetime-local" id="datetime" name="datetime">
-                      </div>
-                    </div>
-
-                    <div class="input-description">
-                      <div class="title-input">
-                        <label>Descrição do Problema</label>
-                        <i class='bx bx-text'></i>  
-                      </div>
-                      <textarea></textarea>
-                    </div>
-                    
-                    <button>Enviar</button>
-                  </div>
-
-                  
-                </div>
-              </div>   
+    </div>
+    </div>
+        
+  </div>
 </div>
-
