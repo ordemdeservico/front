@@ -1,48 +1,64 @@
-
 .container {
-  width: calc(100vw - 260px);
-  height: auto;
-  position: absolute;
-  right: 0;
-  padding-right: 64px;
-  padding-left: 64px;
+  width: 100%;
+  height: 100vh;
+  display: flex;
 
-  .buttons {
-    padding: 32px 0 0 48px;
-    width: 100%;
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    margin-top: calc(20vh);
-    gap: 32px;
+  .menu {
+    width: 260px;
+    height: 100%;
   }
-
-  .cards {
-    width: 100%;
-    padding: 16px;
+  
+  .box-content {
+    // background-color: aquamarine;
+    height: 100%;
+    width: calc(100% - 260px);
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 10.5% 2% 9.8% 2%;
 
-     app-list-cards {
+    .buttons {
+      width: 100%;
+      height: 20%;
       display: flex;
-      flex-wrap: wrap;
-      margin: 16px;
-      max-height: 100%;
+      justify-content: flex-start;
+      gap: 1rem;
+      padding-left: 16px;
+      margin-bottom: 1rem;
+      
+    }
+
+    .cards {
+      width: 100%;
+      height: 80vh;
+
+      app-list-cards {
+        display: inline-flex;
+        flex-wrap: wrap;
+        width: 100%;
+        height: auto;
+        margin-bottom: 10.5%;
+      }
     }
   }
 }
 
+
 @media only screen and (max-width: 768px) {
-  .container {
-    width: calc(100% - 160px);
-    padding: 8px;
+
+  .box-content {
+    width: calc(100% - 80px) !important;
+    padding: 42% 2% 9.8% 2% !important;
+
+   .cards {
+    width: 100% !important;
+   }
   }
 
-  // .buttons {
-  //   gap: 0 !important;
-  // }
+  .menu {
+    width: 80px !important;
+  }
 
 }
 

@@ -1,26 +1,28 @@
-<div class="menu">
-    <app-menu></app-menu>
-</div>
-
 <div class="container">
-    <div class="buttons">
-        <div class="new-user">
-            <p-button label="Novo" icon="pi pi-user-plus" iconPos="right" styleClass="p-button-success" (click)="navigateToForm()"></p-button>
-        </div>
-
-        <div class="card flex justify-content-center">
-            <p-multiSelect 
-            [options]="groupedFilters" 
-            [group]="true" 
-            [(ngModel)]="selectedFilter" 
-            defaultLabel="Selecione um Filtro" 
-            scrollHeight="250px" 
-            display="chip"
-            ></p-multiSelect>
-        </div>
+    <div class="menu">
+        <app-menu></app-menu>
     </div>
+    <div class="box-content">
+        <div class="buttons">
+            <div class="new-user">
+                <p-button label="Novo" icon="pi pi-user-plus" iconPos="right" styleClass="p-button-success" (click)="navigateToForm()"></p-button>
+            </div>
     
-    <div class="cards">
-        <app-list-cards [selectedFilterAdm]="selectedFilter"></app-list-cards>
+            <div class="card flex justify-content-center">
+                <p-multiSelect 
+                [options]="groupedFilters" 
+                [group]="true" 
+                [(ngModel)]="selectedFilter" 
+                defaultLabel="Selecione um Filtro" 
+                scrollHeight="250px" 
+                display="chip"
+                ></p-multiSelect>
+            </div>
+        </div>
+        
+        <div class="cards">
+            <app-list-cards [selectedFilterAdm]="selectedFilter"></app-list-cards>
+        </div>
     </div>
+   
 </div>
