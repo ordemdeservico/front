@@ -61,9 +61,23 @@
             </div>
             <p>{{ orderService?.descricao }}</p>
         </div>
+
+        <div class="item-title">
+            <i class='bx bx-check'></i>
+            <label>Feedback</label>
+            <p>{{ orderService?.feedback }}</p>
+        </div>
+        
+        <div class="item-title">
+            <i class='bx bx-clipboard' ></i>
+            <label>Relatório</label>
+            <p>{{ orderService?.relatorio }}</p>
+        </div>
+        
+        <div class="item-title">
+            <i class='bx bx-cart'></i>
+            <label>Materiais</label>
+            <p>{{ orderService?.material }}</p>
+        </div>
     </div>
 </div>
-
-<p>{{ orderService?.feedback }}</p>
-<p>{{ orderService?.relatorio }}</p>
-<p>{{ orderService?.material }}</p>
