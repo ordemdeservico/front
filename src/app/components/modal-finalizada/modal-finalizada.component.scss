@@ -1,4 +1,3 @@
-
 .card {
     width: 100%;
     .itens {
@@ -44,6 +43,7 @@
         justify-content: flex-start;
         align-items: center;
         text-align: center;
+        flex: 1;
 
         i {
             padding-right: 8px;
@@ -56,6 +56,47 @@
             font-size: 0.8rem;
             color: var(--color-8);
             font-weight: 600;
+        }
+    }
+
+    .fields {
+        height: auto;
+        width: auto;
+        padding: 2px;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        
+
+        .field {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 16px;
+            gap: 0.3rem;
+
+        }
+
+        .item-title {
+            width: auto;
+            height: auto;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+    
+            i {
+                padding-right: 8px;
+                font-size: 20px;
+                color: var(--color-2);
+            }
+    
+            label {
+                margin: 0;
+                font-size: 0.8rem;
+                color: var(--color-8);
+                font-weight: 600;
+            }
         }
     }
 }
