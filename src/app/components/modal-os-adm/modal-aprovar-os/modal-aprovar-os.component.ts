@@ -144,6 +144,10 @@ export class ModalAprovarOsComponent implements OnInit {
     this.formGroup.patchValue({
       setor_principal_id: setor_principal_id
     });
+
+    this.formGroup.patchValue({
+      tipo_servico_id: this.orderService?.tipo_servico_id
+    });
     const {descricao} = this.orderService!
     if (descricao) {
       this.textValue = descricao;
