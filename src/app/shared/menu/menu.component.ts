@@ -62,11 +62,7 @@ export class MenuComponent implements OnInit {
 
     logout() {
       this.visible = false;
-      this.token.deleteToken();
-      this.token.deleteName();
-      this.token.deleteMail();
-      this.token.deleteId();
-      this.token.deleteRole();
+      localStorage.clear();
       this.authService.setIsAuthenticated(false);
       this.router.navigateByUrl('/home-login');
     }
