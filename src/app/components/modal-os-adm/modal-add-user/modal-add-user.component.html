@@ -41,7 +41,7 @@
 
             <div class="card flex justify-content-center m-0">
                 <span class="p-float-label">
-                    <p-dropdown formControlName="cargo" [options]="office" placeholder="Selecione uma cargo" inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['cargo'].invalid && formGroup.controls['cargo'].touched}"></p-dropdown>
+                    <p-dropdown formControlName="cargo" [options]="office[0].item" optionLabel="label" optionValue="value" placeholder="Selecione um cargo"  [ngClass]="{'invalid-field': formGroup.controls['cargo'].invalid && formGroup.controls['cargo'].touched}"></p-dropdown>
                     <label for="float-label">Cargo</label>
                 </span>
                 <div *ngIf="formGroup.controls['cargo'].invalid && formGroup.controls['cargo'].touched && !formGroup.controls['cargo'].value" class="validation-message">
@@ -51,7 +51,7 @@
 
             <div class="card flex justify-content-center m-0">
                 <span class="p-float-label">
-                    <p-dropdown formControlName="categoria" [options]="categories" optionLabel="nome" optionValue="id" placeholder="Selecione uma Categoria" inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched}"></p-dropdown>
+                    <p-dropdown formControlName="categoria" [options]="categories" optionLabel="nome" optionValue="id" placeholder="Selecione uma Categoria"  [ngClass]="{'invalid-field': formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched}"></p-dropdown>
                     <label for="float-label">Categoria</label>
                 </span>
                 <div *ngIf="formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched && !formGroup.controls['categoria'].value" class="validation-message">
@@ -61,7 +61,7 @@
 
             <div class="card flex justify-content-center m-0">
                 <span class="p-float-label">
-                    <p-dropdown formControlName="terceirizado" [options]="outsourced" placeholder="Selecione caso seja terceiro." inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['terceirizado'].invalid && formGroup.controls['terceirizado'].touched}"></p-dropdown>
+                    <p-dropdown formControlName="terceirizado" [options]="outsourced" placeholder="Selecione caso seja terceiro."  [ngClass]="{'invalid-field': formGroup.controls['terceirizado'].invalid && formGroup.controls['terceirizado'].touched}"></p-dropdown>
                     <label for="float-label">Terceiro</label>
                 </span>
                 <div *ngIf="formGroup.controls['terceirizado'].invalid && formGroup.controls['terceirizado'].touched && !formGroup.controls['terceirizado'].value" class="validation-message">
@@ -88,72 +88,3 @@
         </form>
     </div>
 </div>
-
-
-
-
-
-
-
-<!-- <div class="title-box" cdkFocusInitial>
-    <h3 class="title" align="center" mat-dialog-tittle>Adicione um novo cadastro</h3>
-    <i  id="close" class='bx bx-x-circle' [mat-dialog-close]="true"></i>
-</div>
-<mat-dialog-content class="mat-typography">
-    <div class="container">
-        <form [formGroup]="formGroup">
-            <mat-form-field class="example-full-width">
-                <mat-label>Nome</mat-label>
-                <input [autofocus]="false" type="text" matInput formControlName="nome">
-                <mat-error *ngIf="formGroup.get('nome')?.hasError('required')">
-                O nome é <strong>obrigatório</strong>
-                </mat-error>
-            </mat-form-field>
-    
-            <mat-form-field class="example-full-width">
-                <mat-label>Email</mat-label>
-                <input type="email" matInput formControlName="email" placeholder="Ex: seuemail@gmail.com">
-                <mat-error *ngIf="formGroup.get('email')?.hasError('email') && !formGroup.get('email')?.hasError('required')">
-                Por favor utilize um e-mail válido.
-                </mat-error>
-                <mat-error *ngIf="formGroup.get('email')?.hasError('required')">
-                O e-mail é <strong>obrigatório</strong>
-                </mat-error>
-            </mat-form-field>
-    
-            <mat-form-field class="example-full-width">
-                <mat-label>Senha</mat-label>
-                <input type="password" matInput formControlName="senha">
-                <mat-error *ngIf="formGroup.get('senha')?.hasError('required')">
-                A senha é <strong>obrigatório</strong>
-                </mat-error>
-            </mat-form-field>
-            
-            <mat-form-field  class="example-full-width">
-                <mat-label>Categoria</mat-label>
-                <mat-select  [formControl]="categorys">
-                    <mat-option *ngFor="let category of categoryList" [value]="category">{{ category }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-    
-            <mat-form-field class="example-full-width">
-                <mat-label>Terceiro</mat-label>
-                <mat-select [formControl]="outsourcedForm">
-                  <mat-option *ngFor="let outsourced of outsourcedList" [value]="outsourced">{{ outsourced }}</mat-option>
-                </mat-select>
-            </mat-form-field>
-              
-            <mat-form-field *ngIf="outsourcedStatus" class="example-full-width">
-                <mat-label>Empresa</mat-label>
-                <input type="text" matInput formControlName="empresa">
-                <mat-error *ngIf="formGroup.get('empresa')?.hasError('required')">A empresa é <strong>obrigatória</strong></mat-error>
-            </mat-form-field>
-                
-            <mat-dialog-actions class="submit-area" align="center">
-                <button class="btn-submit" mat-button  type="submit" (click)="submitForm()">Finalizar</button>
-            </mat-dialog-actions>
-        </form>
-    </div>
-</mat-dialog-content>
-
- -->

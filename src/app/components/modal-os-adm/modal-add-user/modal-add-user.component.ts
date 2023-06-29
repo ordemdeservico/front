@@ -18,13 +18,22 @@ import { ListAdmService } from "src/app/pages/list-adm/list-adm.service";
 export class ModalAddUserComponent implements OnInit {
 
   submitted = false;
-  categories: {id: number, nome: string}[] = []
+  categories: { id: number, nome: string }[] = []
   outsourced: string[] = [];
-  office: string[] = [];
   formGroup: FormGroup;
   showEmpresaInput = false;
   data_insercao: string;
   userList: ListAdm[] = [];
+  office: {item: { label: string, value: string } [] }[] = [
+    {
+        item: [
+          { label: 'Administrador', value: 'Admin' },
+          { label: 'Técnico', value: 'Tecnico' },
+          { label: 'Solicitante', value: 'Solicitante' },
+          { label: 'Bloqueado', value: 'Bloqueado' }
+        ]
+  }
+];
 
 
   constructor(
@@ -99,12 +108,6 @@ export class ModalAddUserComponent implements OnInit {
     
       this.formGroup.get('empresa')?.updateValueAndValidity();
     });
-
-    this.office = [
-      'Solicitante',
-      'Tecnico',
-      'Admin'
-    ]
 
     this.outsourced = [
       'Sim',
