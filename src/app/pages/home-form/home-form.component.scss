@@ -1,65 +1,282 @@
-.form-nav{
-    height: 12vh;
-    background-color: var(--color-3);
+.home-form {
+    width: 100%;
+    min-height: 100%;
+    max-height: 100%;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
+    flex-direction: column;
     justify-content: space-between;
-    padding: 0px 10vh;
-}
+    align-items: center;
 
-.form-nav .contact{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 15px;
-    justify-content: space-around;
+    .header-box {
+        background-color: var(--color-2);
+        height: 12vh;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: center;
+        justify-content: space-between;
+        padding: 0px 10vh;
+        // overflow: hidden;
+    
+    
+        .header-btn-voltar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            outline: none;
+            border: none;
+            background-color: transparent;
+            width: 80px;
+            color: white;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.5s ease-in-out;
+        }
 
-}
-
-.form-nav a{
-    text-decoration: none;
-    //border: 1px solid black;
-    color: white;
-    display: flex;
-    overflow: hidden;
-}
-
-.form-nav .arrow{
-    width: 29px;
-    padding-right: 10px;
-}
-
-
-.form-body {
- padding: 5vh 20%;
- overflow: hidden;
-}
-
-.form-body h2{
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    width: 60%;
-    line-height: 110%;
-    letter-spacing: 1px;
-    font-style: normal;
-    font-size: 30px;
-    margin-bottom: 20px;
-}
-
-.fields {
-
-    .fieldDescription {
+        .header-btn-voltar:hover {
+            height: 40px;
+            width: 100px;
+            border-radius: 8px;
+            padding: 0 8px 0 8px;
+            background-color: var(--color-3);
+        }
+    
+        .header-infos {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 1rem;
+            color: white;
+            font-size: 1rem;
+        }
+    }
+    
+    .form-box {
+        width: 100%;
+        height: 88vh;
         display: flex;
         flex-direction: column;
+        align-items: center;
         justify-content: center;
-        align-items: flex-start;
-
-        .textDescription {
+        
+    
+        .form-box-title {
+            width: 100%;
+            flex-wrap: wrap;
+            display: flex;
+            justify-content: center;
+            align-items: center !important;
+    
+            .title {
+                width: 50%;
+                font-family: 'Montserrat', sans-serif;
+                font-weight: 700;
+                line-height: 110%;
+                letter-spacing: 1px;
+                font-style: normal;
+                font-size: 2rem;
+                text-align: start !important;
+                padding-bottom: 4rem;
+            }
+    
+        
+        }
+    
+        .form-fields {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+    
+            .columns {
+                width: 50%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-wrap: wrap;
+                gap: 1rem;
+    
+                .card {
+                    display: flex;
+                    flex-direction: column;
+                }
+            }
+    
+            .select {
+                width: 50%;
+            }
+    
+    
+            ::ng-deep p-dropdown#formSetorPrincipal .p-dropdown {
+                width: 772px;
+                display: inline-flex;
+                max-width: 50vw;
+            }
+    
+            ::ng-deep p-dropdown#formSetorSecundario .p-dropdown,
+            ::ng-deep p-dropdown#formCategoria .p-dropdown {
+                width: 360px;
+                max-width: 30vw;
+    
+            }
+    
+            .description {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 50%;
+                padding-top: 20px;
+            }
+    
+            ::ng-deep textarea#formDescricao {
+                width: 772px;
+                max-width: 50vw;
+            }
+        }
+    
+        .form-submit {
+            padding-top: 20px;
+            width: 100%;
             display: flex;
             justify-content: center;
             align-items: center;
-            height: auto !important;
+    
+            .box-submit {
+                width: 50%;
+    
+                .btn-submit {
+                    outline: none;
+                    border: none;
+                    width: 160px;
+                    height: 46px;
+                    border-radius: 8px;
+                    color: white;
+                    background-color: var(--color-3);
+                    transition: 0.5s all ease;
+                    font-size: 1rem;
+                    font-weight: 500;
+                }
+    
+                .btn-submit:hover {
+                    background-color: var(--color-2);
+                    font-size: 1.1rem;
+                }
+            }
         }
     }
 }
+
+
+@media screen and (max-width: 768px) {
+
+    .title {
+        padding: 1rem 0 1rem 0 !important;
+        font-size: 1.5rem !important;
+    }
+
+    .form-box {
+        height: 100% !important;
+    }
+
+    .form-submit {
+        padding-bottom: 20px;
+    }
+
+    .header-box {
+        padding: 0 !important;
+        display: flex !important;
+        gap: 1rem;
+        padding-left: 1rem !important;
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .form-nav{
+//     height: 12vh;
+//     background-color: var(--color-3);
+//     display: flex;
+//     flex-direction: row;
+//     flex-wrap: wrap;
+//     align-content: center;
+//     justify-content: space-between;
+//     padding: 0px 10vh;
+// }
+
+// .form-nav .contact{
+//     display: flex;
+//     flex-wrap: wrap;
+//     gap: 15px;
+//     justify-content: space-around;
+
+// }
+
+// .form-nav a{
+//     text-decoration: none;
+//     //border: 1px solid black;
+//     color: white;
+//     display: flex;
+//     overflow: hidden;
+// }
+
+// .form-nav .arrow{
+//     width: 29px;
+//     padding-right: 10px;
+// }
+
+
+// .form-body {
+//  padding: 5vh 20%;
+//  overflow: hidden;
+// }
+
+// .form-body h2{
+//     font-family: 'Montserrat', sans-serif;
+//     font-weight: 700;
+//     width: 60%;
+//     line-height: 110%;
+//     letter-spacing: 1px;
+//     font-style: normal;
+//     font-size: 30px;
+//     margin-bottom: 20px;
+// }
+
+// .fields {
+
+//     .fieldDescription {
+//         display: flex;
+//         flex-direction: column;
+//         justify-content: center;
+//         align-items: flex-start;
+
+//         .textDescription {
+//             display: flex;
+//             justify-content: center;
+//             align-items: center;
+//             height: auto !important;
+//         }
+//     }
+// }
