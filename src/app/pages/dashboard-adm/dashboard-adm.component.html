@@ -5,7 +5,11 @@
     <div class="box-content">
         <div class="buttons">
             <div class="new-user">
-                <p-button label="Novo" icon="pi pi-user-plus" iconPos="right" styleClass="p-button-success" (click)="navigateToForm()"></p-button>
+                <button  class="btn btn-confirm" (click)="navigateToForm()">
+                    Nova OS
+                    <i class='bx bx-cog'></i>
+                </button>
+                <!-- <p-button label="Nova OS" icon="pi pi-cog" iconPos="right" styleClass="p-button-success" (click)="navigateToForm()"></p-button> -->
             </div>
     
             <div class="card flex justify-content-center">
