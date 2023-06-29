@@ -42,7 +42,7 @@
 
         <div class="select card flex justify-content-center m-0">
             <label for="float-label">Categoria</label>
-            <p-dropdown formControlName="tipo_servico_id" [options]="tipo_servico" placeholder="{{ !!orderService?.tipo_servico_nome || 'Categoria do Serviço' }}"></p-dropdown>
+            <p-dropdown formControlName="tipo_servico_id" optionLabel="label" optionValue="value" [options]="tipo_servico"></p-dropdown>
         </div>
 
         <div class="select card flex justify-content-center m-0">
@@ -67,8 +67,8 @@
     </form>
 
     <div class="card flex justify-content-center btn-submit">
-        <button pButton pRipple label="Aprovar" class="p-button-success btn" (click)="getFormValues()"></button>
-        <button pButton pRipple label="Declinar" class="p-button-danger btn" (click)="openModalDecline()"></button>
+        <button  class="btn btn-confirm" (click)="getFormValues()">Aprovar</button>
+        <button  class="btn btn-decline" (click)="openModalDecline()">Declinar</button>
     </div>
 </div>
 
