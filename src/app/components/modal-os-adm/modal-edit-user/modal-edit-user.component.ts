@@ -21,21 +21,29 @@ export class ModalEditUserComponent implements OnInit {
   @Input() userInfo: any;
   @Output() displayModalEvent = new EventEmitter();
 
-  selectedCargo?: string;
-  selectedCategory?: string;
-  user: any;
-
-  categories: {id: number, nome: string}[] = []
+  categories: {id: any, nome: string}[] = []
    
   outsourced: string[] = [
     'Sim',
     'Não'
   ];
-  office = [
-    'Solicitante',
-    'Técnico',
-    'Administrador'
+
+  infos: {
+    nome: string, 
+    email: string, 
+    cargo?: string, 
+    categoria: string, 
+    terceirizado: string, 
+    empresa: string 
+  } [] = []
+
+  roles =  [
+    { label: 'Administrador', value: 'Admin' },
+    { label: 'Técnico', value: 'Tecnico' },
+    { label: 'Solicitante', value: 'Solicitante' },
+    { label: 'Bloqueado', value: 'Bloqueado' }
   ];
+
 
   formGroup: FormGroup;
   showEmpresaInput = false;
@@ -58,9 +66,7 @@ export class ModalEditUserComponent implements OnInit {
     });
    }
 
-
-   deleteUserById(id: number) {
-    console.log(id);
+   deleteUserById(nome: string) {
     this.confirmationService.confirm({
       message: 'Tem certeza que deseja excluir este usuário?',
       header: 'Confirmar',
@@ -68,15 +74,16 @@ export class ModalEditUserComponent implements OnInit {
       acceptLabel: 'Sim',
       rejectLabel: 'Não',
       accept: () => {
-        this.messageService.add({ severity: 'success', summary: 'Sucesso!', detail: 'Usuário excluido.', life: 3000 });
-        this.listAdmService.deleteUserById(id).subscribe(
+        this.listAdmService.deleteUserByName(nome).subscribe(
           (res) => {
-            console.log(res)
+            this.messageService.add({ severity: 'success', summary: 'Sucesso!', detail: 'Usuário excluido.', life: 3000 });
             this.ListAdmComponent.loadUserList();
             this.displayModalEvent.emit(false);
           },
           (err) => {
             console.error(err)
+            this.messageService.add({ severity: 'error', summary: 'Erro!', detail: err.error.message, life: 3000  });
+            
           }
         ) 
       },
@@ -124,8 +131,19 @@ export class ModalEditUserComponent implements OnInit {
     return true;
   }
 
+  mapValuesRoles(label: string) {
+    return this.roles.find( (r) => r.label === label )?.value;
+  }
+
+  mapValuesCategories(nome: string) {
+    console.log('categories: ', this.categories)
+    return this.categories.find( (c) => c.nome === nome )?.id;
+  }
+
+
+
   async ngOnInit() {
-    this.getAllCategories();
+    await this.getAllCategories();
     this.formGroup.get('terceirizado')?.valueChanges.subscribe((value) => {
       this.showEmpresaInput = value === 'Sim';
     
@@ -137,16 +155,17 @@ export class ModalEditUserComponent implements OnInit {
     
       this.formGroup.get('empresa')?.updateValueAndValidity();
     });
-    // this.getAllcategories();
-    this.formGroup.patchValue(this.userInfo)
-    // this.userInfo = {...this.userInfo,  cargo: {value: "Tecnico"}}
-    // console.log('teste', this.userInfo)
-    this.selectedCargo = this.userInfo.cargo
-    this.selectedCategory = this.userInfo.tipo_servico_id
-    
-    console.log(this.selectedCategory)
 
-    
+    this.infos = [{
+      nome: this.userInfo.nome,
+      email: this.userInfo.email,
+      cargo: this.mapValuesRoles(this.userInfo.cargo),
+      categoria: this.mapValuesCategories(this.userInfo.tipo_servico_nome),
+      terceirizado: this.userInfo.terceirizado,
+      empresa: this.userInfo.empresa
+    }]
+
+    this.formGroup.patchValue(this.infos[0])
 
   }
 
@@ -162,8 +181,6 @@ export class ModalEditUserComponent implements OnInit {
       console.error(error);
     }
   }
-  
-  
   
 
 }

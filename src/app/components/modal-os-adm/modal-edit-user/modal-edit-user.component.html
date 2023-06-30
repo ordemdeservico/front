@@ -1,4 +1,5 @@
 <form class="forms" [formGroup]="formGroup">
+    <p-toast></p-toast>
     <div class="card flex flex-wrap justify-content-center gap-3">
         <span class="p-input-icon-right p-float-label">
             <i class="pi pi-user"></i>
@@ -34,8 +35,7 @@
 
     <div class="card flex justify-content-center m-0">
         <span class="p-float-label">
-            <p-dropdown  formControlName="cargo" [options]="office"  [(ngModel)]="selectedCargo" placeholder="Selecione uma cargo" inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['cargo'].invalid && formGroup.controls['cargo'].touched}"></p-dropdown>
-            <!-- <p-dropdown formControlName="cargo" name="cargo" dataKey="value" optionLabel="value" optionValue="value" [options]="office" placeholder="Selecione uma cargo" inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['cargo'].invalid && formGroup.controls['cargo'].touched}"></p-dropdown> -->
+            <p-dropdown  formControlName="cargo" [options]="roles" optionLabel="label"  optionValue="value" placeholder="Selecione um cargo"  [ngClass]="{'invalid-field': formGroup.controls['cargo'].invalid && formGroup.controls['cargo'].touched}"></p-dropdown>
             <label for="float-label">Cargo</label>
         </span>
         <div *ngIf="formGroup.controls['cargo'].invalid && formGroup.controls['cargo'].touched && !formGroup.controls['cargo'].value" class="validation-message">
@@ -45,7 +45,7 @@
 
     <div class="card flex justify-content-center m-0">
         <span class="p-float-label">
-            <p-dropdown formControlName="categoria" [options]="categories" optionLabel="nome" optionValue="id" [(ngModel)]="selectedCategory" placeholder="Selecione uma Categoria" inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched}"></p-dropdown>
+            <p-dropdown formControlName="categoria" [options]="categories" optionLabel="nome" optionValue="id"  placeholder="Selecione uma Categoria"  [ngClass]="{'invalid-field': formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched}"></p-dropdown>
             <label for="float-label">Categoria</label>
         </span>
         <div *ngIf="formGroup.controls['categoria'].invalid && formGroup.controls['categoria'].touched && !formGroup.controls['categoria'].value" class="validation-message">
@@ -55,7 +55,7 @@
 
     <div class="card flex justify-content-center m-0">
         <span class="p-float-label">
-            <p-dropdown formControlName="terceirizado" [options]="outsourced" placeholder="Selecione caso seja terceiro." inputId="float-label" [ngClass]="{'invalid-field': formGroup.controls['terceirizado'].invalid && formGroup.controls['terceirizado'].touched}"></p-dropdown>
+            <p-dropdown formControlName="terceirizado" [options]="outsourced" placeholder="Selecione caso seja terceiro."  [ngClass]="{'invalid-field': formGroup.controls['terceirizado'].invalid && formGroup.controls['terceirizado'].touched}"></p-dropdown>
             <label for="float-label">Terceiro</label>
         </span>
         <div *ngIf="formGroup.controls['terceirizado'].invalid && formGroup.controls['terceirizado'].touched && !formGroup.controls['terceirizado'].value" class="validation-message">
@@ -77,7 +77,7 @@
 
     <div class="card flex justify-content-center btn-submit">
         <button  class="btn btn-confirm" (click)="submitForm()">Confirmar</button>
-        <button  class="btn btn-decline" (click)="deleteUserById(userInfo.id)">Deletar</button>
+        <button  class="btn btn-decline" (click)="deleteUserById(userInfo.nome)">Deletar</button>
     </div>
 </form>
 
