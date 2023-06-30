@@ -90,8 +90,6 @@ export class HomeFormComponent implements OnInit {
           console.error(err);
         }
       })
-    } else {
-      alert('Todos os campos devem ser preenchidos.')
     }
   }
 
@@ -109,7 +107,6 @@ export class HomeFormComponent implements OnInit {
       }
     })
     
-    console.log('data: ', this.obterDataAtual())
     this.setor_principal= await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllSetoresPrincipais()));
     this.tipo_servico = await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllServices()));
     if (!this.selectedSetor) {
@@ -117,11 +114,8 @@ export class HomeFormComponent implements OnInit {
     }
 
     this.selectedSetor = this.setor_principal[0].value;
-      
     this.getAllSecundarios();
-    // console.log('Principal: ', this.setor_principal)
-    // console.log('Secundario: ', this.setor_secundario)
-    // console.log('Categoria: ', this.tipo_servico)
+
   }
 
   async getAllSecundarios() {
