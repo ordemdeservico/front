@@ -23,10 +23,10 @@ export class ListAdmService {
     return this.http.get(`${API}/user/${id}`, { params: params })
   }
 
-  deleteUserById(id: number): Observable<any> {
-    let params = new HttpParams().set('id', id);
+  deleteUserByName(nome: string): Observable<any> {
+    let params = new HttpParams().set('nome', nome);
 
-    return this.http.delete(`${API}/user/${id}`, { params: params })
+    return this.http.delete(`${API}/user/deletar`, { params: params })
   }
 
   updateUser(params: any, id: number): Observable<any> {
