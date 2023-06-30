@@ -89,7 +89,6 @@ export class ModalAddUserComponent implements OnInit {
         }
       );
     } else {
-      console.log('Não Fechar Menu');
       this.formGroup.markAllAsTouched();
     }
   }
