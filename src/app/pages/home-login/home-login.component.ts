@@ -63,9 +63,6 @@ export class HomeLoginComponent implements OnInit {
       },
       error => {
         console.error("Erro ao enviar os dados:", error);
-        if (error.message == 'Unauthorized') {
-          alert('oi')
-        }
         this.messageService.add({ severity: 'error', summary: 'Erro', detail: error.error.message  || 'E-mail ou Senha incorretos.' });
       }
       );
