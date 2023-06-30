@@ -85,6 +85,8 @@ export class HomeFormComponent implements OnInit {
       this.formService.solicitarOs(values).subscribe({
         next: (res) => {
           console.log(res);
+          this.formGroup.reset();
+
         },
         error: (err) => {
           console.error(err);
