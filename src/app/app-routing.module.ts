@@ -13,6 +13,11 @@ import { UserGuard } from './guards/user.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'home-login',
+    pathMatch: 'full'
+  },
+  {
     path: 'home-login',
     loadChildren: () =>
       import('./pages/home-login/home-login.module').then(
@@ -72,7 +77,7 @@ const routes: Routes = [
     RouterModule
   ]
 })
-export class AppRoutingModule { 
+export class AppRoutingModule {
 
 
 }
