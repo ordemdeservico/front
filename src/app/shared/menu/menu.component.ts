@@ -19,6 +19,7 @@ export class MenuComponent implements OnInit {
   value: string = '';
   username = '';
   usermail = '';
+  userRole = '';
   passwordForm: FormGroup;
 
   constructor(
@@ -29,13 +30,13 @@ export class MenuComponent implements OnInit {
     private formBuilder: FormBuilder,
     private messageService: MessageService,
     private loginService: HomeLoginService
-    ) { 
+    ) {
       this.passwordForm = this.formBuilder.group({
         oldPassword: ['', Validators.required],
         newPassword: ['', [Validators.required, Validators.minLength(3)]]
       });
     }
-    
+
     changePassword() {
       if (this.passwordForm.valid) {
         const oldPassword = this.passwordForm.get('oldPassword')?.value;
@@ -68,10 +69,22 @@ export class MenuComponent implements OnInit {
     }
 
     navigateToListAdm() {
-      this.router.navigate(['/list-adm']);  
+      this.router.navigate(['/list-adm']);
     }
-  
-    
+
+    navigateToHome() {
+      if (this.userRole === 'Admin') {
+        this.router.navigateByUrl('/dashboard-adm');
+      }
+
+      if (this.userRole === 'Tecnico') {
+        this.router.navigateByUrl('/dashboard-tec');
+      }
+
+      if (this.userRole == 'Solicitante') {
+        this.router.navigateByUrl('/dashboard-user');
+      }
+    }
 
 
   ngOnInit() {
@@ -79,16 +92,17 @@ export class MenuComponent implements OnInit {
       (res) => {
         this.username = res.nome
         this.usermail = res.email
+        this.userRole = res.cargo
         if (res.cargo === 'Admin') {
           this.isAdmin = true;
         }
-      
+
       },
       (err) => {
         console.error(err);
       }
     )
   }
-  
+
 
 }

@@ -4,23 +4,23 @@
         <p class="logo-name">OSManager</p>
     </div>
     <div class="menu-content">
-        <a class="btn" href="#">
+        <a class="btn" (click)="navigateToHome()" >
             <i class='bx bx-home-alt'></i>
-            <span class="link-name">Home</span> 
+            <span class="link-name">Home</span>
             <i class='bx bx-right-arrow-alt'></i>
         </a>
         <ng-container *ngIf="isAdmin">
-            <a class="btn" (click)="navigateToListAdm()"> 
+            <a class="btn" (click)="navigateToListAdm()">
                 <i class='bx bx-user'></i>
-                <span class="link-name">Usuários</span> 
+                <span class="link-name">Usuários</span>
                 <i class='bx bx-right-arrow-alt'></i>
             </a>
-        </ng-container> 
+        </ng-container>
     </div>
     <div class="menu-footer" (click)="showDialog()">
         <a class="btn">
             <i class='bx bx-user-circle'></i>
-            <span class="link-name">Perfil</span> 
+            <span class="link-name">Perfil</span>
             <i class='bx bx-right-arrow-alt'></i>
         </a>
     </div>
@@ -41,7 +41,7 @@
                     <p>{{ username }}</p>
                 </div>
             </div>
-    
+
             <div class="item">
                 <div class="item-title">
                     <i class='bx bx-envelope'></i>
