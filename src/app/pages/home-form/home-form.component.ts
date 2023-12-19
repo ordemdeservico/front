@@ -38,6 +38,7 @@ export class HomeFormComponent implements OnInit {
   id: number = 0;
   role: string = '';
   uploadedFiles: any[] = [];
+  autoUpload: boolean = true;
 
 
   constructor(
@@ -68,13 +69,19 @@ export class HomeFormComponent implements OnInit {
     this.getAllSecundarios();
   }
 
-  onUpload(event:UploadEvent) {
-    for(let file of event.files) {
-        this.uploadedFiles.push(file);
+  onFileSelect(event: any) {
+    for (let file of event.files) {
+      this.uploadedFiles.push(file);
     }
-
-    this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
   }
+
+  // onUpload(event:UploadEvent) {
+  //   for(let file of event.files) {
+  //       this.uploadedFiles.push(file);
+  //   }
+
+  //   this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+  // }
 
   backToDashboard(){
     if (this.role == 'Admin') {
@@ -87,7 +94,41 @@ export class HomeFormComponent implements OnInit {
   }
 
   onEmmmitOs() {
-    
+    if ( this.formGroup.valid && this.formGroup.value && this.uploadedFiles.length > 0) {
+      const formData = new FormData();
+      for (let file of this.uploadedFiles) {
+        formData.append('file', file, file.name);
+      }
+
+      formData.append('solicitante_id', this.id.toString());
+      formData.append('data_solicitacao', this.obterDataAtual());
+      formData.append('tipo_servico_id', this.formGroup.value.tipo_servico_id);
+      formData.append('descricao', this.formGroup.value.descricao);
+      formData.append('setor_principal_id', this.formGroup.value.setor_principal_id);
+      formData.append('setor_secundario_id', this.formGroup.value.setor_secundario_id);
+
+      this.formService.solicitarOs(formData).subscribe({
+        next: (res) => {
+          console.log('Ordem de serviço emitida. ', res);
+          this.formGroup.reset();
+          this.uploadedFiles = [];
+        },
+        error: (erro) => {
+          console.error('Erro: ', erro);
+          this.messageService.add({severity: 'error', summary: 'Erro ao emitir ordem de serviço.'})
+        },
+        complete: () => {
+          this.messageService.add({severity: 'success', summary: 'Ordem de serviço emitida!'})
+          setTimeout( () => {
+            this.backToDashboard();
+          }, 1500)
+
+        }
+      })
+    } else {
+      console.error('Formulário inválido!');
+      this.messageService.add({severity: 'error', summary: 'Erro ao emitir ordem de serviço.'})
+    }
   }
 
   solicitarOs() {

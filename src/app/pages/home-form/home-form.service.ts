@@ -14,17 +14,21 @@ export class HomeFormService {
   constructor( private http: HttpClient ) { }
 
 
-  solicitarOs(params: any): Observable<any> {
-    let httpParams = new HttpParams();
-    
-    for (const key in params) {
-      if (params.hasOwnProperty(key)) {
-        httpParams = httpParams.append(key, params[key]);
-      }
-    }
-  
-    return this.http.post<any>(`${API}/ordem-servico/solicitar`, httpParams);
+  solicitarOs(formData: FormData): Observable<any> {
+    return this.http.post<any>(`${API}/ordem-servico/solicitar`, formData);
   }
 
-  
+  // solicitarOs(params: any): Observable<any> {
+  //   let httpParams = new HttpParams();
+
+  //   for (const key in params) {
+  //     if (params.hasOwnProperty(key)) {
+  //       httpParams = httpParams.append(key, params[key]);
+  //     }
+  //   }
+
+  //   return this.http.post<any>(`${API}/ordem-servico/solicitar`, httpParams);
+  // }
+
+
 }
