@@ -114,6 +114,15 @@
   }
 }
 
+::ng-deep .p-fileupload .p-fileupload-buttonbar {
+  display: flex !important;
+
+  ::ng-deep p-button .p-element {
+    max-width: none !important;
+  }
+
+}
+
 
 ::ng-deep .p-fileupload-content {
   overflow-y: auto !important;
@@ -124,16 +133,29 @@
   margin-right: 4px;
 }
 
-::ng-deep .btn {
+::ng-deep .btn-upload-file {
   background-color: var(--color-3);
   border: var(--color-2);
 }
 
-::ng-deep .p-fileupload-choose:not(.p-disabled):hover,
-::ng-deep .p-fileupload-choose
+::ng-deep .p-fileupload-choose:active,
+::ng-deep .p-fileupload-choose:not(.p-disabled):active,
+::ng-deep .p-fileupload-choose,
+::ng-deep .p-button:enabled:active,
+::ng-deep .p-button:enabled:hover,
+::ng-deep .p-button:enabled:active,
+::ng-deep .p-button:enabled:hover
 {
   background-color: var(--color-2);
   border: none;
+}
+
+::ng-deep .p-fileupload-choose:not(.p-disabled):hover {
+  background-color: var(--color-4);
+}
+
+::ng-deep .p-fileupload .p-fileupload-buttonbar .p-button.p-fileupload-choose.p-focus {
+  box-shadow: var(--color-4);
 }
 
 @media screen and (max-width: 450px) {
@@ -174,7 +196,7 @@
     font-size: 10px;
   }
 
-  ::ng-deep .btn {
+  ::ng-deep .btn-upload-file {
     width: 30% !important;
     text-align: center;
   }
