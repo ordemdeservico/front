@@ -7,21 +7,26 @@ import { HomeLoginService } from '../home-login/home-login.service';
 import { HomeFormService } from './home-form.service';
 import { DatePipe } from '@angular/common';
 import { Router } from '@angular/router';
-
+import { MessageService } from 'primeng/api';
 
 interface DropdownOptions {
   label: string;
   value: number;
 }
 
+interface UploadEvent {
+  originalEvent: Event;
+  files: File[];
+}
+
 @Component({
   selector: 'app-home-form',
   templateUrl: './home-form.component.html',
   styleUrls: ['./home-form.component.scss'],
-  providers: [ DatePipe ]
+  providers: [ DatePipe, MessageService ]
 })
 export class HomeFormComponent implements OnInit {
-  
+
   formGroup: FormGroup;
   setor_principal: { label: string; value: number }[] = [];
   setor_secundario: DropdownOptions[] = [];
@@ -32,6 +37,7 @@ export class HomeFormComponent implements OnInit {
   data: string = '';
   id: number = 0;
   role: string = '';
+  uploadedFiles: any[] = [];
 
 
   constructor(
@@ -41,6 +47,7 @@ export class HomeFormComponent implements OnInit {
     private formService: HomeFormService,
     private datePipe: DatePipe,
     private router: Router,
+    private messageService: MessageService
   ) {
     this.formGroup = this.formBuilder.group({
       setor_principal_id: ['', Validators.required],
@@ -53,7 +60,7 @@ export class HomeFormComponent implements OnInit {
 
    obterDataAtual(): string {
     const data_insercao = new Date();
-    return this.datePipe.transform(data_insercao, ' yyyy/MM/dd') || ''; 
+    return this.datePipe.transform(data_insercao, ' yyyy/MM/dd') || '';
   }
 
    onChangeSetorPrincipal(){
@@ -61,14 +68,26 @@ export class HomeFormComponent implements OnInit {
     this.getAllSecundarios();
   }
 
+  onUpload(event:UploadEvent) {
+    for(let file of event.files) {
+        this.uploadedFiles.push(file);
+    }
+
+    this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
+  }
+
   backToDashboard(){
     if (this.role == 'Admin') {
-      this.router.navigate(['/dashboard-adm']);	
+      this.router.navigate(['/dashboard-adm']);
     } else if (this.role == 'Tecnico') {
-      this.router.navigate(['/dashboard-tec']);	
+      this.router.navigate(['/dashboard-tec']);
     } else if (this.role == 'Solicitante') {
-      this.router.navigate(['/dashboard-user']);	
+      this.router.navigate(['/dashboard-user']);
     }
+  }
+
+  onEmmmitOs() {
+    
   }
 
   solicitarOs() {
@@ -108,7 +127,7 @@ export class HomeFormComponent implements OnInit {
         console.error(err);
       }
     })
-    
+
     this.setor_principal= await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllSetoresPrincipais()));
     this.tipo_servico = await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllServices()));
     if (!this.selectedSetor) {
@@ -137,7 +156,7 @@ export class HomeFormComponent implements OnInit {
         }))
         )
       ));
-    } 
+    }
   }
 
   private formatToDropdownptions<T extends {nome?:string;id?:number}>(req:Observable<{erros:any,result:T[]}>):Observable<DropdownOptions[]> {

@@ -7,7 +7,8 @@ import { MenuModule } from 'src/app/shared/menu/menu.module';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { ReactiveFormsModule } from '@angular/forms';
-
+import { FileUploadModule } from 'primeng/fileupload';
+import { ToastModule } from 'primeng/toast';
 
 
 
@@ -21,7 +22,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     MenuModule,
     DropdownModule,
     InputTextareaModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FileUploadModule,
+    ToastModule
   ]
 })
 export class HomeFormModule { }

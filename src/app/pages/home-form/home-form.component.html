@@ -1,4 +1,78 @@
-<section class="home-form">
+<div class="container">
+  <p-toast></p-toast>
+  <header>
+    <button class="back-btn" (click)="backToDashboard()">
+      <i class='bx bx-left-arrow-alt'></i>
+      <span>Voltar</span>
+    </button>
+    <div class="header-infos">
+      <p>comunicacao&#64;fsnt.com.br&nbsp;&nbsp;|&nbsp;&nbsp;(14) 3405-2033</p>
+    </div>
+  </header>
+
+  <div class="form-container">
+    <h1>Insira os dados para efetivar a solicitação!</h1>
+
+    <form [formGroup]="formGroup" (ngSubmit)="onEmmmitOs()">
+
+      <div class="row">
+        <div class="field">
+          <label for="formSetorPrincipal">Instituição</label>
+          <p-dropdown id="formSetorPrincipal" formControlName="setor_principal_id" [options]="setor_principal"
+            (onChange)="onChangeSetorPrincipal()"></p-dropdown>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="formSetorSecundario">Setor</label>
+          <p-dropdown id="formSetorSecundario" formControlName="setor_secundario_id"
+            [options]="setor_secundario"></p-dropdown>
+        </div>
+
+        <div class="field">
+          <label for="formCategoria">Categoria</label>
+          <p-dropdown id="formCategoria" formControlName="tipo_servico_id" [options]="tipo_servico"></p-dropdown>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <label for="formDescricao">Descrição</label>
+          <textarea id="formDescricao" formControlName="descricao" rows="5" cols="30" pInputTextarea [autoResize]="true"
+            placeholder="Descreva sua ordem de serviço."></textarea>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" styleClass="upload-files"
+            chooseLabel="Escolher" cancelLabel="Cancelar" chooseStyleClass="btn" cancelStyleClass="btn"
+            uploadStyleClass="btn" (onUpload)="onUpload($event)" [multiple]="true" accept="image/*"
+            [maxFileSize]="1000000">
+            <ng-template pTemplate="content">
+              <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+              </ul>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="field">
+          <button type="submit" (click)="onEmmmitOs()">Solicitar</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+
+
+
+<!-- <section class="home-form">
   <header class="header-box">
     <button class="header-btn-voltar" (click)="backToDashboard()">
       <i class='bx bx-left-arrow-alt'></i>
@@ -8,30 +82,30 @@
       <p>comunicacao@fsnt.com.br&nbsp;&nbsp;|&nbsp;&nbsp;(14) 3405-2033</p>
     </div>
   </header>
-  
+
   <section class="form-box">
     <div class="form-box-title">
       <h2 class="title">Insira os dados para <br> efetivar a solicitação</h2>
     </div>
     <form class="form-fields" [formGroup]="formGroup">
-  
+
       <div class="select card flex justify-content-center m-0">
         <label for="float-label">Instituição</label>
         <p-dropdown id="formSetorPrincipal" formControlName="setor_principal_id" [options]="setor_principal" (onChange)="onChangeSetorPrincipal()"></p-dropdown>
       </div>
-  
+
       <div class="columns">
         <div class="card flex justify-content-center m-0">
           <label for="float-label">Setor</label>
           <p-dropdown id="formSetorSecundario" formControlName="setor_secundario_id" [options]="setor_secundario"></p-dropdown>
         </div>
-  
+
         <div class="card flex justify-content-center m-0">
           <label for="float-label">Categoria</label>
           <p-dropdown id="formCategoria" formControlName="tipo_servico_id" [options]="tipo_servico"></p-dropdown>
         </div>
       </div>
-  
+
       <div class="description">
         <textarea id="formDescricao" formControlName="descricao" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Descreva sua ordem de serviço."></textarea>
       </div>
@@ -42,4 +116,4 @@
       </div>
     </div>
   </section>
-</section>
+</section> -->

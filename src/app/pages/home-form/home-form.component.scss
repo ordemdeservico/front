@@ -1,197 +1,181 @@
-.home-form {
+.container {
+  width: 100%;
+  height: 100vh;
+
+  header {
+    background-color: var(--color-2);
+    height: 12vh;
     width: 100%;
-    min-height: 100%;
-    max-height: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    padding: 0 100px;
 
-    .header-box {
-        background-color: var(--color-2);
-        height: 12vh;
+    .back-btn {
+      outline: none;
+      border: none;
+      width: 120px;
+      height: 48px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.5s all ease-in-out;
+      text-align: center;
+      background-color: transparent;
+      color: var(--color-10);
+      display: flex;
+      align-items: center;
+
+      span {
+        font-size: 1.2rem !important;
+        font-weight: 500;
+      }
+
+      &:hover {
+        background-color: var(--color-3);
+        color: var(--color-10)
+      }
+
+      i {
+        margin-right: 8px;
+        font-size: 1.5rem;
+      }
+    }
+
+    .header-infos p {
+      color: var(--color-10);
+      font-size: 1.4rem !important;
+      font-weight: 600;
+      text-align: center;
+      text-wrap: wrap;
+    }
+  }
+
+  .form-container {
+    width: 100%;
+    height: 88vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+
+    h1 {
+      font-size: 24px;
+      letter-spacing: 1px;
+      font-weight: 700;
+      text-align: center;
+      color: var(--color-7);
+
+    }
+
+    form {
+      width: 70%;
+      height: 70%;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      .row  {
         width: 100%;
         display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        align-content: center;
-        justify-content: space-between;
-        padding: 0px 10vh;
-        // overflow: hidden;
-    
-    
-        .header-btn-voltar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            outline: none;
+        gap: 1rem;
+
+        .field {
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          // align-items: center;
+
+          ::ng-deep p-dropdown .p-dropdown {
+            width: 100%;
+          }
+
+          button {
+            height: 48px;
             border: none;
-            background-color: transparent;
-            width: 80px;
-            color: white;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.5s ease-in-out;
-        }
-
-        .header-btn-voltar:hover {
-            height: 40px;
-            width: 100px;
+            outline: none;
             border-radius: 8px;
-            padding: 0 8px 0 8px;
-            background-color: var(--color-3);
+            width: 100%;
+            align-self: center;
+            color: var(--color-10);
+            font-weight: 600;
+            background-color: var(--color-4);
+            transition: 0.5s all ease-in-out;
+            margin-bottom: 1rem;
+
+            &:hover {
+              background-color: var(--color-2);
+            }
+          }
         }
-    
-        .header-infos {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 1rem;
-            color: white;
-            font-size: 1rem;
-        }
+      }
     }
-    
-    .form-box {
-        width: 100%;
-        height: 88vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        
-    
-        .form-box-title {
-            width: 100%;
-            flex-wrap: wrap;
-            display: flex;
-            justify-content: center;
-            align-items: center !important;
-    
-            .title {
-                width: 50%;
-                font-family: 'Montserrat', sans-serif;
-                font-weight: 700;
-                line-height: 110%;
-                letter-spacing: 1px;
-                font-style: normal;
-                font-size: 2rem;
-                text-align: start !important;
-                padding-bottom: 4rem;
-            }
-    
-        
-        }
-    
-        .form-fields {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 1rem;
-    
-            .columns {
-                width: 50%;
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                flex-wrap: wrap;
-                gap: 1rem;
-    
-                .card {
-                    display: flex;
-                    flex-direction: column;
-                }
-            }
-    
-            .select {
-                width: 50%;
-            }
-    
-    
-            ::ng-deep p-dropdown#formSetorPrincipal .p-dropdown {
-                width: 772px;
-                display: inline-flex;
-                max-width: 50vw;
-            }
-    
-            ::ng-deep p-dropdown#formSetorSecundario .p-dropdown,
-            ::ng-deep p-dropdown#formCategoria .p-dropdown {
-                width: 360px;
-                max-width: 30vw;
-    
-            }
-    
-            .description {
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                width: 50%;
-                padding-top: 20px;
-            }
-    
-            ::ng-deep textarea#formDescricao {
-                width: 772px;
-                max-width: 50vw;
-            }
-        }
-    
-        .form-submit {
-            padding-top: 20px;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-    
-            .box-submit {
-                width: 50%;
-    
-                .btn-submit {
-                    outline: none;
-                    border: none;
-                    width: 160px;
-                    height: 46px;
-                    border-radius: 8px;
-                    color: white;
-                    background-color: var(--color-3);
-                    transition: 0.5s all ease;
-                    font-size: 1rem;
-                    font-weight: 500;
-                    cursor: pointer;
-                }
-    
-                .btn-submit:hover {
-                    background-color: var(--color-2);
-                    font-size: 1.1rem;
-                }
-            }
-        }
-    }
+  }
 }
 
 
+::ng-deep .p-fileupload-content {
+  overflow-y: auto !important;
+  max-height: 200px;
+}
+
+::ng-deep plusicon {
+  margin-right: 4px;
+}
+
+::ng-deep .btn {
+  background-color: var(--color-3);
+  border: var(--color-2);
+}
+
+::ng-deep .p-fileupload-choose:not(.p-disabled):hover,
+::ng-deep .p-fileupload-choose
+{
+  background-color: var(--color-2);
+  border: none;
+}
+
+@media screen and (max-width: 450px) {
+  .container header .back-btn {
+    align-self: self-start;
+    margin-left: 20px;
+  }
+}
+
 @media screen and (max-width: 768px) {
 
-    .title {
-        padding: 1rem 0 1rem 0 !important;
-        font-size: 1.5rem !important;
+  .container header {
+    padding: 0;
+    flex-direction: column-reverse;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .container header .back-btn span {
+    font-size: 1rem !important;
+  }
+
+  .container header .header-infos p {
+    font-size: 1rem !important;
+  }
+
+  h1 {
+    max-width: 90%;
+  }
+
+  form {
+      gap: 1rem;
+      width: 90% !important;
+      height: 80% !important;
     }
 
-    .form-box {
-        height: 100% !important;
-    }
+  ::ng-deep span {
+    font-size: 10px;
+  }
 
-    .form-submit {
-        padding-bottom: 20px;
-    }
-
-    .header-box {
-        padding: 0 !important;
-        display: flex !important;
-        gap: 1rem;
-        padding-left: 1rem !important;
-    }
-    
+  ::ng-deep .btn {
+    width: 30% !important;
+    text-align: center;
+  }
 }
