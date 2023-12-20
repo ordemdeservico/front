@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Validators, FormGroup, FormBuilder } from '@angular/forms';
-import { OrderService } from 'src/app/shared/models/order-service.model';
 import { Observable, lastValueFrom, map } from 'rxjs';
 import { ListCardsService } from 'src/app/components/list-cards/list-cards.service';
 import { HomeLoginService } from '../home-login/home-login.service';
@@ -69,19 +69,11 @@ export class HomeFormComponent implements OnInit {
     this.getAllSecundarios();
   }
 
-  onFileSelect(event: any) {
+  onFileSelect(event: UploadEvent) {
     for (let file of event.files) {
       this.uploadedFiles.push(file);
     }
   }
-
-  // onUpload(event:UploadEvent) {
-  //   for(let file of event.files) {
-  //       this.uploadedFiles.push(file);
-  //   }
-
-  //   this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
-  // }
 
   backToDashboard(){
     if (this.role == 'Admin') {
@@ -128,30 +120,6 @@ export class HomeFormComponent implements OnInit {
     } else {
       console.error('Formulário inválido!');
       this.messageService.add({severity: 'error', summary: 'Erro ao emitir ordem de serviço.'})
-    }
-  }
-
-  solicitarOs() {
-    if (this.formGroup.valid) {
-      const values: any = {
-        solicitante_id: this.id,
-        data_solicitacao: this.obterDataAtual(),
-        tipo_servico_id: this.formGroup.value.tipo_servico_id,
-        descricao: this.formGroup.value.descricao,
-        setor_principal_id: this.formGroup.value.setor_principal_id,
-        setor_secundario_id: this.formGroup.value.setor_secundario_id
-      }
-
-      this.formService.solicitarOs(values).subscribe({
-        next: (res) => {
-          console.log(res);
-          this.formGroup.reset();
-
-        },
-        error: (err) => {
-          console.error(err);
-        }
-      })
     }
   }
 
