@@ -1,7 +1,32 @@
-<div class="card" *ngIf="orderService">
+<p-card header="Advanced Card" subheader="Card Subheader" [style]="{ width: '340px' }">
+  <ng-template pTemplate="header">
+      <img alt="Card" [src]="orderService?.images?.type1?.[0]?.img_key ? orderService?.images?.type1?.[0]?.img_key : 'https://primefaces.org/cdn/primeng/images/usercard.png'"  />
+  </ng-template>
+  <p>
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
+      quas!
+  </p>
+  <ng-template pTemplate="footer">
+      <p>teste</p>
+  </ng-template>
+</p-card>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <div class="card" *ngIf="orderService">
     <div class="card-content">
         <ul class="card-list">
-            
+
             <li class="id">
                 <div class="card-item">
                     <i class='bx bx-purchase-tag-alt'></i>
@@ -37,9 +62,9 @@
     <div class="card-footer" (click)="openModal()">
         <p>Detalhes</p>
     </div>
-</div>
+</div> -->
 
-<p-dialog header="Header" [(visible)]="displayModal" [breakpoints]="{ '960px': '65vw' }" [style]="{ width: '30vw'}"  [draggable]="false" [resizable]="false">
+<p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [breakpoints]="{ '960px': '100vw' }" [style]="{ width: '40vw'}"  [draggable]="false" [resizable]="false">
     <ng-template pTemplate="header">
         <span class="header">Ordem de Serviço: {{ orderService?.id }}</span>
     </ng-template>
