@@ -67,13 +67,13 @@ export class ListCardsService {
 
   aprovarOs(params: any): Observable<any> {
     let httpParams = new HttpParams();
-    
+
     for (const key in params) {
       if (params.hasOwnProperty(key)) {
         httpParams = httpParams.append(key, params[key]);
       }
     }
-  
+
     return this.http.patch<any>(`${API}/ordem-servico/aprovar`, httpParams);
   }
 
@@ -83,18 +83,10 @@ export class ListCardsService {
     return this.http.delete(`${API}/ordem-servico/rejeitar`, { params: httpParams })
   }
 
-  concluirOs(params: any): Observable<any> {
-    let httpParams = new HttpParams();
-    
-    for (const key in params) {
-      if (params.hasOwnProperty(key)) {
-        httpParams = httpParams.append(key, params[key]);
-      }
-    }
-  
-    return this.http.patch<any>(`${API}/ordem-servico/concluir`, httpParams);
+  concluirOs(formData: FormData): Observable<any> {
+    return this.http.patch<any>(`${API}/ordem-servico/concluir`, formData);
   }
-
+  
   finalizarOs(id: number, feedback: string): Observable<any> {
     let params = new HttpParams();
 

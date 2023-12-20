@@ -7,7 +7,7 @@
     width: 260px;
     height: 100%;
   }
-  
+
   .box-content {
     // background-color: aquamarine;
     height: 100%;
@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    padding: 10.5% 2% 9.8% 2%;
+    padding: 4.5% 2% 9.8% 2%;
 
     .buttons {
       width: 100%;
@@ -44,15 +44,15 @@
         padding: 0 8px 0 8px;
         white-space: nowrap;
     }
-    
+
     .btn-confirm {
         background-color: var(--green1);
     }
-    
+
     .btn-confirm:hover {
         background-color: var(--green2);
     }
-      
+
     }
 
     .cards {
@@ -75,7 +75,7 @@
 
   .box-content {
     width: calc(100% - 80px) !important;
-    padding: 42% 2% 9.8% 2% !important;
+    padding: 4.5% 2% 9.8% 2% !important;
 
    .cards {
     width: 100% !important;

@@ -1,4 +1,5 @@
 <div class="card flex justify-content-center">
+  <p-toast></p-toast>
     <div class="itens" >
         <div class="column">
             <div class="item">
@@ -85,11 +86,26 @@
             </div>
             <textarea formControlName="material" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Material utilizado na OS">{{ orderService?.material }}</textarea>
         </div>
+        <p-fileUpload name="demo[]" styleClass="upload-files"
+            chooseLabel="Escolher" cancelLabel="Cancelar" chooseStyleClass="btn-upload-file" cancelStyleClass="btn-upload-file"
+            uploadStyleClass="btn-upload-file" (onSelect)="onFileSelect($event)" [multiple]="true" accept="image/*"
+            [maxFileSize]="1000000" [auto]="autoUpload">
+            <ng-template pTemplate="content">
+              <ul *ngIf="uploadedFiles.length">
+                <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
+              </ul>
+            </ng-template>
+          </p-fileUpload>
 
-        <div class="card flex justify-content-center btn-submit" *ngIf="role == 'Tecnico'">
-            <button pButton pRipple label="Concluir" class="p-button-success btn" (click)="concluirOs()"></button>
+        <!-- <div class="card flex justify-content-center btn-submit" *ngIf="role == 'Tecnico'">
+            <button pButton pRipple label="Concluir" class="p-button-success btn" (click)="onEmmmitOs()"></button>
+        </div> -->
+        <div class="row">
+          <div class="field">
+            <button class="btn" type="submit" (click)="onEmmmitOs()">Concluir</button>
+          </div>
         </div>
     </div>
-        
+
 </div>
 
