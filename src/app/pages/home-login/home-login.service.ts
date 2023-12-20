@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { HomeLogin, LoginResponse, UserInfo } from './home-login';
+import { Login, LoginResponse, UserInfo } from './home-login';
 import { TokenService } from 'src/app/shared/token.service';
 import { Observable, catchError, map, throwError } from 'rxjs';
 
@@ -13,12 +13,12 @@ const API = environment.API;
 export class HomeLoginService {
 
   constructor(
-    private http: HttpClient, 
+    private http: HttpClient,
     private tokenService : TokenService
   ) { }
 
-  validateLogin(loginUser: HomeLogin){
-      return this.http.post<LoginResponse>(`${API}/user/login`, loginUser)
+  onLogin(values: Login): Observable<LoginResponse> {
+    return this.http.post<LoginResponse>(`${API}/user/login`, values)
   }
 
   infoUser():Observable<UserInfo> {
@@ -32,7 +32,7 @@ export class HomeLoginService {
         console.error(error);
         return throwError(error.message);
       })
-      
+
     );
   }
   // userVerify(): Observable<string> {

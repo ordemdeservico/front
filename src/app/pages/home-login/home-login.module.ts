@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
 import { ToastModule } from 'primeng/toast';
+import { PasswordModule } from 'primeng/password';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ToastModule } from 'primeng/toast';
     ReactiveFormsModule,
     InputTextModule,
     ButtonModule,
-    ToastModule
+    ToastModule,
+    PasswordModule
 
   ]
 })
