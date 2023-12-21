@@ -48,11 +48,10 @@ export interface AprovarOS {
 }
 
 export interface QuantidadeOS {
-    result: {
-        Solicitada: number;
-        Aprovada: number;
-        Concluida: number;
-        Finalizada: number;
-        total: number;
-    };
+    Solicitada?: number;
+    Aprovada?: number;
+    Concluida?: number;
+    Finalizada?: number;
+    total?: number;
+
 }

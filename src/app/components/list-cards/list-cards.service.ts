@@ -104,12 +104,8 @@ export class ListCardsService {
   }
 
   QuantidadeOS(): Observable<any> {
-    return this.http.get(`${API}/ordem-servico/quantidade/os`);
+    return this.http.get<any>(`${API}/ordem-servico/quantidade/os`);
   }
-
-
-
-
 
   setSelectedOrderService(orderService: OrderService): void {
     this.selectedOrderService = orderService;

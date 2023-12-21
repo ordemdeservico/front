@@ -23,11 +23,11 @@
         ></p-multiSelect>
       </div>
       <p-card class="my-card"
-      title="Total de OS: {{ quantidadeOS.result.total }}"
+      title="Total de OS: {{ quantidadeOS ? quantidadeOS.total : 'N/A' }}"
       [pTooltip]="getTooltipContent()"
       tooltipPosition="bottom"
     >
-      <p>Total OS: <span>{{quantidadeOS.result.total }}</span></p>
+      <p>Total OS: <span>{{ quantidadeOS ? quantidadeOS.total : 'N/A' }}</span></p>
     </p-card>
     </div>
 

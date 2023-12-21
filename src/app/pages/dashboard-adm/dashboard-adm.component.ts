@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { HomeLoginService } from '../home-login/home-login.service';
 import { OrderService } from 'src/app/shared/models/order-service.model';
 import { QuantidadeOS } from 'src/app/shared/models/order-service.model';
@@ -11,12 +11,13 @@ import { Router } from "@angular/router";
   templateUrl: './dashboard-adm.component.html',
   styleUrls: ['./dashboard-adm.component.scss']
 })
-export class DashboardAdmComponent {
+export class DashboardAdmComponent implements OnInit {
 
   groupedFilters: any[];
   selectedFilter: any;
   orderServices: OrderService[] = [];
   quantidadeOS!: QuantidadeOS;
+
   constructor(
     public loginService: HomeLoginService,
     public cardsService: ListCardsService,
@@ -57,12 +58,19 @@ export class DashboardAdmComponent {
         ]
       }
     ];
-    this.cardsService.QuantidadeOS().subscribe((quantidadeOS: QuantidadeOS) => {
-      this.quantidadeOS = quantidadeOS;
-      console.log(this.quantidadeOS.result.total);
-    }
-    );
+  }
 
+  ngOnInit(): void {
+
+
+    this.cardsService.QuantidadeOS().subscribe({
+      next: (res) => {
+        this.quantidadeOS = res.result;
+      },
+      error: (erro) => {
+        console.error('Erro: ', erro);
+      }
+    })
   }
 
   navigateToForm(){
@@ -70,11 +78,10 @@ export class DashboardAdmComponent {
   }
 
   getTooltipContent() {
-    return `Solicitadas: ${this.quantidadeOS.result.Solicitada}
-            Aprovadas: ${this.quantidadeOS.result.Aprovada}
-            Concluidas: ${this.quantidadeOS.result.Concluida}
-            Finalizadas: ${this.quantidadeOS.result.Finalizada}`;
+    return `Solicitadas: ${this.quantidadeOS?.Solicitada}
+            Aprovadas: ${this.quantidadeOS?.Aprovada}
+            Concluidas: ${this.quantidadeOS?.Concluida}
+            Finalizadas: ${this.quantidadeOS?.Finalizada}`;
   }
-
 
 }
