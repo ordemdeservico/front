@@ -39,6 +39,7 @@ export class HomeFormComponent implements OnInit {
   role: string = '';
   uploadedFiles: any[] = [];
   autoUpload: boolean = true;
+  isSubmitting: boolean = false;
 
 
   constructor(
@@ -86,7 +87,7 @@ export class HomeFormComponent implements OnInit {
   }
 
   onEmmmitOs() {
-    if ( this.formGroup.valid && this.formGroup.value ) {
+    if ( this.formGroup.valid && this.formGroup.value && this.isSubmitting == false) {
       const formData = new FormData();
 
       if ( this.uploadedFiles.length > 0) {
@@ -106,6 +107,7 @@ export class HomeFormComponent implements OnInit {
       this.formService.solicitarOs(formData).subscribe({
         next: (res) => {
           console.log('Ordem de serviço emitida. ', res);
+          this.isSubmitting = true;
           this.formGroup.reset();
           this.uploadedFiles = [];
         },
@@ -117,6 +119,7 @@ export class HomeFormComponent implements OnInit {
           this.messageService.add({severity: 'success', summary: 'Ordem de serviço emitida!'})
           setTimeout( () => {
             this.backToDashboard();
+            this.isSubmitting = false;
           }, 1500)
 
         }
