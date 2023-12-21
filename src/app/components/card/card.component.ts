@@ -11,10 +11,10 @@ import { MessageService } from 'primeng/api';
 })
 export default class CardComponent implements OnInit {
 
-  @Input() orderService?: OrderService;
+  @Input() orderService!: OrderService;
   @Input() role?: string;
   @Output() attCard = new EventEmitter();
-  
+
   displayModal: boolean = false;
 
   constructor() { }
@@ -28,7 +28,7 @@ export default class CardComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+
   }
 
 }

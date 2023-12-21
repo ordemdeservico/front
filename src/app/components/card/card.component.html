@@ -1,13 +1,51 @@
-<p-card header="Advanced Card" subheader="Card Subheader" [style]="{ width: '340px' }">
+<p-card
+  header="ID: {{ orderService.id.toString().padStart(4, '0') }}"
+  subheader="Status: {{ orderService.status_os }}"
+  [style]="{ width: '340px' }"
+>
   <ng-template pTemplate="header">
-      <img alt="Card" [src]="orderService?.images?.type1?.[0]?.img_key ? orderService?.images?.type1?.[0]?.img_key : 'https://primefaces.org/cdn/primeng/images/usercard.png'"  />
+      <img alt="Card" [src]="orderService.images?.type1?.[0]?.img_key ? orderService.images?.type1?.[0]?.img_key : 'https://primefaces.org/cdn/primeng/images/usercard.png'"  />
   </ng-template>
-  <p>
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore sed consequuntur error repudiandae numquam deserunt quisquam repellat libero asperiores earum nam nobis, culpa ratione quam perferendis esse, cupiditate neque
-      quas!
-  </p>
+
+  <ng-template pTemplate="content">
+    <div class="card-content">
+      <ul class="card-list">
+        <!-- <li class="id">
+            <div class="card-item">
+                <i class='bx bx-purchase-tag-alt'></i>
+                <p>{{ orderService.status_os }}</p>
+            </div>
+
+        </li> -->
+        <li class="id">
+            <div class="card-item">
+                <i class='bx bx-briefcase-alt'></i>
+                <p>{{ orderService.setor_principal_nome }}</p>
+            </div>
+            <div class="card-id">
+                <h5>{{ orderService.nivel_prioridade }}</h5>
+            </div>
+        </li>
+        <li class="card-item">
+            <i class='bx bx-map'></i>
+            <p>{{ orderService.setor_secundario_com_bloco }}</p>
+        </li>
+        <li class="card-item">
+            <i class='bx bx-wrench'></i>
+            <p>{{ orderService.tipo_servico_nome || 'Indefinido' }}</p>
+        </li>
+        <li class="card-item">
+            <i class='bx bx-calendar'></i>
+            <p>{{ orderService.data_solicitacao | date:'dd/MM/yyyy'}}</p>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
+
   <ng-template pTemplate="footer">
-      <p>teste</p>
+    <div class="card-footer" (click)="openModal()">
+      <p>Detalhes</p>
+    </div>
   </ng-template>
 </p-card>
 
@@ -66,7 +104,7 @@
 
 <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [breakpoints]="{ '960px': '100vw' }" [style]="{ width: '40vw'}"  [draggable]="false" [resizable]="false">
     <ng-template pTemplate="header">
-        <span class="header">Ordem de Serviço: {{ orderService?.id }}</span>
+        <span class="header">Ordem de Serviço: {{ orderService.id }}</span>
     </ng-template>
     <app-modal-os-user *ngIf="role == 'Solicitante'" [orderService]="orderService"></app-modal-os-user>
     <app-modal-aprovar-os *ngIf="orderService?.status_os == 'Solicitada' && role == 'Admin'" [orderService]="orderService" [displayModal]="displayModal" (attCards)="attCards($event)"></app-modal-aprovar-os>
