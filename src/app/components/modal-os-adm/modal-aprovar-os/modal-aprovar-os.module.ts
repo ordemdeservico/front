@@ -10,6 +10,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { GalleriaModule } from 'primeng/galleria';
+import { ImageModule } from 'primeng/image';
+import { GaleriaSolicitadasModule } from '../../galeria-solicitadas/galeria-solicitadas.module';
 
 
 
@@ -31,7 +34,10 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
         DialogModule,
         ReactiveFormsModule,
         ToastModule,
-        ConfirmDialogModule
+        ConfirmDialogModule,
+        GalleriaModule,
+        ImageModule,
+        GaleriaSolicitadasModule
     ]
 })
 export class ModalAprovarOsModule { }

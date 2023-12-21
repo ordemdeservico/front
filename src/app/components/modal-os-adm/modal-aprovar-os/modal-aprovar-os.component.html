@@ -1,81 +1,113 @@
+<p-toast></p-toast>
 
-<div class="card flex justify-content-center">
-    <p-toast></p-toast>
-    <div class="itens" >
-        <div class="column-info">
-            <div class="item">
-                <div class="item-title">
-                    <i class='bx bx-user'></i>
-                    <label>Nome</label>
-                </div>
-                <p>{{ orderService?.solicitante_nome }}</p>
-            </div>
-
-            <div class="item">
-                <div class="item-title">
-                    <i class='bx bx-envelope'></i>
-                    <label>E-mail</label>
-                </div>
-                <p>{{ orderService?.solicitante_email }}</p>
-            </div>
-
-            <div class="item">
-                <div class="item-title">
-                    <i class='bx bx-calendar-week'></i>
-                    <label>Data</label>
-                </div>
-                <p>{{ orderService?.data_solicitacao | date:'dd/MM/yyyy' }}</p>
-            </div>
+<div class="container">
+  <div class="header-container">
+    <ul>
+      <li class="field">
+        <div class="item">
+          <i class="bx bx-user"></i>
+          <label>Nome</label>
         </div>
+        <p>{{ orderService?.solicitante_nome }}</p>
+      </li>
+      <li class="field">
+        <div class="item">
+          <i class="bx bx-envelope"></i>
+          <label>E-mail</label>
+        </div>
+        <p>{{ orderService?.solicitante_email }}</p>
+      </li>
+      <li class="field">
+        <div class="item">
+          <i class="bx bx-calendar-week"></i>
+          <label>Data</label>
+        </div>
+        <p>{{ orderService?.data_solicitacao | date : "dd/MM/yyyy" }}</p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="content-container">
+    <div class="card" *ngIf="images && images.length > 0">
+      <div class="galery-header">
+        <p>Imagens de solicitação</p>
+      </div>
+      <app-galeria-solicitadas [images]="images"></app-galeria-solicitadas>
     </div>
 
-    <form class="dropdown" [formGroup]="formGroup">
-        <div class="select card flex justify-content-center m-0">
-            <label for="float-label">Instituição</label>
-            <p-dropdown  formControlName="setor_principal_id" optionLabel="label" optionValue="value" [options]="setor_principal"  (onChange)="onChangeSetorPrincipal()"></p-dropdown>
-        </div>
+    <form [formGroup]="formGroup">
+      <div class="field">
+        <label for="float-label">Instituição</label>
+        <p-dropdown [ngClass]="{
+          'ng-dirty ng-invalid': !formGroup.get('setor_principal_id')?.valid && formGroup.get('setor_principal_id')?.touched ||
+          formGroup.get('setor_principal_id')?.touched  && !formGroup.get('setor_principal_id')?.value
+          }" formControlName="setor_principal_id" optionLabel="label" optionValue="value" [options]="setor_principal"  (onChange)="onChangeSetorPrincipal()"></p-dropdown>
+      </div>
 
-        <div class="select card flex justify-content-center m-0">
-            <label for="float-label">Setor</label>
-            <p-dropdown  formControlName="setor_secundario_id" [options]="setor_secundario"></p-dropdown>
-        </div>
+      <div class="field">
+        <label for="float-label">Setor</label>
+        <p-dropdown [ngClass]="{
+          'ng-dirty ng-invalid': !formGroup.get('setor_secundario_id')?.valid && formGroup.get('setor_secundario_id')?.touched ||
+          formGroup.get('setor_secundario_id')?.touched  && !formGroup.get('setor_secundario_id')?.value
+        }" formControlName="setor_secundario_id" [options]="setor_secundario"></p-dropdown>
+      </div>
 
-        <div class="select card flex justify-content-center m-0">
-            <label for="float-label">Categoria</label>
-            <p-dropdown formControlName="tipo_servico_id" optionLabel="label" optionValue="value" [options]="tipo_servico"></p-dropdown>
-        </div>
+      <div class="field">
+        <label for="float-label">Categoria</label>
+        <p-dropdown [ngClass]="{
+          'ng-dirty ng-invalid': !formGroup.get('tipo_servico_id')?.valid && formGroup.get('tipo_servico_id')?.touched ||
+          formGroup.get('tipo_servico_id')?.touched  && !formGroup.get('tipo_servico_id')?.value
+        }" formControlName="tipo_servico_id" optionLabel="label" optionValue="value" [options]="tipo_servico"></p-dropdown>
+      </div>
 
-        <div class="select card flex justify-content-center m-0">
-            <label for="float-label">Prioridade</label>
-            <p-dropdown formControlName="nivel_prioridade" [options]="nivel_prioridade" placeholder="Nível de prioridade"></p-dropdown>
-        </div>
+      <div class="field">
+        <label for="float-label">Prioridade</label>
+        <p-dropdown [ngClass]="{
+          'ng-dirty ng-invalid': !formGroup.get('nivel_prioridade')?.valid && formGroup.get('nivel_prioridade')?.touched ||
+          formGroup.get('nivel_prioridade')?.touched  && !formGroup.get('nivel_prioridade')?.value
+        }" formControlName="nivel_prioridade" [options]="nivel_prioridade" placeholder="Nível de prioridade"></p-dropdown>
+      </div>
 
-        <div class="select card flex justify-content-center m-0">
-            <label for="float-label">Responsável</label>
-            <p-dropdown formControlName="tecnico_id"  [options]="tecnico" placeholder="Técnico responsável"></p-dropdown>
-        </div>
+      <div class="field">
+        <label for="float-label">Responsável</label>
+        <p-dropdown [ngClass]="{
+          'ng-dirty ng-invalid': !formGroup.get('tecnico_id')?.valid && formGroup.get('tecnico_id')?.touched ||
+          formGroup.get('tecnico_id')?.touched  && !formGroup.get('tecnico_id')?.value
+        }" formControlName="tecnico_id"  [options]="tecnico" placeholder="Técnico responsável"></p-dropdown>
+      </div>
 
-        <div class="fields" *ngIf="orderService">
-            <div class="fieldDescription">
-                <div class="item-title">
-                    <i class='bx bx-file'></i>
-                    <label>Descrição</label>
-                </div>
-                <textarea formControlName="descricao"  optionLabel="label" optionValue="value" class="textDescription" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado"></textarea>
-            </div>
-        </div>
+      <div class="field">
+        <label for="float-label">Descrição</label>
+        <textarea [ngClass]="{
+          'ng-dirty ng-invalid': !formGroup.get('descricao')?.valid && formGroup.get('descricao')?.touched ||
+          formGroup.get('descricao')?.touched  && !formGroup.get('descricao')?.value
+        }" formControlName="descricao"  optionLabel="label" optionValue="value" class="textDescription" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado"></textarea>
+      </div>
+
+      <div class="submit-area">
+        <button class="btn btn-confirm" (click)="getFormValues()">Aprovar</button>
+        <button class="btn btn-decline" (click)="openModalDecline()">Declinar</button>
+      </div>
+
     </form>
+
+  </div>
+
+</div>
+
+<p-confirmDialog #cd [style]="{ width: '450px' }">
+  <ng-template pTemplate="footer">
+      <button pButton type="button" icon="pi pi-times" label="Não" styleClass="p-button-danger" (click)="cd.reject()"></button>
+      <button pButton type="button" icon="pi pi-check" label="Sim" styleClass="p-button-success" (click)="cd.accept()"></button>
+  </ng-template>
+</p-confirmDialog>
+
+<!-- <div class="card flex justify-content-center">
 
     <div class="card flex justify-content-center btn-submit">
         <button  class="btn btn-confirm" (click)="getFormValues()">Aprovar</button>
         <button  class="btn btn-decline" (click)="openModalDecline()">Declinar</button>
     </div>
-</div>
+</div> -->
 
-<p-confirmDialog #cd [style]="{ width: '450px' }">
-    <ng-template pTemplate="footer">
-        <button pButton type="button" icon="pi pi-times" label="Não" styleClass="p-button-danger" (click)="cd.reject()"></button>
-        <button pButton type="button" icon="pi pi-check" label="Sim" styleClass="p-button-success" (click)="cd.accept()"></button>
-    </ng-template>
-</p-confirmDialog>
 
