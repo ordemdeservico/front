@@ -11,13 +11,6 @@
   <ng-template pTemplate="content">
     <div class="card-content">
       <ul class="card-list">
-        <!-- <li class="id">
-            <div class="card-item">
-                <i class='bx bx-purchase-tag-alt'></i>
-                <p>{{ orderService.status_os }}</p>
-            </div>
-
-        </li> -->
         <li class="id">
             <div class="card-item">
                 <i class='bx bx-briefcase-alt'></i>
@@ -50,58 +43,6 @@
   </ng-template>
 </p-card>
 
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <div class="card" *ngIf="orderService">
-    <div class="card-content">
-        <ul class="card-list">
-
-            <li class="id">
-                <div class="card-item">
-                    <i class='bx bx-purchase-tag-alt'></i>
-                    <p>{{ orderService.status_os }}</p>
-                </div>
-                <div class="card-id">
-                    <h5>ID: {{ orderService.id.toString().padStart(4, '0') }}</h5>
-                </div>
-            </li>
-            <li class="id">
-                <div class="card-item">
-                    <i class='bx bx-briefcase-alt'></i>
-                    <p>{{ orderService.setor_principal_nome }}</p>
-                </div>
-                <div class="card-id">
-                    <h5>{{ orderService.nivel_prioridade }}</h5>
-                </div>
-            </li>
-            <li class="card-item">
-                <i class='bx bx-map'></i>
-                <p>{{ orderService.setor_secundario_com_bloco }}</p>
-            </li>
-            <li class="card-item">
-                <i class='bx bx-wrench'></i>
-                <p>{{ orderService.tipo_servico_nome || 'Indefinido' }}</p>
-            </li>
-            <li class="card-item">
-                <i class='bx bx-calendar'></i>
-                <p>{{ orderService.data_solicitacao | date:'dd/MM/yyyy'}}</p>
-            </li>
-        </ul>
-    </div>
-    <div class="card-footer" (click)="openModal()">
-        <p>Detalhes</p>
-    </div>
-</div> -->
 
 <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [breakpoints]="{ '960px': '100vw' }" [style]="{ width: '60vw'}"  [draggable]="false" [resizable]="false">
     <ng-template pTemplate="header">
