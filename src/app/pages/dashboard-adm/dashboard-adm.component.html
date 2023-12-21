@@ -1,32 +1,38 @@
 <div class="container">
-    <div class="menu">
-        <app-menu></app-menu>
+  <div class="menu">
+    <app-menu></app-menu>
+  </div>
+  <div class="box-content">
+    <div class="buttons">
+      <div class="new-user">
+        <button class="btn btn-confirm" (click)="navigateToForm()">
+          Nova OS
+          <i class="bx bx-cog"></i>
+        </button>
+        <!-- <p-button label="Nova OS" icon="pi pi-cog" iconPos="right" styleClass="p-button-success" (click)="navigateToForm()"></p-button> -->
+      </div>
+
+      <div class="card flex justify-content-center">
+        <p-multiSelect
+          [options]="groupedFilters"
+          [group]="true"
+          [(ngModel)]="selectedFilter"
+          defaultLabel="Selecione um Filtro"
+          scrollHeight="250px"
+          display="chip"
+        ></p-multiSelect>
+      </div>
+      <p-card class="my-card"
+      title="Total de OS: {{ quantidadeOS.result.total }}"
+      [pTooltip]="getTooltipContent()"
+      tooltipPosition="bottom"
+    >
+      <p>Total OS: <span>{{quantidadeOS.result.total }}</span></p>
+    </p-card>
     </div>
-    <div class="box-content">
-        <div class="buttons">
-            <div class="new-user">
-                <button  class="btn btn-confirm" (click)="navigateToForm()">
-                    Nova OS
-                    <i class='bx bx-cog'></i>
-                </button>
-                <!-- <p-button label="Nova OS" icon="pi pi-cog" iconPos="right" styleClass="p-button-success" (click)="navigateToForm()"></p-button> -->
-            </div>
-    
-            <div class="card flex justify-content-center">
-                <p-multiSelect 
-                [options]="groupedFilters" 
-                [group]="true" 
-                [(ngModel)]="selectedFilter" 
-                defaultLabel="Selecione um Filtro" 
-                scrollHeight="250px" 
-                display="chip"
-                ></p-multiSelect>
-            </div>
-        </div>
-        
-        <div class="cards">
-            <app-list-cards [selectedFilterAdm]="selectedFilter"></app-list-cards>
-        </div>
+
+    <div class="cards">
+      <app-list-cards [selectedFilterAdm]="selectedFilter"></app-list-cards>
     </div>
-   
+  </div>
 </div>

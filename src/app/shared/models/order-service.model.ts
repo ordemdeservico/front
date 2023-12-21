@@ -46,3 +46,13 @@ export interface AprovarOS {
   tipo_servico_id: number;
   tecnico_id: number;
 }
+
+export interface QuantidadeOS {
+    result: {
+        Solicitada: number;
+        Aprovada: number;
+        Concluida: number;
+        Finalizada: number;
+        total: number;
+    };
+}
