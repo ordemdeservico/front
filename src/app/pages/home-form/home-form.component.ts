@@ -86,11 +86,15 @@ export class HomeFormComponent implements OnInit {
   }
 
   onEmmmitOs() {
-    if ( this.formGroup.valid && this.formGroup.value && this.uploadedFiles.length > 0) {
+    if ( this.formGroup.valid && this.formGroup.value ) {
       const formData = new FormData();
-      for (let file of this.uploadedFiles) {
-        formData.append('file', file, file.name);
+
+      if ( this.uploadedFiles.length > 0) {
+        for (let file of this.uploadedFiles) {
+          formData.append('file', file, file.name);
+        }
       }
+
 
       formData.append('solicitante_id', this.id.toString());
       formData.append('data_solicitacao', this.obterDataAtual());
