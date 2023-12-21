@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { HomeLoginService } from '../home-login/home-login.service';
 import { OrderService } from 'src/app/shared/models/order-service.model';
+import { QuantidadeOS } from 'src/app/shared/models/order-service.model';
 import { ListCardsService } from 'src/app/components/list-cards/list-cards.service';
 import { Router } from "@angular/router";
 
@@ -15,12 +16,12 @@ export class DashboardAdmComponent {
   groupedFilters: any[];
   selectedFilter: any;
   orderServices: OrderService[] = [];
-  
+  quantidadeOS!: QuantidadeOS;
   constructor(
     public loginService: HomeLoginService,
     public cardsService: ListCardsService,
     private router: Router
-  ) { 
+  ) {
     this.groupedFilters = [
       {
         label: 'Instituição',
@@ -56,11 +57,24 @@ export class DashboardAdmComponent {
         ]
       }
     ];
-    
+    this.cardsService.QuantidadeOS().subscribe((quantidadeOS: QuantidadeOS) => {
+      this.quantidadeOS = quantidadeOS;
+      console.log(this.quantidadeOS.result.total);
+    }
+    );
+
   }
 
   navigateToForm(){
     this.router.navigate(['/home-form'])
   }
+
+  getTooltipContent() {
+    return `Solicitadas: ${this.quantidadeOS.result.Solicitada}
+            Aprovadas: ${this.quantidadeOS.result.Aprovada}
+            Concluidas: ${this.quantidadeOS.result.Concluida}
+            Finalizadas: ${this.quantidadeOS.result.Finalizada}`;
+  }
+
 
 }

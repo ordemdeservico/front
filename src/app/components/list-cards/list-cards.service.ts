@@ -103,6 +103,9 @@ export class ListCardsService {
     return this.http.get(`${API}/ordem-servico/tecnico/${user}` );
   }
 
+  QuantidadeOS(): Observable<any> {
+    return this.http.get(`${API}/ordem-servico/quantidade/os`);
+  }
 
 
 

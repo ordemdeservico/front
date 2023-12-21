@@ -12,6 +12,7 @@ import { ButtonModule } from 'primeng/button';
 import { MultiSelectModule } from 'primeng/multiselect';
 import { ModalAprovarOsModule } from 'src/app/components/modal-os-adm/modal-aprovar-os/modal-aprovar-os.module';
 import { ModalFinalizarOsModule } from 'src/app/components/modal-os-adm/modal-finalizar-os/modal-finalizar-os.module';
+import { TooltipModule } from 'primeng/tooltip';
 
 
 @NgModule({
@@ -30,6 +31,7 @@ import { ModalFinalizarOsModule } from 'src/app/components/modal-os-adm/modal-fi
     FormsModule,
     MultiSelectModule,
     ModalAprovarOsModule,
+    TooltipModule,
     ModalFinalizarOsModule
   ],
   providers: [DynamicDialogRef]
