@@ -43,7 +43,7 @@ export class ModalAprovarOsComponent implements OnInit {
     private listCardsService: ListCardsService,
     private messageService: MessageService,
     private confirmationService: ConfirmationService
-    
+
 
   ) {
     this.formGroup = this.formBuilder.group({
@@ -69,16 +69,18 @@ export class ModalAprovarOsComponent implements OnInit {
       acceptLabel: 'Sim',
       rejectLabel: 'Não',
       accept: () => {
-        this.messageService.add({ severity: 'success', summary: 'Sucesso!', detail: 'Usuário excluido.', life: 3000 });
+        this.messageService.add({ severity: 'success', summary: 'Sucesso!', detail: 'Ordem de serviço rejeitada', life: 3000 });
         this.listCardsService.declinarOs(this.orderService!.id).subscribe(
           (res) => {
+            console.warn(res);
+            console.warn(this.orderService!.id);
             this.attCards.emit(true);
           },
           (err) => {
             console.error(err);
           }
           )
-          
+
         },
       acceptButtonStyleClass: 'custom-accept-button',
       rejectButtonStyleClass: 'custom-reject-button'
@@ -89,17 +91,17 @@ export class ModalAprovarOsComponent implements OnInit {
   getFormValues() {
     const formValues = this.formGroup.value;
     console.log(Object.keys(this.formGroup.controls));
-  
+
     if (this.formGroup.valid) {
       const parametros: any = { 'ordem_servico_id': this.orderService!.id };
-  
+
       if (!this.arePropertiesEqual(formValues, this.orderService)) {
         for (const propriedade in formValues) {
           if (formValues.hasOwnProperty(propriedade)) {
             parametros[propriedade] = formValues[propriedade];
           }
         }
-  
+
         this.listCardsService.aprovarOs(parametros).subscribe(
           (res) => {
             console.log(res);
@@ -115,16 +117,16 @@ export class ModalAprovarOsComponent implements OnInit {
       this.messageService.add({ severity: 'error', summary: 'Erro', detail: 'É necessário preencher todos campos.' });
     }
   }
-  
+
   arePropertiesEqual(obj1: any, obj2: any): boolean {
     const commonProperties = Object.keys(obj1).filter(prop => obj2.hasOwnProperty(prop));
-  
+
     for (const prop of commonProperties) {
       if (obj1[prop] !== obj2[prop]) {
         return false;
       }
     }
-  
+
     return true;
   }
 
@@ -135,11 +137,11 @@ export class ModalAprovarOsComponent implements OnInit {
     this.tecnico = await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllTec()));
     this.setor_principal= await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllSetoresPrincipais()));
     this.tipo_servico = await lastValueFrom(this.formatToDropdownptions(this.listCardsService.getAllServices()));
-    
+
     const {setor_principal_id} = this.orderService!
     if (setor_principal_id) {
       this.selectedSetor = setor_principal_id;
-      
+
     }
     this.formGroup.patchValue({
       setor_principal_id: setor_principal_id
@@ -154,7 +156,7 @@ export class ModalAprovarOsComponent implements OnInit {
     }
 
     this.getAllSecundarios();
-    
+
 
     this.nivel_prioridade = [
       'P1 - 1 dia',
@@ -185,7 +187,7 @@ export class ModalAprovarOsComponent implements OnInit {
         }))
         )
       ));
-    } 
+    }
   }
 
   private formatToDropdownptions<T extends {nome?:string;id?:number}>(req:Observable<{erros:any,result:T[]}>):Observable<DropdownOptions[]> {

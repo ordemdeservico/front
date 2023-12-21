@@ -78,15 +78,14 @@ export class ListCardsService {
   }
 
 
-  declinarOs(params: number): Observable<any> {
-    let httpParams = new HttpParams().set("ordem_servico_id", params)
-    return this.http.delete(`${API}/ordem-servico/rejeitar`, { params: httpParams })
+  declinarOs(os_id: number): Observable<any> {
+    return this.http.patch(`${API}/ordem-servico/rejeitar/${os_id}`, {});
   }
 
   concluirOs(formData: FormData): Observable<any> {
     return this.http.patch<any>(`${API}/ordem-servico/concluir`, formData);
   }
-  
+
   finalizarOs(id: number, feedback: string): Observable<any> {
     let params = new HttpParams();
 
