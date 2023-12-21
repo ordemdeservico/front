@@ -24,11 +24,11 @@ export default class CardComponent implements OnInit {
   }
   attCards(event: boolean) {
     this.attCard.emit(event)
-    console.log('Card: ', event);
+    // console.log('Card: ', event);
   }
 
   ngOnInit() {
-    
+
   }
 
 }
