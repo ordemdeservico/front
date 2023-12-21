@@ -28,7 +28,7 @@ export default class CardComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    
   }
 
 }

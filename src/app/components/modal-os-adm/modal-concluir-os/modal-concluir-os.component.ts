@@ -81,8 +81,7 @@ export class ModalConcluirOsComponent implements OnInit {
     if (
       this.formGroup.valid &&
       this.formGroup.value &&
-      this.isSubmitting == false &&
-      this.uploadedFiles.length > 0
+      this.isSubmitting == false
     ) {
       const formData = new FormData();
       for (let file of this.uploadedFiles) {

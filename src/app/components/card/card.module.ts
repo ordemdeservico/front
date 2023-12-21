@@ -9,6 +9,7 @@ import { ModalConcluirOsModule } from '../modal-os-adm/modal-concluir-os/modal-c
 import { ModalOsUserModule } from '../modal-os-user/modal-os-user.module';
 import { ModalFinalizadaModule } from '../modal-finalizada/modal-finalizada.module';
 import { CardModule as PrimeNGCardModule } from 'primeng/card';
+import { GaleriaSolicitadasModule } from '../galeria-solicitadas/galeria-solicitadas.module';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { CardModule as PrimeNGCardModule } from 'primeng/card';
       ModalConcluirOsModule,
       ModalOsUserModule,
       ModalFinalizadaModule,
-      PrimeNGCardModule
+      PrimeNGCardModule,
+      GaleriaSolicitadasModule
 
     ],
     exports: [

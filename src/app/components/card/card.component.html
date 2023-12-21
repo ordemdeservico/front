@@ -1,7 +1,8 @@
 <p-card
+  (click)="openModal()"
   header="ID: {{ orderService.id.toString().padStart(4, '0') }}"
   subheader="Status: {{ orderService.status_os }}"
-  [style]="{ width: '340px' }"
+  [style]="{ width: '340px', cursor: 'pointer' }"
 >
   <ng-template pTemplate="header">
       <img alt="Card" [src]="orderService.images?.type1?.[0]?.img_key ? orderService.images?.type1?.[0]?.img_key : 'https://primefaces.org/cdn/primeng/images/usercard.png'"  />
@@ -43,7 +44,7 @@
   </ng-template>
 
   <ng-template pTemplate="footer">
-    <div class="card-footer" (click)="openModal()">
+    <div class="card-footer">
       <p>Detalhes</p>
     </div>
   </ng-template>
@@ -102,7 +103,7 @@
     </div>
 </div> -->
 
-<p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [breakpoints]="{ '960px': '100vw' }" [style]="{ width: '40vw'}"  [draggable]="false" [resizable]="false">
+<p-dialog header="Header" [(visible)]="displayModal" [modal]="true" [breakpoints]="{ '960px': '100vw' }" [style]="{ width: '60vw'}"  [draggable]="false" [resizable]="false">
     <ng-template pTemplate="header">
         <span class="header">Ordem de Serviço: {{ orderService.id }}</span>
     </ng-template>
