@@ -1,12 +1,10 @@
 .container {
-  // background-color: red;
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
 
   .header-container {
-    // background-color: blue;
     width: 100%;
 
     ul {
@@ -44,7 +42,6 @@
   .content-container {
     margin-top: 1rem;
     width: 100%;
-    // background-color: red;
 
     .card {
       width: 100%;
@@ -122,26 +119,7 @@
             background-color: var(--red2);
           }
         }
-
       }
     }
-
   }
 }
-
-
-// .btn-confirm {
-//     background-color: var(--green1);
-// }
-
-// .btn-confirm:hover {
-//     background-color: var(--green2);
-// }
-
-// .btn-decline {
-//     background-color: var(--red1);
-// }
-
-// .btn-decline:hover {
-//     background-color: var(--red2);
-// }
