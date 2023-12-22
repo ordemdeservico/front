@@ -8,7 +8,7 @@
                 </div>
                 <p>{{ orderService?.solicitante_nome }}</p>
             </div>
-            
+
             <div class="item">
                 <div class="item-title">
                     <i class='bx bx-briefcase-alt'></i>
@@ -63,13 +63,17 @@
         </div>
 
         <div class="field">
+          <app-galeria-solicitadas [images]="images"></app-galeria-solicitadas>
+        </div>
+
+        <div class="field">
             <div class="item-title">
                 <i class='bx bx-check'></i>
                 <label>Feedback</label>
             </div>
             <p>{{ orderService?.feedback }}</p>
         </div>
-        
+
         <div class="field">
             <div class="item-title">
                 <i class='bx bx-clipboard' ></i>
@@ -77,7 +81,7 @@
             </div>
             <p>{{ orderService?.relatorio }}</p>
         </div>
-        
+
         <div class="field">
             <div class="item-title">
                 <i class='bx bx-cart'></i>
