@@ -76,16 +76,12 @@ export class HomeFormComponent implements OnInit {
   }
 
   onRemoveFile(event: any) {
-    console.log('Event: ', event);
-    console.log('Files: ', this.uploadedFiles);
     const removedFile = event.file;
     const index = this.uploadedFiles.indexOf(removedFile);
 
     if (index !== -1) {
       this.uploadedFiles.splice(index, 1);
     }
-
-    console.log('Change Files: ', this.uploadedFiles);
   }
 
   backToDashboard(){
