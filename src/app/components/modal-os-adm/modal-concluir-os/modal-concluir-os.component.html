@@ -71,6 +71,10 @@
             <p>{{ orderService?.tecnico_nome }}</p>
         </div>
 
+        <div class="field">
+          <app-galeria-solicitadas [images]="images"></app-galeria-solicitadas>
+        </div>
+
         <div class="field" *ngIf="role == 'Tecnico'">
             <div class="item-title">
                 <i class='bx bx-cart'></i>
@@ -88,7 +92,7 @@
         </div>
 
         <div class="field" *ngIf="role == 'Tecnico'">
-          <p-fileUpload name="demo[]" styleClass="upload-files" chooseLabel="Escolher" cancelLabel="Cancelar"
+          <p-fileUpload name="demo[]" styleClass="upload-files" chooseLabel="Registrar Imagens" cancelLabel="Cancelar"
             chooseStyleClass="btn-upload-file" cancelStyleClass="btn-upload-file" uploadStyleClass="btn-upload-file"
             (onSelect)="onFileSelect($event)" [multiple]="true" accept="image/*" [maxFileSize]="1000000" [auto]="autoUpload">
             <ng-template pTemplate="content">
@@ -99,10 +103,6 @@
           </p-fileUpload>
         </div>
 
-
-        <!-- <div class="card flex justify-content-center btn-submit" *ngIf="role == 'Tecnico'">
-            <button pButton pRipple label="Concluir" class="p-button-success btn" (click)="onEmmmitOs()"></button>
-        </div> -->
         <div class="row" *ngIf="role == 'Tecnico'">
           <div class="field">
             <button class="btn" type="submit" (click)="onEmmmitOs()">Concluir</button>

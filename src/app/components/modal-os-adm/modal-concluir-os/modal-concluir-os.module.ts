@@ -10,6 +10,7 @@ import { DialogModule } from 'primeng/dialog';
 import { ToastModule } from 'primeng/toast';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { FileUploadModule } from 'primeng/fileupload';
+import { GaleriaSolicitadasModule } from '../../galeria-solicitadas/galeria-solicitadas.module';
 
 
 
@@ -27,7 +28,8 @@ import { FileUploadModule } from 'primeng/fileupload';
     DialogModule,
     ToastModule,
     FileUploadModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    GaleriaSolicitadasModule
   ],
   exports: [
     ModalConcluirOsComponent

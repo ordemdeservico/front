@@ -26,7 +26,7 @@ export class ModalConcluirOsComponent implements OnInit {
   uploadedFiles: any[] = [];
   autoUpload: boolean = true;
   isSubmitting: boolean = false;
-
+  images: any[] = [];
 
 
   constructor(
@@ -128,5 +128,19 @@ export class ModalConcluirOsComponent implements OnInit {
   }
   ngOnInit(): void {
     this.isSubmitting = false;
+    if (this.orderService?.images?.type1) {
+      for (let image of this.orderService.images.type1) {
+        const imgKey = image.img_key.toString();
+        this.images.push(imgKey);
+
+        const img = new Image();
+        img.src = imgKey;
+        img.onload = () => {
+          // Imagem carregada com sucesso
+          // console.log(`Imagem carregada: ${imgKey}`);
+        };
+      }
+    }
+
   }
 }
