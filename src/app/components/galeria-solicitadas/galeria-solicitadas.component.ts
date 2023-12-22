@@ -12,8 +12,8 @@ export class GaleriaSolicitadasComponent implements OnInit, OnDestroy {
 
   @ViewChild('galleria') galleria: Galleria | undefined;
   @Input('images') images!: any[];
+  @Input('imagesTec') imagesTec!: any[];
 
-  // images: any[] = [];
   position: string = 'bottom';
   fullscreen: boolean = false;
   activeIndex: number = 0;
