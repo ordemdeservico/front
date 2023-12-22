@@ -72,6 +72,10 @@
         </div>
 
         <div class="field">
+          <app-galeria-solicitadas [images]="images"></app-galeria-solicitadas>
+        </div>
+
+        <div class="field">
             <div class="item-title">
                 <i class='bx bx-cart'></i>
                 <label>Relatório</label>
@@ -87,17 +91,14 @@
             <textarea formControlName="material" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Material utilizado na OS"></textarea>
         </div>
 
-        <div class="select card flex justify-content-center m-0">
-            <span class="p-float-label">
-                <p-dropdown formControlName="feedback" [options]="feedback" placeholder="Selecione uma feedback" inputId="float-label"></p-dropdown>
-                <label for="float-label">Feedback</label>
-            </span>
+        <div class="field">
+          <label for="float-label">Feedback</label>
+          <p-dropdown formControlName="feedback" [options]="feedback" placeholder="Selecione uma feedback" inputId="float-label"></p-dropdown>
         </div>
 
-    </div>
-        
+        <div class="field">
+          <button class="btn" type="submit" (click)="submitForm()" >Finalizar</button>
+        </div>
 
-    <div class="card flex justify-content-center btn-submit">
-        <button pButton pRipple label="Finalizar" class="p-button-success btn" (click)="submitForm()"></button>
     </div>
 </div>

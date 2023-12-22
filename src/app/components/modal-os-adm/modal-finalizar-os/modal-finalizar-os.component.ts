@@ -15,7 +15,7 @@ export class ModalFinalizarOsComponent implements OnInit {
 
   feedback: string[] = ['Ruim', 'Regular', 'Bom', 'Ótimo', 'Excelente'];
   formGroup: FormGroup;
-
+  images: any[] = [];
 
   constructor(
     private ref: DynamicDialogRef,
@@ -54,6 +54,21 @@ export class ModalFinalizarOsComponent implements OnInit {
       relatorio: this.orderService?.relatorio,
       material: this.orderService?.material
     });
+
+    if (this.orderService?.images?.type1) {
+      for (let image of this.orderService.images.type1) {
+        const imgKey = image.img_key.toString();
+        this.images.push(imgKey);
+
+        const img = new Image();
+        img.src = imgKey;
+        img.onload = () => {
+          // Imagem carregada com sucesso
+          // console.log(`Imagem carregada: ${imgKey}`);
+        };
+      }
+    }
+
   }
 
 }

@@ -8,6 +8,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { ButtonModule } from 'primeng/button';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
+import { GaleriaSolicitadasModule } from '../../galeria-solicitadas/galeria-solicitadas.module';
 
 
 
@@ -23,7 +24,8 @@ import { DialogModule } from 'primeng/dialog';
     ButtonModule,
     FormsModule,
     DialogModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    GaleriaSolicitadasModule
   ],
   exports: [
     ModalFinalizarOsComponent
