@@ -85,7 +85,7 @@
 }
 .my-card {
   width: auto;
-  padding: 8px;
+  padding: 8px !important;
   border-radius: 5px;
   border: 2px solid var(--green1);
   display: flex;
@@ -95,18 +95,18 @@
   margin-left: 60.5rem;
 }
 
-@media only screen and (max-width: 1860px) {
+@media only screen and (max-width: 1834px) {
   .my-card {
     margin-left: 37.5rem;
   }
 }
-@media only screen and (max-width: 1460px) {
+@media only screen and (max-width: 1448px) {
   .my-card {
     margin-left: 14.5rem;
   }
 }
 
-@media only screen and (max-width: 1062px) {
+@media only screen and (max-width: 1060px) {
   .my-card {
     display: none;
   }
