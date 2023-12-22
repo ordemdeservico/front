@@ -53,29 +53,14 @@ export class ModalConcluirOsComponent implements OnInit {
     }
   }
 
-  // concluirOs() {
-  //   if (this.formGroup.valid) {
+  onRemoveFile(event: any) {
+    const removedFile = event.file;
+    const index = this.uploadedFiles.indexOf(removedFile);
 
-  //     const values: any =  {
-  //       ordem_servico_id: this.orderService!.id,
-  //       data_final: this.obterDataAtual(),
-  //       material: this.formGroup.value.material,
-  //       relatorio: this.formGroup.value.relatorio
-  //     }
-
-  //     this.listCardsService.concluirOs(values).subscribe({
-  //       next: (res) => {
-  //         console.log(res);
-  //         console.log(values)
-  //         this.attCards.emit(true);
-  //       },
-  //       error: (err) => {
-  //         console.error(err);
-  //       }
-  //     })
-  //     console.log('values: ', this.formGroup.value)
-  //   }
-  // }
+    if (index !== -1) {
+      this.uploadedFiles.splice(index, 1);
+    }
+  }
 
   onEmmmitOs() {
     if (
@@ -83,6 +68,7 @@ export class ModalConcluirOsComponent implements OnInit {
       this.formGroup.value &&
       this.isSubmitting == false
     ) {
+      this.isSubmitting = true;
       const formData = new FormData();
       for (let file of this.uploadedFiles) {
         formData.append('file', file, file.name);
@@ -97,7 +83,8 @@ export class ModalConcluirOsComponent implements OnInit {
         next: (res) => {
           console.log('Ordem de serviço concluida. ', res);
           this.isSubmitting = true;
-          // this.formGroup.reset();
+          this.formGroup.reset();
+          this.uploadedFiles = [];
         },
         error: (erro) => {
           console.error('Erro: ', erro);

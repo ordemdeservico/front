@@ -94,7 +94,7 @@
         <div class="field" *ngIf="role == 'Tecnico'">
           <p-fileUpload name="demo[]" styleClass="upload-files" chooseLabel="Registrar Imagens" cancelLabel="Cancelar"
             chooseStyleClass="btn-upload-file" cancelStyleClass="btn-upload-file" uploadStyleClass="btn-upload-file"
-            (onSelect)="onFileSelect($event)" [multiple]="true" accept="image/*" [maxFileSize]="1000000" [auto]="autoUpload">
+            (onSelect)="onFileSelect($event)" [multiple]="true" accept="image/*" [maxFileSize]="1000000" [auto]="autoUpload" (onRemove)="onRemoveFile($event)">
             <ng-template pTemplate="content">
               <ul *ngIf="uploadedFiles.length">
                 <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
@@ -105,7 +105,7 @@
 
         <div class="row" *ngIf="role == 'Tecnico'">
           <div class="field">
-            <button class="btn" type="submit" (click)="onEmmmitOs()">Concluir</button>
+            <button class="btn" type="submit" [disabled]="isSubmitting" (click)="onEmmmitOs()">Concluir</button>
           </div>
         </div>
     </div>
