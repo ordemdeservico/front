@@ -101,4 +101,10 @@
   :host ::ng-deep p-galleriaitemslot.p-galleria-item  {
     height: 100%;
   }
+
+  ::host ::ng-deep .p-galleria-thumbnail-items {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
