@@ -59,13 +59,12 @@ export class HomeFormComponent implements OnInit {
     });
    }
 
-
-   obterDataAtual(): string {
+  obterDataAtual(): string {
     const data_insercao = new Date();
     return this.datePipe.transform(data_insercao, ' yyyy/MM/dd') || '';
   }
 
-   onChangeSetorPrincipal(){
+  onChangeSetorPrincipal(){
     this.selectedSetor = this.formGroup.get('setor_principal_id')?.value;
     this.getAllSecundarios();
   }
@@ -74,6 +73,19 @@ export class HomeFormComponent implements OnInit {
     for (let file of event.files) {
       this.uploadedFiles.push(file);
     }
+  }
+
+  onRemoveFile(event: any) {
+    console.log('Event: ', event);
+    console.log('Files: ', this.uploadedFiles);
+    const removedFile = event.file;
+    const index = this.uploadedFiles.indexOf(removedFile);
+
+    if (index !== -1) {
+      this.uploadedFiles.splice(index, 1);
+    }
+
+    console.log('Change Files: ', this.uploadedFiles);
   }
 
   backToDashboard(){
@@ -87,7 +99,8 @@ export class HomeFormComponent implements OnInit {
   }
 
   onEmmmitOs() {
-    if ( this.formGroup.valid && this.formGroup.value && this.isSubmitting == false) {
+    if ( this.formGroup.valid && this.formGroup.value && !this.isSubmitting) {
+      this.isSubmitting = true;
       const formData = new FormData();
 
       if ( this.uploadedFiles.length > 0) {
@@ -131,7 +144,7 @@ export class HomeFormComponent implements OnInit {
   }
 
   async ngOnInit() {
-
+    this.isSubmitting = false;
     this.loginService.infoUser().subscribe({
       next: (res) => {
         this.nome = res.nome
