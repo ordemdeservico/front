@@ -1,7 +1,7 @@
 
 .card {
     width: 100%;
-    
+
     .itens {
         width: auto;
         height: 100%;
@@ -71,6 +71,7 @@
               background-color: var(--color-4);
               transition: 0.5s all ease-in-out;
               margin: 1rem;
+              cursor: pointer;
 
               &:hover {
                 background-color: var(--color-2);
