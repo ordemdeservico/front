@@ -11,19 +11,21 @@ export class ModalFinalizadaComponent implements OnInit{
   @Input("orderService") orderService?: OrderService;
 
   images: any[] = [];
+  imagesTec: any[] = [];
 
   ngOnInit(): void {
-    if (this.orderService?.images?.type1) {
-      for (let image of this.orderService.images.type1) {
-        const imgKey = image.img_key.toString();
-        this.images.push(imgKey);
-
-        const img = new Image();
-        img.src = imgKey;
-        img.onload = () => {
-          // Imagem carregada com sucesso
-          // console.log(`Imagem carregada: ${imgKey}`);
-        };
+    if (this.orderService?.images) {
+      if (this.orderService?.images?.type1) {
+        for (let image of this.orderService.images.type1) {
+          const imgKey = image.img_key.toString();
+          this.images.push(imgKey);
+        }
+      }
+      if (this.orderService?.images?.type2) {
+        for (let image of this.orderService.images.type2) {
+          const imgKey = image.img_key.toString();
+          this.imagesTec.push(imgKey);
+        }
       }
     }
   }
