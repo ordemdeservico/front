@@ -1,3 +1,7 @@
+
+<div *ngIf="images.length > 0" class="galery-header">
+  <p>Imagens de solicitação</p>
+</div>
 <p-galleria #galleria [value]="images" [(activeIndex)]="activeIndex" [numVisible]="5" [showThumbnails]="fullscreen"
   [showItemNavigators]="true" [showItemNavigatorsOnHover]="true" [circular]="true" [autoPlay]="true"
   [transitionInterval]="3000" [containerStyle]="{ 'max-width': '640px' }" [containerClass]="galleriaClass()">
