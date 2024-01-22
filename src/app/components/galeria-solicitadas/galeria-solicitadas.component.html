@@ -1,41 +1,80 @@
 <div *ngIf="images && images.length > 0">
-  <div class="galery-header">
+
+  <p-accordion>
+
+    <p-accordionTab header="Imagens de solicitação">
+      <p-galleria #galleria [value]="images" [(activeIndex)]="activeIndex" [numVisible]="5"
+        [showThumbnails]="fullscreen" [showItemNavigators]="true" [showItemNavigatorsOnHover]="true" [circular]="true"
+        [autoPlay]="true" [transitionInterval]="3000" [containerStyle]="{ 'max-width': '640px' }"
+        [containerClass]="galleriaClass()">
+        <ng-template pTemplate="item" let-item>
+          <img [src]="item" [ngStyle]="{ width: !fullscreen ? '100%' : '', display: !fullscreen ? 'block' : '' }" />
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item>
+          <div class="grid grid-nogutter justify-content-center">
+            <img [src]="item" />
+          </div>
+        </ng-template>
+        <ng-template pTemplate="footer" let-item>
+          <div class="custom-galleria-footer">
+
+            <span *ngIf="images" class="title-container">
+              <span>{{ activeIndex + 1 }}/{{ images.length }}</span>
+              <span class="title">{{ images[activeIndex].title }}</span>
+              <span>{{ images[activeIndex].alt }}</span>
+            </span>
+            <button type="button" pButton [icon]="fullScreenIcon()" (click)="toggleFullScreen()"
+              class="fullscreen-button"></button>
+          </div>
+        </ng-template>
+      </p-galleria>
+    </p-accordionTab>
+
+  </p-accordion>
+
+  <!-- <div class="galery-header">
     <p>Imagens de solicitação</p>
-  </div>
+  </div> -->
 
-  <p-galleria #galleria [value]="images" [(activeIndex)]="activeIndex" [numVisible]="5" [showThumbnails]="fullscreen"
-    [showItemNavigators]="true" [showItemNavigatorsOnHover]="true" [circular]="true" [autoPlay]="true"
-    [transitionInterval]="3000" [containerStyle]="{ 'max-width': '640px' }" [containerClass]="galleriaClass()">
-    <ng-template pTemplate="item" let-item>
-      <img [src]="item" [ngStyle]="{ width: !fullscreen ? '100%' : '', display: !fullscreen ? 'block' : '' }" />
-    </ng-template>
-    <ng-template pTemplate="thumbnail" let-item>
-      <div class="grid grid-nogutter justify-content-center">
-        <img [src]="item" />
-      </div>
-    </ng-template>
-    <ng-template pTemplate="footer" let-item>
-      <div class="custom-galleria-footer">
 
-        <span *ngIf="images" class="title-container">
-          <span>{{ activeIndex + 1 }}/{{ images.length }}</span>
-          <span class="title">{{ images[activeIndex].title }}</span>
-          <span>{{ images[activeIndex].alt }}</span>
-        </span>
-        <button type="button" pButton [icon]="fullScreenIcon()" (click)="toggleFullScreen()"
-          class="fullscreen-button"></button>
-      </div>
-    </ng-template>
-  </p-galleria>
 </div>
 
 
 <div *ngIf="imagesTec && imagesTec.length > 0">
-  <div class="galery-header">
-    <p>Imagens de conclusão</p>
-  </div>
 
-  <p-galleria #galleria [value]="imagesTec" [(activeIndex)]="activeIndex" [numVisible]="5" [showThumbnails]="fullscreen"
+  <p-accordion >
+    <p-accordionTab header="Imagens de conclusão">
+      <p-galleria #galleria [value]="imagesTec" [(activeIndex)]="activeIndex" [numVisible]="5" [showThumbnails]="fullscreen"
+        [showItemNavigators]="true" [showItemNavigatorsOnHover]="true" [circular]="true" [autoPlay]="true"
+        [transitionInterval]="3000" [containerStyle]="{ 'max-width': '640px' }" [containerClass]="galleriaClass()">
+        <ng-template pTemplate="item" let-item>
+          <img [src]="item" [ngStyle]="{ width: !fullscreen ? '100%' : '', display: !fullscreen ? 'block' : '' }" />
+        </ng-template>
+        <ng-template pTemplate="thumbnail" let-item>
+          <div class="grid grid-nogutter justify-content-center">
+            <img [src]="item" />
+          </div>
+        </ng-template>
+        <ng-template pTemplate="footer" let-item>
+          <div class="custom-galleria-footer">
+
+            <span *ngIf="imagesTec" class="title-container">
+              <span>{{ activeIndex + 1 }}/{{ imagesTec.length }}</span>
+              <span class="title">{{ imagesTec[activeIndex].title }}</span>
+              <span>{{ imagesTec[activeIndex].alt }}</span>
+            </span>
+            <button type="button" pButton [icon]="fullScreenIcon()" (click)="toggleFullScreen()"
+              class="fullscreen-button"></button>
+          </div>
+        </ng-template>
+      </p-galleria>
+    </p-accordionTab>
+  </p-accordion>
+  <!-- <div class="galery-header">
+    <p>Imagens de conclusão</p>
+  </div> -->
+
+  <!-- <p-galleria #galleria [value]="imagesTec" [(activeIndex)]="activeIndex" [numVisible]="5" [showThumbnails]="fullscreen"
     [showItemNavigators]="true" [showItemNavigatorsOnHover]="true" [circular]="true" [autoPlay]="true"
     [transitionInterval]="3000" [containerStyle]="{ 'max-width': '640px' }" [containerClass]="galleriaClass()">
     <ng-template pTemplate="item" let-item>
@@ -58,5 +97,5 @@
           class="fullscreen-button"></button>
       </div>
     </ng-template>
-  </p-galleria>
+  </p-galleria> -->
 </div>

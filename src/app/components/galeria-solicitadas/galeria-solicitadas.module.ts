@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { GaleriaSolicitadasComponent } from './galeria-solicitadas.component';
 import { GalleriaModule } from 'primeng/galleria';
 import { ButtonModule } from 'primeng/button';
+import { AccordionModule } from 'primeng/accordion';
 
 
 
@@ -13,7 +14,8 @@ import { ButtonModule } from 'primeng/button';
   imports: [
     CommonModule,
     GalleriaModule,
-    ButtonModule
+    ButtonModule,
+    AccordionModule
   ],
   exports: [
     GaleriaSolicitadasComponent
