@@ -76,15 +76,21 @@
         </div>
 
         <div class="field">
+          <app-galeria-solicitadas [imagesTec]="imagesTec"></app-galeria-solicitadas>
+        </div>
+
+        <div class="field">
+          <div class="relatorio">
+            <h2>Relatório</h2>
+          </div>
+        </div>
+
+        <div class="field">
             <div class="item-title">
                 <i class='bx bx-cart'></i>
                 <label>Relatório</label>
             </div>
             <textarea formControlName="relatorio" rows="5" cols="30" pInputTextarea [autoResize]="true" placeholder="Relatório do serviço realizado"></textarea>
-        </div>
-
-        <div class="field">
-          <app-galeria-solicitadas [imagesTec]="imagesTec"></app-galeria-solicitadas>
         </div>
 
         <div class="field">
@@ -101,7 +107,7 @@
         </div>
 
         <div class="field">
-          <button class="btn" type="submit" (click)="submitForm()" >Finalizar</button>
+          <button class="btn" type="submit" (click)="submitForm()">Finalizar</button>
         </div>
 
     </div>

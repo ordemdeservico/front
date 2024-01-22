@@ -37,17 +37,31 @@ export class ModalFinalizarOsComponent implements OnInit {
   submitForm() {
     if (this.formGroup.valid) {
       const values = this.formGroup.value;
-      const feedbackValue = values.feedback;
-      this.listCardsService.finalizarOs(this.orderService!.id, feedbackValue).subscribe(
-        (res) => {
+      const feedback = values.feedback;
+
+      this.listCardsService.finalizarOs(this.orderService!.id, feedback).subscribe({
+        next: (res) => {
           console.log('OS Finalizada: ', res);
           this.attCards.emit(true);
         },
-        (err) => {
-          console.error(err);
+        error: (erro) => {
+          console.error('Erro: ', erro);
         }
-      )
+      })
     }
+    // if (this.formGroup.valid) {
+    //   const values = this.formGroup.value;
+    //   const feedbackValue = values.feedback;
+    //   this.listCardsService.finalizarOs(this.orderService!.id, feedbackValue).subscribe(
+    //     (res) => {
+    //       console.log('OS Finalizada: ', res);
+    //       this.attCards.emit(true);
+    //     },
+    //     (err) => {
+    //       console.error(err);
+    //     }
+    //   )
+    // }
   }
 
   ngOnInit() {
